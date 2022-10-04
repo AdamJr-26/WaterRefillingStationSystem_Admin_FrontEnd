@@ -1,0 +1,91 @@
+@use '../colors';
+
+.admin-inventory-update-gallon {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    animation: pop-up 0.4s forwards;
+
+    &--header {
+        display: flex;
+        justify-content: space-between;
+
+        p {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        button {
+            border: none;
+            background: none;
+            font-size: 1.4rem;
+        }
+    }
+
+    &--gallon-name {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    &--inputs {
+        display: flex;
+        flex-flow: row wrap;
+        gap: 5px;
+    }
+
+    &--buttons {
+        display: flex;
+        justify-content: space-around;
+        gap: 5px;
+
+        button {
+            border: none;
+            border-radius: 30px;
+            padding: 10px;
+            flex-grow: 1;
+            cursor: pointer;
+        }
+
+        &__update {
+            background: colors.$blue-900;
+            color: white;
+        }
+
+    }
+}
+
+@keyframes pop-up {
+    0% {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+    }
+
+    // 30% {
+
+    // }
+
+    70% {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%)scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}

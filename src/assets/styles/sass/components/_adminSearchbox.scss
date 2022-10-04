@@ -1,0 +1,18 @@
+@use '../colors';
+
+.admin-searchbox{
+    background-color: colors.$gray-100;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    &--icon{
+        color: colors.$gray-400;
+    }
+    &--search{
+        outline: none;
+        border: none;
+        background: transparent;
+        width: 100%;
+    }
+}

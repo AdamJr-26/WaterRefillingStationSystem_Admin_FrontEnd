@@ -1,0 +1,21 @@
+@use '../colors';
+
+.admin-dataGrid-button-danger {
+    padding: 5px 7px;
+    width: 100%;
+    border: none;
+    background-color: #EC6262;
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.admin-dataGrid-button-primary {
+    padding: 5px 7px;
+    width: 100%;
+    border: none;
+    background-color: colors.$blue-900;
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+    
+}

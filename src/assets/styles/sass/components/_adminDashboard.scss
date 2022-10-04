@@ -1,0 +1,58 @@
+@use '../colors';
+@use '../breakpoints';
+
+
+.admin-dashboard {
+    &--cards {
+        display: flex;
+        flex-direction: row;
+        flex-flow: row wrap;
+        width: 100%;
+        
+        .admin-dashboard-card {
+            margin: 5px 5px;
+            width: 100%;
+        }
+    }
+
+}
+
+@media only screen and (min-width:breakpoints.$xs) {
+    .admin-dashboard {
+        &--cards {
+            .admin-dashboard-card {
+                margin: 5px 2.5%;
+                width: 45%;
+
+            }
+        }
+    }
+
+
+}
+
+@media only screen and (min-width:breakpoints.$sm) {
+    .admin-dashboard {
+        &--cards {
+            .admin-dashboard-card {
+                margin: 5px 1.66666%;
+                width: 30%;
+
+            }
+        }
+    }
+
+
+}
+@media only screen and (min-width:breakpoints.$md) {
+    .admin-dashboard {
+        &--cards {
+            .admin-dashboard-card {
+                margin: 5px 1.25%;
+                width: 22.5%;
+            }
+        }
+    }
+
+
+}

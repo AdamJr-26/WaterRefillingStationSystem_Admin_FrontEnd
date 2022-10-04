@@ -1,0 +1,153 @@
+@use '../colors';
+@use '../breakpoints';
+
+.sidebar {
+    background-color: white;
+    height: 100%;
+    flex-grow: 1;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    position: sticky;
+    max-width: 300px;
+    min-width: 250px;
+    padding: 10px;
+    z-index: 10;
+    position: fixed;
+
+    &--wrsss-logo {
+        position: relative;
+
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        height: 60px;
+        border-bottom: 1px solid colors.$gray-200;
+        margin-bottom: 10px;
+
+        img {
+            width: 40px;
+            height: auto;
+
+        }
+
+        &__close-menu-button {
+            position: absolute;
+            right: -10px;
+            background: none;
+            color: colors.$blue-900;
+            border: none;
+            height: 30px;
+            width: auto;
+
+            .icon {
+                width: 100%;
+                height: 100%;
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    // -----------------------------------------------------------
+    &--links {
+        font-weight: 600;
+        color: colors.$gray-800;
+
+        .active {
+            background-color: colors.$gray-100;
+
+            .icon {
+                background-color: colors.$blue-900;
+                color: white;
+
+            }
+        }
+
+        &__dashboard {
+            display: flex;
+            text-decoration: none;
+            gap: 10px;
+            padding: 15px 10px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: colors.$gray-800;
+            align-items: center;
+            border-radius: 10px;
+
+            .icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: colors.$gray-400;
+                color: white;
+                width: 40px;
+                height: 40px;
+                padding: 10px;
+                border-radius: 100%;
+                transition: all ease;
+            }
+
+            &:hover {
+
+                background-color: colors.$gray-200;
+
+            }
+        }
+
+        &__pages {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .active {
+
+                background-color: colors.$gray-100;
+
+                .icon {
+                    background-color: colors.$blue-900;
+                    color: white;
+
+                }
+            }
+
+            .link {
+                padding: 15px 10px;
+                font-size: 1rem;
+                font-weight: 500;
+                color: colors.$gray-800;
+                align-items: center;
+                display: flex;
+                text-decoration: none;
+                gap: 10px;
+                border-radius: 10px;
+
+                .icon {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: colors.$gray-200;
+                    color: colors.$gray-800;
+                    width: 40px;
+                    height: 40px;
+                    padding: 10px;
+                    border-radius: 100%;
+                }
+
+                &:hover {
+
+                    background-color: colors.$gray-100;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width:breakpoints.$lg) {
+    .sidebar {
+        position: relative;
+        height: auto;
+        min-height: 100vh;
+
+    }
+}

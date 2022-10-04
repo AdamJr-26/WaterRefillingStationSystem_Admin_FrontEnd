@@ -1,0 +1,14 @@
+@use '../colors';
+@use '../breakpoints';
+.home{
+    &--outlet{
+        height: 90vh;
+    }
+    &--footer{
+        background-color: colors.$gray-300;
+        display: flex;
+        gap: 10px;
+        flex-flow: row wrap;
+        
+    }
+}

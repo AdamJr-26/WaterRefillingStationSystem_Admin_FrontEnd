@@ -1,0 +1,159 @@
+@use '../colors';
+@use '../breakpoints';
+
+.admin-credits {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    &--total {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+
+        &__receivable {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 319px;
+            height: 125px;
+            background: linear-gradient(277.57deg, #446AF0 10.37%, #2389DA 91.03%);
+            color: white;
+            border-radius: 16px;
+            box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+
+            .title {
+                font-weight: 700;
+            }
+
+            .amount {
+
+                font-size: 30px;
+                font-weight: 700;
+            }
+        }
+
+        &__summary {
+            background-color: white;
+            border-radius: 16px;
+            padding: 1rem 2rem;
+            box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+
+            .admin-credits-summary-title {
+                font-weight: 600;
+                font-size: 20px;
+            }
+
+            .admin-credits-summary-wrapper,
+            .admin-has-credits-wrapper {
+                display: flex;
+                justify-content: space-between;
+                padding: 10px;
+                border-bottom: 1px solid colors.$gray-200 ;
+                font-weight: 600;
+                margin-bottom: 20px;
+                gap: 20px;
+
+                .title {
+                    color: colors.$gray-400;
+                }
+
+                .amount {
+                    color: colors.$gray-800;
+                }
+            }
+
+            button {
+                border: none;
+                width: 100%;
+                padding: 15px 0px;
+                border-radius: 30px;
+                background: colors.$blue-900;
+                color: white;
+                cursor: pointer;
+
+                &:hover {
+                    background: rgba($color: colors.$blue-900, $alpha: 0.7);
+                }
+            }
+
+        }
+    }
+
+    &--transactions-wrapper {
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        width: 100%;
+        border-radius: 10px;
+        margin-left: 10px;
+        box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+
+        &__links {
+            display: flex;
+            gap: 10px;
+            padding: 10px;
+
+            &>* {
+                text-decoration: none;
+                padding: 10px 0px;
+            }
+
+            .active {
+                border-bottom: 2px solid colors.$blue-900;
+            }
+        }
+
+        &__outlet {
+            min-height: 60px;
+        }
+    }
+}
+
+@media only screen and (min-width:breakpoints.$sm) {
+    .admin-credits {
+
+        &--total {
+            flex-direction: row;
+
+            &__receivable {
+                height: auto;
+
+            }
+
+            &__summary {
+
+                width: auto;
+            }
+        }
+
+
+    }
+
+}
+
+@media only screen and (min-width: breakpoints.$lg) {
+    .admin-credits {
+        flex-direction: row;
+        align-items: flex-start;
+
+        &--total {
+            flex-direction: column;
+            margin-left: 10px;
+
+            &__receivable {
+                height: 125px;
+            }
+        }
+
+        &--transactions-wrapper  {
+            margin-left: 0px;
+        }
+
+    }
+}

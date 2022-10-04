@@ -1,0 +1,133 @@
+@use '../colors';
+@use '../breakpoints';
+
+.transactions-wrapper {
+    padding: 5px 10px;
+
+    
+    gap: 10px;
+
+    p {
+        font-weight: 700;
+        color: colors.$gray-800;
+    }
+
+    &--item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 0px;
+        border-bottom: 1px solid colors.$gray-200;
+
+        img {
+            height: 50px;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        &__person-info {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+            .name {
+                font-size: 1.2rem;
+                font-weight: 600;
+                white-space: nowrap;
+                overflow: hidden;
+                width: 170px;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                position: relative;
+
+                span {
+                    font-size: 12px;
+                    color: colors.$gray-800;
+                }
+            }
+
+            .address {
+                font-size: 14px;
+                color: colors.$gray-400;
+                white-space: nowrap;
+                overflow: hidden;
+                width: 170px;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                position: relative;
+
+            }
+
+            .regular-date-wrapper {
+                display: flex;
+                white-space: nowrap;
+                overflow: hidden;
+                width: 170px;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                // position: relative;
+
+                .role {
+                    font-size: 10px;
+                    color: white;
+                    background-color: orange;
+                    width: fit-content;
+                    padding: 1px 4px;
+                    border-radius: 6px;
+                }
+
+                .date {
+                    font-size: 12px;
+                    margin-left: 10px;
+                }
+            }
+        }
+
+        &__amount-buttons {
+            align-self: flex-end;
+            background-color: white;
+            z-index: 1;
+            .amount {
+                font-size: 1.6rem;
+                font-weight: 600;
+                white-space: nowrap;
+                margin: 0;
+                color: colors.$blue-900;
+
+            }
+
+            button {
+                white-space: nowrap;
+                margin: 0;
+                background: none;
+                border: 1px solid colors.$blue-900;
+                border-radius: 8px;
+                padding: 4px;
+
+            }
+        }
+
+    }
+}
+
+@media only screen and (min-width:breakpoints.$lg) {
+    .transactions-wrapper {
+     
+        &--item {
+            &__person-info {
+                .name {
+                    width: fit-content;
+
+                }
+
+                .address {
+                    width: fit-content;
+                }
+            }
+
+        }
+    }
+}

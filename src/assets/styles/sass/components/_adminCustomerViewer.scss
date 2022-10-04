@@ -1,0 +1,97 @@
+@use '../colors';
+
+.viewer {
+    border-radius: 15px 15px 0px 0px;
+    background-color: white;
+    padding: 10px;
+    max-width: 500px;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    transform: translateY(-50%);
+    width: 100%;
+    animation: slideUp 0.2s ease forwards;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+
+    &--header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: colors.$gray-100;
+        padding: 5px;
+
+        span {
+            font-weight: 400;
+        }
+
+        button {
+            border: none;
+            font-size: 2rem;
+        }
+    }
+
+    &--basic {
+        background-color: colors.$gray-800;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px 0px;
+        gap: 10px;
+        img {
+            width: 100px;
+            height: auto;
+            border-radius: 50px;
+            border: 3px solid white;
+        }
+        span{
+            color:white;
+            font-size: 1.5rem;
+        }
+
+    }
+    &--info{
+        padding: 10px;
+        &__contact-number, &__address{
+            display: flex;
+            gap: 10px;
+            span{
+                &:nth-child(1){
+                    color: colors.$gray-400;
+                }
+                &:nth-child(2){
+                    color: colors.$gray-800;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+    &--enagement{
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        border-radius: 15px;
+        border:1px solid colors.$gray-200;
+        padding: 15px 0px;
+        &__card{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            span{
+                &:nth-child(1){
+                    font-size: 3rem;
+                    font-weight: 600;
+                    color:colors.$gray-800;
+
+                }
+                &:nth-child(2){
+                    color:colors.$gray-400;
+
+                }
+            }
+        }
+    }
+}

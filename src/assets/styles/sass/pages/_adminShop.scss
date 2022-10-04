@@ -1,0 +1,72 @@
+@use '../colors';
+
+.admin-shop {
+    &--header {
+        display: flex;
+        background-color: white;
+        padding: 15px;
+        gap: 10px;
+        align-items: center;
+
+        button {
+            background: none;
+            border: none;
+        }
+    }
+
+    &--card-wrapper {
+        display: flex;
+        flex-flow: row wrap;
+        &__card {
+            width: 180px;
+            padding: 10px;
+            box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+
+            .image-wrapper {
+                background-color: colors.$gray-200;
+                width: 100%;
+                display: flex;
+
+
+                img {
+                    width: 80%;
+                }
+            }
+
+            .detail {
+                display: flex;
+                flex-direction: column;
+                padding: 10px;
+                gap: 5px;
+                overflow: hidden;
+
+                span {
+                    &:nth-child(1) {
+                        font-weight: 600;
+                        color: colors.$gray-800;
+                    }
+
+                    &:nth-child(2) {
+                        font-weight: 500;
+                        color: colors.$gray-400;
+
+                    }
+
+                    &:nth-child(3) {
+                        font-weight: 600;
+                        color: red;
+                        font-size: 16px;
+                    }
+                }
+            }
+
+            button {
+                width: 100%;
+                border: none;
+                height: 40px;
+                color: white;
+                background-color: colors.$blue-900;
+            }
+        }
+    }
+}
