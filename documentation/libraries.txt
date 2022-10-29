@@ -1,0 +1,12 @@
+charts
+https://react-chartjs-2.js.org/docs/chartjs-v2
+(chartv2)
+
+
+https://react-select.com/home
+react-select
+
+
+https://github.com/jquense/yup
+Yup -validation
+

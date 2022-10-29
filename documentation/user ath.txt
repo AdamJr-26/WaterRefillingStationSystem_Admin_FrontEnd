@@ -1,0 +1,4 @@
+password validation from front-end
+
+mongodb, express
+https://www.mongodb.com/languages/express-mongodb-rest-api-tutorial

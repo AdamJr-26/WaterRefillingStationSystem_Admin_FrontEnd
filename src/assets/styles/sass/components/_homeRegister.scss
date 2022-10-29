@@ -9,14 +9,12 @@
     gap: 2.5%;
     margin: 20px auto;
     justify-content: center;
-    
+    position: relative;
     // max-width: 1024px;
-
     border-radius: 15px;
-    height: 100%;
     &--steps {
-        height: 100%;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         &__one,
@@ -33,12 +31,13 @@
                 font-size: 24px;
                 font-weight: 700;
                 color: colors.$gray-800;
+                margin: 5px;
             }
 
             .detail {
                 font-size: 14px;
                 color: colors.$gray-800;
-
+                margin: 5px;
             }
 
             .next {
@@ -81,17 +80,36 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                cursor: pointer;
             }
 
         }
     }
 
 
-    &--screenshots {
+    &--map {
         width: 100%;
-        display: none;
-        
-        
+        // display: none;
+        min-height: 500px;
+    &__header{
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+        p:nth-child(1){
+            font-size: 2rem;
+            font-weight: 300;
+            margin: 5px;
+        }
+        p:nth-child(2){
+            color: colors.$gray-400;
+            font-size: 14px;
+            margin: 5px;
+        }
+        p:nth-child(3), p:nth-child(4){
+            margin: 2px;
+            font-weight: 500;
+        }
+    }
     }
 }
 
@@ -101,13 +119,27 @@
             width: 47.25%;
         }
 
-        &--screenshots {
+        &--map {
             border-radius: 10px;
             width: 47.25%;
             display: flex;
             overflow: hidden;
-            align-items: center;
+            flex-direction: column;
+            // align-items: center;
             justify-content: center;
+            // height: 300px;
+            &__header{
+                p:nth-child(1){
+                    font-size: 2rem;
+                    font-weight: 600;
+                    margin: 5px;
+                }
+                p:nth-child(2){
+                    color: colors.$gray-400;
+                    font-size: 14px;
+                    margin: 5px;
+                }
+            }
         }
     }
 }

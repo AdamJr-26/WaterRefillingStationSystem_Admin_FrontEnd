@@ -10,10 +10,20 @@ function NavLinks({ styleClass }) {
       {/* <NavLink className={({isActive})=> (isActive? `${styleClass}__link active`:`${styleClass}__link`)} to="/">
         <span>Home</span>
       </NavLink> */}
-      <NavLink className={({isActive})=> (isActive? `${styleClass}__link active`:`${styleClass}__link`)} to="/login">
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? `${styleClass}__link active` : `${styleClass}__link`
+        }
+        to="/login"
+      >
         <span>Login</span>
       </NavLink>
-      <NavLink className={({isActive})=> (isActive? `${styleClass}__link active`:`${styleClass}__link`)} to="/register">
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? `${styleClass}__link active` : `${styleClass}__link`
+        }
+        to="/register"
+      >
         <span>Register</span>
       </NavLink>
       {/* <NavLink className={({isActive})=> (isActive? `${styleClass}__link active`:`${styleClass}__link`)}to="/about-us">
@@ -36,18 +46,8 @@ function HomeNavbar() {
         <img src={logo} alt="wrss-logo" srcSet="" />
         <span className="nav--logo__title">WRSS</span>
       </div>
-      {
-        !navState && <NavLinks navState={navState} styleClass="nav--links" />
-      }
-      
-      <div className="nav--menu">
-        <button onClick={() => setNavState(!navState)}>
-          <Icon icon="ci:menu-alt-02" />
-        </button>
-        {
-            navState && <NavLinks navState={navState} styleClass="nav--links-mobile" />
-        }
-      </div>
+      <NavLinks styleClass="nav--links"  />
+
     </div>
   );
 }

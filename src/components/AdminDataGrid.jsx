@@ -9,11 +9,15 @@ function AdminDataGrid({ TableRows, TableColumns, pageOptions, allowCheckBox }) 
     <Box sx={{ height: 400, width: "100%" }}>
       <DataGrid
         sx={{
+          backgroundColor: "white",
           "& .MuiDataGrid-columnHeader":{
             color: "black",
             fontWeight: 'bold',
-            backgroundColor: '#EEEEEE', //F8F9FA
+            backgroundColor: 'white', //F8F9FA
             fontSize: 17,
+          },
+          "& .MuiDtaGrid-cell":{
+            backgroundColor: "white"
           },
           "& .MuiDataGrid-columnSeparator":{
             color: "#C0C0C0	",

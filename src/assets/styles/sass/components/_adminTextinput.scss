@@ -59,7 +59,7 @@
     &--input:not(:placeholder-shown) + &--label .content-name{
         transform: translateY(-170%);
         font-size: 14px;
-        color: colors.$gray-400;
+        color: colors.$gray-800;
     }
     &--input:focus + &--label::after,
     &--input:not(:placeholder-shown) + &--label::after{

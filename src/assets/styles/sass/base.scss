@@ -15,6 +15,7 @@
 @use './components/adminReports';
 @use './components/adminDashboard';
 @use './components/adminDashboardCard';
+@use './components/adminDashboardCard2';
 @use './components/adminCreditsNewTransaction';
 @use './components/smallComponents';
 @use './components/adminCustomerViewer';
@@ -26,19 +27,35 @@
 @use './components/HomeNavbar';
 @use './components/homeRegister';
 @use './components/homeLogin';
-*{
+@use './components/map';
+@use './components/errorModal';
+@use './pages/homeVerify';
+
+
+@use  './pages/reset.password/forgotPassword';
+@use  './pages/reset.password/checkEmail';
+@use  './pages/reset.password/passwordReset';
+@use  './pages/reset.password/setNewPassword';
+
+*,
+::after,
+::before {
     box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    font-family: 'Open Sans', sans-serif;
+
+    font-family: 'Inter', sans-serif;
 }
+
 body {
-    background-color: colors.$gray-100;
-    overflow-x: hidden;
+    background-color: colors.$gray-200;
+    
     position: relative;
     max-width: 100vw;
+    padding: 0;
+    margin: 0;
     scroll-behavior: smooth;
+    overflow-x: hidden;
     overflow-y: scroll;
+    
     &::-webkit-scrollbar {
         width: 10px;
 

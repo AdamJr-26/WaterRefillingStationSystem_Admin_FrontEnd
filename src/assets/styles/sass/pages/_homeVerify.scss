@@ -1,0 +1,58 @@
+@use '../colors';
+
+.verify-page {
+   display: flex;
+   background-color: colors.$gray-50;
+   margin: 10px 0px;
+   padding: 20px;
+   height: 100%;
+    &--wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        &__hero {
+            width: 20vw;
+            height: auto;
+
+        }
+
+        &__text {
+            display: flex;
+            gap: 6px;
+            flex-direction: column;
+
+            .title {
+                text-align: center;
+                font-size: clamp(1.5rem, 3.5vw, 5rem);
+                font-weight: 600;
+            }
+
+            span {
+                text-align: center;
+                font-size: clamp(0.9rem, 1.7vw, 3rem);
+            }
+        }
+
+        &__login_button {
+            min-height: 50px;
+            width: 150px;
+            border-radius: 50px;
+            background-color: colors.$blue-900;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px;
+            text-decoration: none;
+
+            span {
+                font-size: 1.2rem;
+                color: colors.$gray-50;
+
+            }
+        }
+    }
+}
