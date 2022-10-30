@@ -21,6 +21,7 @@ export const globalPopupSlice = createSlice({
         newTransactionState:(state)=>{
             state.newTransactionValue = !state.newTransactionValue;
         },
+
     }
 })
 export const  {addGallonState, addVehicleState, updateGallonState, newTransactionState} = globalPopupSlice.actions;

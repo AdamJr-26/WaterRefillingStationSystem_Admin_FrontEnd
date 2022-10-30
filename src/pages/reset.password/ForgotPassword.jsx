@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Icon } from "@iconify/react";
 
 import { useNavigate } from "react-router-dom";
@@ -8,7 +8,9 @@ import * as Yup from "yup";
 import TextInput from "../../components/TextInput";
 function ForgotPassword() {
   const navigate = useNavigate();
-
+  useEffect(()=>{
+    console.log('render once')
+  },[])
   // form valitaiton
   const validateForm = Yup.object({
     email: Yup.string().email().required("Email is required"),

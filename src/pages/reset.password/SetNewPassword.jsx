@@ -28,7 +28,7 @@ function SetNewPassword() {
     <Formik
       initialValues={{
         password: "",
-        password: "",
+        confirm_password: "",
       }}
       validationSchema={Yup.object().shape({
         password: Yup.string()

@@ -1,0 +1,13 @@
+@use '../colors';
+
+.loading-spinner {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba($color: colors.$gray-200, $alpha: 0.5);
+}

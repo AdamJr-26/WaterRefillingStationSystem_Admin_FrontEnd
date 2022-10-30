@@ -2,6 +2,9 @@ charts
 https://react-chartjs-2.js.org/docs/chartjs-v2
 (chartv2)
 
+https://nivo.rocks/bar/
+nivo : have not used yet.
+
 
 https://react-select.com/home
 react-select
@@ -9,4 +12,38 @@ react-select
 
 https://github.com/jquense/yup
 Yup -validation
+
+https://swr.vercel.app/
+swr
+
+https://tanstack.com/query/v4/?from=reactQueryV3&original=https://react-query-v3.tanstack.com/
+react-query 
+
+https://formik.org/
+formik
+
+https://chakra-ui.com/
+chakra ui
+
+https://react-icons.github.io/react-icons/
+react-icon
+
+https://undraw.co/
+unDraw - for cards 
+
+
+
+https://www.framer.com/docs/introduction/
+framer-motion - animation library. -recommended to add.
+
+https://www.davidhu.io/react-spinners/
+react-spinners = for loading animation .
+
+
+
+others: 
+react-testing-library  / cypess
+remix
+setry - for error testing and analysis.
+
 

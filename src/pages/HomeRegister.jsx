@@ -20,7 +20,7 @@ function HomeRegister() {
   };
   // ========== VALIDATOR ---------------------
   const registerAdminFormValidate = Yup.object().shape({
-    wrss_name: Yup.string().required("WRS Name is required"),
+    wrs_name: Yup.string().required("WRS Name is required"),
     region: Yup.string(),
     province: Yup.string(),
     city: Yup.string(),
@@ -44,7 +44,7 @@ function HomeRegister() {
   });
   // ======= initial values ------------------------
   const registerFormInitialValues = {
-    wrss_name: "",
+    wrs_name: "",
     region: "",
     province: "",
     city: "",

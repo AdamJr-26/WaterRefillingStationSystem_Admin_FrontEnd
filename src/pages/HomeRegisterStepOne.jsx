@@ -9,10 +9,10 @@ function HomeRegisterStepOne() {
         Register your water refilling business and use our system for free
       </p>
       <TextInput
-        label="WRSS Name"
-        name="wrss_name"
+        label="WRS Name"
+        name="wrs_name"
         type="text"
-        placeholder="WRSS Name"
+        placeholder="WRS Name"
       />
       <p className="address">Complete Address *</p>
       <TextInput

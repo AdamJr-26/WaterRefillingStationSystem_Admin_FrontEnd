@@ -56,8 +56,12 @@
 
     &--hero {
         display: none;
-        width: 100%;
-
+        width: fit-content;
+        &__login-hero{
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+        }
 
     }
 }
