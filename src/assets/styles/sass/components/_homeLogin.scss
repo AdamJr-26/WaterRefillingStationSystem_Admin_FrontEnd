@@ -8,6 +8,8 @@
     margin: 15px auto;
     padding: 15px;
     height: 100%;
+    width: 100vw;
+
     &--form {
         width: 100%;
         display: flex;
@@ -15,7 +17,7 @@
         align-items: center;
         justify-content: center;
         gap: 15px;
-        max-width: 500px;
+        max-width: 400px;
         margin: auto;
 
         &__title {
@@ -23,22 +25,23 @@
             font-weight: 700;
             color: colors.$gray-800;
             margin-bottom: 10px;
-        }
-        &__login-with-google{
-            display: flex;
-            align-items: center;
-            justify-content: center;
             width: 100%;
-            border-radius: 30px;
-            height: 50px;
-            border: none;
-            gap: 5px;
-            background: colors.$gray-200;
-            cursor: pointer;
-            .icon{
-                color: #0F9D58;
-            }
+            text-align: center;
+
         }
+
+        &__forgot-password {
+            align-self: flex-start;
+            background: none;
+            border: none;
+            color: colors.$blue-900;
+            cursor: pointer;
+            &:hover{
+                color: rgba($color: colors.$blue-900, $alpha: 0.5)
+            }
+
+        }
+
         &__login-button {
             cursor: pointer;
             width: 100%;

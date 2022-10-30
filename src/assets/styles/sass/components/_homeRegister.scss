@@ -7,19 +7,21 @@
     flex-flow: row wrap;
     padding: 10px;
     gap: 2.5%;
-    margin: 20px auto;
+    margin: 10px auto;
     justify-content: center;
+    align-items: center;
     position: relative;
-    // max-width: 1024px;
-    border-radius: 15px;
+    height: 100%;
+
     &--steps {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
         &__one,
         &__two {
-           
+
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -27,6 +29,7 @@
             background-color: white;
             padding: 10px;
             transition: all ease 0.3s;
+
             .title {
                 font-size: 24px;
                 font-weight: 700;
@@ -41,13 +44,12 @@
             }
 
             .next {
-                font-size: 16px;
                 font-weight: 400;
                 border: none;
                 background-color: colors.$blue-900;
                 color: white;
                 width: 100%;
-                height: 50px;
+                height: 45px;
                 border-radius: 30px;
                 text-decoration: none;
                 display: flex;
@@ -57,24 +59,24 @@
         }
 
         &__two {
-            .back{
+            .back {
                 text-decoration: none;
 
             }
+
             .address {
                 font-size: 1rem;
                 font-weight: 600;
                 color: colors.$gray-800;
             }
 
-            button {
-                font-size: 16px;
+            .register-admin-submit {
                 font-weight: 400;
                 border: none;
                 background-color: colors.$blue-900;
                 color: white;
                 width: 100%;
-                height: 50px;
+                height: 45px;
                 border-radius: 30px;
                 text-decoration: none;
                 display: flex;
@@ -91,25 +93,31 @@
         width: 100%;
         // display: none;
         min-height: 500px;
-    &__header{
-        display: flex;
-        flex-direction: column;
-        // justify-content: center;
-        p:nth-child(1){
-            font-size: 2rem;
-            font-weight: 300;
-            margin: 5px;
+        height: 100%;
+
+        &__header {
+            display: flex;
+            flex-direction: column;
+
+            // justify-content: center;
+            p:nth-child(1) {
+                font-size: 2rem;
+                font-weight: 300;
+                margin: 5px;
+            }
+
+            p:nth-child(2) {
+                color: colors.$gray-400;
+                font-size: 14px;
+                margin: 5px;
+            }
+
+            p:nth-child(3),
+            p:nth-child(4) {
+                margin: 2px;
+                font-weight: 500;
+            }
         }
-        p:nth-child(2){
-            color: colors.$gray-400;
-            font-size: 14px;
-            margin: 5px;
-        }
-        p:nth-child(3), p:nth-child(4){
-            margin: 2px;
-            font-weight: 500;
-        }
-    }
     }
 }
 
@@ -127,14 +135,16 @@
             flex-direction: column;
             // align-items: center;
             justify-content: center;
+
             // height: 300px;
-            &__header{
-                p:nth-child(1){
+            &__header {
+                p:nth-child(1) {
                     font-size: 2rem;
                     font-weight: 600;
                     margin: 5px;
                 }
-                p:nth-child(2){
+
+                p:nth-child(2) {
                     color: colors.$gray-400;
                     font-size: 14px;
                     margin: 5px;

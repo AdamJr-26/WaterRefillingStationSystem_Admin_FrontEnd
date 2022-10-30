@@ -1,5 +1,6 @@
 import React from "react";
-import { useState } from "react";
+
+
 
 function AdminTextinput({
   label,
@@ -12,7 +13,8 @@ function AdminTextinput({
 }) {
   // just for animation of an input, do not remove.
   const placeholder = " ";
-  
+
+
   const onTextChange = (event) => {
     const { name, value, type, checked } = event.target;
     setValue((preValue) => {
@@ -49,7 +51,7 @@ function AdminTextinput({
         disabled={isDisabled}
         // required
       /> */}
-      <label htmlFor={label} className="textinput--label" autoComplete="off">
+      <label htmlFor={label} className="textinput--label" >
         <span className="content-name">{label}</span>
         {/* {label} */}
       </label>

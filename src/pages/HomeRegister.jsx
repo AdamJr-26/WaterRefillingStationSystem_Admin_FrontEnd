@@ -1,64 +1,103 @@
-import React, { useEffect, useRef, useState } from "react";
-import ScrollContainer from "react-indiana-drag-scroll";
-import { Link, Navigate, NavLink, Outlet, useNavigate } from "react-router-dom";
-import AdminTextinput from "../components/AdminTextinput";
+import React, { useState } from "react";
+
+import { Outlet, useNavigate } from "react-router-dom";
+
 import Map from "../components/Map";
 import { axios } from "../lib/utils/axios";
 import ErrorModal from "../components/ErrorModal";
 
+import { Formik, Field, Form } from "formik";
+import * as Yup from "yup";
+
 function HomeRegister() {
-  const [registerFormData, setRegisterFormData] = React.useState({
-    geolocation: {
-      lat: "",
-      lng: "",
-    },
-    gender: "",
-  });
   const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
-  // #################################  onSignupSubmit ##################################################
-  const onSignupSubmit = (e) => {
-    e.preventDefault();
-    if (registerFormData.password !== registerFormData.confirm_password) {
-      setErrorMessage("Password did not match");
-    }
-    else if(registerFormData.password?.length < 6){
-      setErrorMessage("Password Should be atleast 6 combination letters and numbers");
-    }
-    else if(registerFormData.wrss_name?.length > 0){
-      setErrorMessage(`Please fill up all required field, with asterisk(*) ${registerFormData.wrss_name}`);
-    }
-    else {
-      axios({
-        url: "auth/register/station",
-        method: "post",
-        withCredentials: true,
-        data: registerFormData,
+
+  // ========== geolocation form -----------------
+  const geolocation = {
+    lat: "",
+    lng: "",
+  };
+  // ========== VALIDATOR ---------------------
+  const registerAdminFormValidate = Yup.object().shape({
+    wrss_name: Yup.string().required("WRS Name is required"),
+    region: Yup.string(),
+    province: Yup.string(),
+    city: Yup.string(),
+    barangay: Yup.string(),
+    street_building: Yup.string(),
+    gmail: Yup.string().email().required("Email is required"),
+    contact_number: Yup.number(),
+    firstname: Yup.string().required("Firstname is required"),
+    lastname: Yup.string(),
+    gender: Yup.string(),
+    age: Yup.number(),
+    password: Yup.string()
+      .min(6, "Password must be at least 6 characters")
+      .max(16, "Password must not exceed 16 letters")
+      .required("Password is required"),
+    confirm_password: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Password must match")
+      .min(6, "Password must be aleast 6 characters")
+      .max(16, "Password must not exceed 16 letters")
+      .required("Confirm password is required"),
+  });
+  // ======= initial values ------------------------
+  const registerFormInitialValues = {
+    wrss_name: "",
+    region: "",
+    province: "",
+    city: "",
+    barangay: "",
+    street_building: "",
+    gmail: "",
+    contact_number: "",
+    firstname: "",
+    lastname: "",
+    gender: "",
+    age: "",
+    password: "",
+    confirm_password: "",
+  };
+  // ========== SUBMIT ---------------------
+  const onRegisterSubmit = (values) => {
+    const form = {
+      ...values,
+      geolocation: geolocation.geolocation,
+    };
+    axios({
+      url: "auth/register/station",
+      method: "post",
+      withCredentials: true,
+      data: form,
+    })
+      .then((res) => {
+        const data = res.data;
+        console.log("data", data);
+        if (data?.data?.success) {
+          navigate("/redirect-register");
+        } else if (data.emailExists) {
+          setErrorMessage(data.message);
+          console.log("errorMessage", errorMessage);
+        }
       })
-        .then((res) => {
-          const data = res.data;
-          console.log("data", data);
-          if (data?.data?.success) {
-            navigate("/redirect-register");
-          } else if (data.emailExists) {
-            setErrorMessage(data.message);
-            console.log("errorMessage", errorMessage);
-          }
-        })
-        .catch((err) => {
-          // setError
-          console.log("errr by registering wrs", err);
-        });
-    }
+      .catch((err) => {
+        // setError
+        console.log("errr by registering wrs", err);
+      });
   };
 
   return (
-    <div onSubmit={onSignupSubmit} className="home-register">
-      <form className="home-register--steps" action="post">
-        {/* https://dev.to/tywenk/how-to-use-nested-routes-in-react-router-6-4jhd */}
-        {/* pass form in outlet  */}
-        <Outlet context={[registerFormData, setRegisterFormData]} />
-      </form>
+    <div className="home-register">
+      <Formik
+        initialValues={registerFormInitialValues}
+        validationSchema={registerAdminFormValidate}
+        onSubmit={onRegisterSubmit}
+      >
+        <Form>
+          <Outlet />
+        </Form>
+      </Formik>
 
       <div className="home-register--map">
         <div className="home-register--map__header">
@@ -70,7 +109,7 @@ function HomeRegister() {
           <p>Step 1: Click the map to find your location</p>
           <p>Step 2: Drag the marker to manually set position</p>
         </div>
-        <Map formData={registerFormData} />
+        <Map formData={geolocation} />
       </div>
       {errorMessage ? (
         <ErrorModal message={errorMessage} setClose={setErrorMessage} />

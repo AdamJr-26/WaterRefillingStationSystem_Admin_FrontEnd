@@ -7,6 +7,7 @@
     display: flex;
     justify-content: space-between;
     background-color: white;
+    position: sticky;
     // &:has(.nav--links-mobile){
     //     display: flex;
     //     flex-direction: column;
@@ -115,6 +116,7 @@
     .nav {
         &--links{
             display: flex;
+
         }
         &--menu {
             display: flex;

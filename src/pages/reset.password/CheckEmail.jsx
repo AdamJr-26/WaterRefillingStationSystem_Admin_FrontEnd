@@ -20,7 +20,7 @@ function CheckEmail() {
           Open email app
         </a>
         <div className="check-email--wrapper__resend">
-          <p>Didn't receive the email? </p> <p>Click to resent</p>
+          <p>Didn't receive the email? </p> <p>Click to resend</p>
         </div>
         <button
           type="button"

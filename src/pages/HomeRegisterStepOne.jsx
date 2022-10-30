@@ -1,55 +1,41 @@
 import React, { useEffect, useRef } from "react";
-import { useOutletContext } from "react-router-dom";
-import ScrollContainer from "react-indiana-drag-scroll";
-import { Icon } from "@iconify/react";
 import { Link, NavLink, Outlet } from "react-router-dom";
-import AdminTextinput from "../components/AdminTextinput";
+import TextInput from "../components/TextInput";
 function HomeRegisterStepOne() {
-  const [registerFormData, setRegisterFormData] = useOutletContext();
   return (
     <div className="home-register--steps__one">
       <p className="title">Create an Account</p>
       <p className="detail">
         Register your water refilling business and use our system for free
       </p>
-      <AdminTextinput
-        setValue={setRegisterFormData}
-        value={registerFormData?.wrs_name}
-        label="WRSS Name*"
-        name="wrs_name"
-        isRequired={true}
+      <TextInput
+        label="WRSS Name"
+        name="wrss_name"
+        type="text"
+        placeholder="WRSS Name"
       />
       <p className="address">Complete Address *</p>
-      <AdminTextinput
-        setValue={setRegisterFormData}
-        value={registerFormData?.region}
+      <TextInput
         label="Region"
         name="region"
+        type="text"
+        placeholder="ex. NCR"
       />
-      <AdminTextinput
-        setValue={setRegisterFormData}
-        value={registerFormData?.province}
+      <TextInput
         label="Province"
         name="province"
+        type="text"
+        placeholder="Province"
       />
-      <AdminTextinput
-        setValue={setRegisterFormData}
-        value={registerFormData?.city}
-        label="City"
-        name="city"
-      />
-      <AdminTextinput
-        setValue={setRegisterFormData}
-        value={registerFormData?.barangay}
+      <TextInput label="City" name="city" type="text" placeholder="city" />
+      <TextInput
         label="Barangay"
         name="barangay"
+        type="text"
+        placeholder="Barangay"
       />
-      <AdminTextinput
-        setValue={setRegisterFormData}
-        value={registerFormData?.street_building_house_no}
-        label="Street name, building, house no."
-        name="street_building_house_no"
-      />
+
+      <TextInput label="Street, Building no." name="street_building" type="text" placeholder="#506 Sampple, Address" />
       <NavLink className="next" to="step-2">
         <span>Next</span>
       </NavLink>

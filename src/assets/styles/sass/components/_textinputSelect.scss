@@ -1,0 +1,36 @@
+@use '../colors';
+
+.textinput-select-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 100%;
+    &--label{
+        text-align: start;
+        font-size: 14px;
+        font-weight: 500;
+        color: colors.$gray-700;
+        padding: 0px 10px ;
+    }
+    &__select{
+        border: none;
+        // border: none;
+        height: 100%;
+        width: 100%;
+        border-radius: 10px;
+        padding: 10px;
+        font-weight: 500;
+        background-color: colors.$gray-50;
+        outline: 1px solid colors.$gray-300;
+    
+        &:focus {
+            border: 2px solid rgba(colors.$blue-900, $alpha: 0.7);
+        }
+        &__options{
+            font-size: 1rem;
+            padding: 10px;
+        }
+    
+    }
+}
+

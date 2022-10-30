@@ -1,11 +1,15 @@
 import React from "react";
 import { Icon } from "@iconify/react";
-import AdminTextinput from "../../components/AdminTextinput";
+
 import { useNavigate } from "react-router-dom";
+import { Formik, Field, Form } from "formik";
+import * as Yup from "yup";
+import TextInputPassword from "../../components/TextInputPassword";
+
 function SetNewPassword() {
   const [passwords, setPasswords] = React.useState();
   const [error, setError] = React.useState();
-  const [showPassword, setShowPassword] = React.useState(false);
+
   const navigate = useNavigate();
   const passwordsSubmit = (e) => {
     e.preventDefault();
@@ -20,74 +24,68 @@ function SetNewPassword() {
     }
   };
 
-  const showPasswordRef = React.useRef(null);
-  const showPasswordToggle = () => {
-    showPasswordRef.current.click();
-    setShowPassword(showPasswordRef.current.checked);
-  };
   return (
-    <div className="set-new-password">
-      <form
-        onSubmit={passwordsSubmit}
-        method="post"
-        className="set-new-password--wrapper"
-      >
-        <div className="set-new-password--wrapper__icon">
-          <Icon icon="ant-design:key-outlined" />
+    <Formik
+      initialValues={{
+        password: "",
+        password: "",
+      }}
+      validationSchema={Yup.object().shape({
+        password: Yup.string()
+          .min(6, "Password must be at least 6 characters")
+          .max(16, "Password must not exceed 16 letters")
+          .required("Password is required"),
+        confirm_password: Yup.string()
+          .oneOf([Yup.ref("password"), null], "Password must match")
+          .min(6, "Password must be aleast 6 characters")
+          .max(16, "Password must not exceed 16 letters")
+          .required("Confirm password is required"),
+      })}
+    >
+      <Form>
+        <div className="set-new-password">
+          <div
+            onSubmit={passwordsSubmit}
+            method="post"
+            className="set-new-password--wrapper"
+          >
+            <div className="set-new-password--wrapper__icon">
+              <Icon icon="ant-design:key-outlined" />
+            </div>
+            <p className="set-new-password--wrapper__title">Set new password</p>
+            <p className="set-new-password--wrapper__description">
+              Your new password must be different to previously used passwords.
+            </p>
+            <div className="set-new-password--wrapper__input">
+            <TextInputPassword
+              label="Password"
+              name="password"
+              placeholder="Password"
+            />
+            <TextInputPassword
+              label="Confirm Password"
+              name="confirm_password"
+              placeholder="Confirm Password"
+            />
+            </div>
+
+            <button
+              type="submit"
+              className="set-new-password--wrapper__send-button"
+            >
+              Reset password
+            </button>
+            <button
+              type="button"
+              onClick={() => navigate("/login")}
+              className="set-new-password--wrapper__back-button"
+            >
+              <Icon icon="eva:arrow-back-fill" /> Back to log in
+            </button>
+          </div>
         </div>
-        <p className="set-new-password--wrapper__title">Set new password</p>
-        <p className="set-new-password--wrapper__description">
-          Your new password must be different to previously used passwords.
-        </p>
-        <div className="set-new-password--wrapper__input">
-          <AdminTextinput
-            label="Password"
-            name="password"
-            type={showPassword ? "text" : "password"}
-            setValue={setPasswords}
-            value={passwords?.password}
-          />
-          <AdminTextinput
-            label="Confirm Password"
-            name="confirm_password"
-            type={showPassword ? "text" : "password"}
-            setValue={setPasswords}
-            value={passwords?.confirm_password}
-          />
-        </div>
-        {error && !passwords?.passwords && !passwords?.confirm_password ? (
-          <p className="set-new-password--wrapper__error">
-            {" "}
-            <Icon icon="dashicons:warning" /> {error}
-          </p>
-        ) : null}
-        <div
-          onClick={showPasswordToggle}
-          className="set-new-password--wrapper__show-password"
-        >
-          <input
-            ref={showPasswordRef}
-            type="checkbox"
-            name="show_password"
-            id="show_password"
-          />
-          <p className="show_password_label">Show Password</p>
-        </div>
-        <button
-          type="submit"
-          className="set-new-password--wrapper__send-button"
-        >
-          Reset password
-        </button>
-        <button
-          type="button"
-          onClick={() => navigate("/login")}
-          className="set-new-password--wrapper__back-button"
-        >
-          <Icon icon="eva:arrow-back-fill" /> Back to log in
-        </button>
-      </form>
-    </div>
+      </Form>
+    </Formik>
   );
 }
 

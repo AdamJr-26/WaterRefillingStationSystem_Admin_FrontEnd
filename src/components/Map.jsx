@@ -2,12 +2,12 @@ import React, {
   useState,
   useMemo,
   useRef,
-  useCallback,
+
   useEffect,
 } from "react";
 import { useMapEvents } from "react-leaflet/hooks";
 import { MapContainer, TileLayer, Popup, Marker } from "react-leaflet";
-import axios from "axios";
+
 import { Icon } from "@iconify/react";
 
 function Map({ formData }) {
@@ -21,6 +21,9 @@ function Map({ formData }) {
   useEffect(() => {
     formData.geolocation = position;
   }, [position]);
+  useEffect(() => {
+    formData.geolocation = center;
+  }, []);
   function DraggableMarker({ position, setPosition }) {
     const map = useMapEvents({
       click() {
@@ -57,10 +60,6 @@ function Map({ formData }) {
             <div style={{display:"flex", alignItems:"center"}}>
               <p style={{ fontSize: 32 }}>
                 <Icon icon="clarity:home-solid" />
-              </p>
-
-              <p className="" style={{ fontSize: 19, fontWeight: 600 }}>
-                {formData.wrs_name?.length > 0 ? formData.wrs_name : "WRS Name"}
               </p>
             </div>
             <div>

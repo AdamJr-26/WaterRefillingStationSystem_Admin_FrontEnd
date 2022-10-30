@@ -7,7 +7,9 @@
 @use './components/adminCreditsTransactions';
 @use './components//adminDelivery';
 @use './components/adminInventory';
-@use './components/adminTextinput';
+@use './components/textinput';
+@use './components/textinputPassword.';
+@use './components/textinputSelect';
 @use './components//adminInventoryAddGallon';
 @use './components/adminInventoryFloatingActionButton';
 @use './components/adminInventoryAddVehicle';
