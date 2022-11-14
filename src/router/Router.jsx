@@ -26,13 +26,14 @@ import ForgotPassword from "../pages/reset.password/ForgotPassword";
 import PassworReset from "../pages/reset.password/PassworReset";
 import SetNewPassword from "../pages/reset.password/SetNewPassword";
 
+import { ProtectRoutes } from "../hooks/protectRoutes";
 function Router() {
   return (
     <BrowserRouter>
       <Routes>
         {/* reset password */}
 
-        <Route path="forgot-password"  element={<ResetPasswordLayout />}>
+        <Route path="forgot-password" element={<ResetPasswordLayout />}>
           <Route index element={<ForgotPassword />} />
           <Route path="check-email" element={<CheckEmail />} />
           <Route path="set-new-password" element={<SetNewPassword />} />
@@ -51,8 +52,7 @@ function Router() {
           </Route>
         </Route>
 
-        {/* <Admin /> should replace to <RequireAuth /> */}
-        <Route path="/admin" element={<Admin />}>
+        <Route path="/admin" element={<ProtectRoutes />}>
           <Route path="credits" element={<AdminCredits />}>
             <Route index element={<AdminCreditsTransactions />} />
             <Route

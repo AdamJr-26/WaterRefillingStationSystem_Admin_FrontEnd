@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { axios } from "../lib/utils/axios";
+import { axios } from "../services/axios";
 
 function VerifyPage() {
 

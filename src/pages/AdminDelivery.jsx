@@ -18,8 +18,7 @@ function extractRow() {
     renderCell: (cellValues) => {
       const handleClick = (e, cellValues) => {
         e.stopPropagation();
-        alert(cellValues.row.id);
-        console.log(cellValues.row.id);
+       
       };
       return (
         <button

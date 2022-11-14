@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
 import Map from "../components/Map";
-import { axios } from "../lib/utils/axios";
+import { axios } from "../services/axios";
 import ErrorModal from "../components/ErrorModal";
 
 import { Formik, Field, Form } from "formik";

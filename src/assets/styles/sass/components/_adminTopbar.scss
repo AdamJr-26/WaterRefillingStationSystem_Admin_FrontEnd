@@ -38,10 +38,14 @@
     &--profile {
         display: flex;  
         align-items: center;
-        gap: 10px;
+        gap: 15px;
+        cursor: pointer;
+        padding: 5px 10px;
+        border-radius: 10px;
+        background-color: colors.$gray-100;
         .name{
-            font-size: 1.2rem;
-            font-weight: bold;
+            font-size: 1rem;
+            font-weight: 500;
             color: colors.$gray-800;
         }
 

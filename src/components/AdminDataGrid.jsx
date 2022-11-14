@@ -6,14 +6,14 @@ function AdminDataGrid({ TableRows, TableColumns, pageOptions, allowCheckBox }) 
 
   const [pageSize, setPageSize] = useState(5);
   return (
-    <Box sx={{ height: 400, width: "100%" }}>
+    <Box sx={{ height: 400, width: "100%", }}>
       <DataGrid
         sx={{
           backgroundColor: "white",
           "& .MuiDataGrid-columnHeader":{
             color: "black",
             fontWeight: 'bold',
-            backgroundColor: 'white', //F8F9FA
+            backgroundColor: 'white', 
             fontSize: 17,
           },
           "& .MuiDtaGrid-cell":{
