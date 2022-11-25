@@ -1,0 +1,84 @@
+@use '../../colors';
+
+.update-inventory-gallon-modal {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+
+    &--gallon-info {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        border-bottom: 2px solid colors.$gray-200;
+        // margin-bottom: 20px;
+        padding-bottom: 10px;
+        &__info {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: colors.$blue-100;
+            border-radius: 15px;
+
+            .gallon-image {
+                height: 70px;
+                width: auto;
+                border-radius: 15px;
+                padding: 5px;
+                background-color: colors.$gray-100;
+            }
+
+            .gallon-name {
+                font-weight: 700;
+                font-size: 18px;
+            }
+
+            .gallon-liters {
+                margin-top: -15px;
+                font-size: 14px;
+                font-weight: 500;
+                color: colors.$gray-500;
+
+            }
+        }
+        &__total{
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            .gallon-price-tag, .grallon-total-tag{
+                p:nth-child(1){
+                    font-weight: 700;
+                    color:colors.$gray-600;
+                    font-size: 14px;
+                    margin-bottom: 5px;
+                }
+                p:nth-child(2){
+                    padding: 10px 5px;
+                    width: 100%;
+                    background-color: colors.$gray-100;
+                    text-align: center;
+                    font-weight: 700;
+                    border-radius: 15px;
+                }
+            }
+        }
+    }
+    &--update{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        &__note{
+            display: flex;
+            gap: 5px;
+            align-items: center;
+            p{
+                font-size: 12px;
+                font-weight: 500;
+                color: colors.$gray-500;
+            }
+        }
+       
+    }
+}

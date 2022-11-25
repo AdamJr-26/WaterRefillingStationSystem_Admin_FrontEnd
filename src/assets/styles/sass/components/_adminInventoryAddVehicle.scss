@@ -2,30 +2,49 @@
 
 @use '../breakpoints';
 
-.admin-inventory-add-vehicle{
+.admin-inventory-add-vehicle {
     border-radius: 15px 15px 0px 0px;
     background-color: white;
     padding: 10px;
     max-width: 500px;
-    overflow: hidden;
     position: fixed;
     bottom: 0px;
     right: 0px;
     transform: translateY(-50%);
     width: 100%;
     animation: slideUp 0.2s ease forwards;
-  
+    height: 100%;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+        width: 3px;
+
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: colors.$gray-100;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: colors.$gray-300;
+        border-radius: 10px;
+    }
+
     &--head {
         display: flex;
         justify-content: space-between;
         background-color: colors.$gray-50;
         padding: 0px 10px;
         border-radius: 10px;
+
         // margin: 10px 0px;
         p {
             font-size: 1rem;
             font-weight: 600;
-            
+
         }
 
         button {
@@ -102,17 +121,19 @@
         flex-direction: column;
         gap: 10px;
         padding: 10px;
-        textarea{
+
+        textarea {
             outline: none;
-            border-left:0px;
-            border-top:0px;
-            border-right:0px;
+            border-left: 0px;
+            border-top: 0px;
+            border-right: 0px;
             border-bottom: 2px solid colors.$gray-300;
             border-radius: 2px;
             padding: 5px;
             background-color: colors.$gray-100;
             font-size: 1rem;
-            &:focus{
+
+            &:focus {
                 border-bottom: 2px solid colors.$blue-900;
             }
         }
@@ -122,26 +143,29 @@
         width: 100%;
         display: flex;
         justify-content: space-around;
-        button{
+        button {
             width: 144px;
-        height: 41px;
-        border-radius: 50px;
-        border: none;
-        
+            height: 41px;
+            border-radius: 50px;
+            border: none;
+
         }
-        .add{
+
+        .add {
             background: colors.$blue-900;
             color: white;
         }
     }
 }
-@keyframes slideUp{
+
+@keyframes slideUp {
     from {
-      opacity: 0;
-      transform: translateY(120%);
+        opacity: 0;
+        transform: translateY(120%);
     }
+
     to {
-      opacity: 1;
-      transform: translateY(0%);
+        opacity: 1;
+        transform: translateY(0%);
     }
-  }
+}

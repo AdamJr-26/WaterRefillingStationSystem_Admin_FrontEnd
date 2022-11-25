@@ -24,7 +24,7 @@
 @use './components/adminCustomers';
 @use './components/loadingSpinner';
 @use './pages/adminShop';
-
+@use './components/adminDataTableChakra';
 @use './components/home';
 @use './components/HomeNavbar';
 @use './components/homeRegister';
@@ -32,6 +32,10 @@
 @use './components/map';
 @use './components/errorModal';
 @use './pages/homeVerify';
+
+
+
+@use './components/inside_modal_elements/updateInventory';
 
 
 @use  './pages/reset.password/forgotPassword';
@@ -43,15 +47,14 @@
 ::after,
 ::before {
     box-sizing: border-box;
-
     font-family: 'Inter', sans-serif;
+
 }
 
 body {
     background-color: colors.$gray-200;
     
     position: relative;
-    max-width: 100vw;
     padding: 0;
     margin: 0;
     scroll-behavior: smooth;
@@ -60,7 +63,7 @@ body {
     
     &::-webkit-scrollbar {
         width: 10px;
-
+        height: 5px;
     }
 
     &::-webkit-scrollbar-track {

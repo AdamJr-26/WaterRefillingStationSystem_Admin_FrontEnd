@@ -11,7 +11,6 @@ import AdminInventoryAddVehicle from "../components/AdminInventoryAddVehicle";
 // useAuth is a custom hook returing the user's authentication
 // import useAuth from "../../../hooks/useAuth";
 
-import LoadingSpinner from "../components/LoadingSpinner";
 
 function MainApp() {
   const { addGallonValue, addVehicleValue } = useSelector(

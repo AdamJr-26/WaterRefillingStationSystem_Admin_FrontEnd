@@ -1,0 +1,85 @@
+@use '../colors';
+@use '../breakpoints';
+
+// $$$$$$
+// THIS STYLE IS THE UNIVERSAL OF ALL CHAKRA UI'S TABLE.
+// $$$$$$$$
+.chakra-table-container {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    border-radius: 10px;
+
+    &--table {
+        &__thead {
+            height: 45px;
+            background-color: colors.$gray-200;
+        }
+
+        &__tbody {
+            .tbody-tr {
+                &:hover {
+                    background-color: colors.$gray-100;
+                    transition: all ease-in 200ms;
+                    cursor: pointer;
+                }
+
+                &--image {
+                    height: 45px;
+                    width: 45px;
+                    object-fit: contain;
+                    border: 1px solid colors.$blue-100;
+                    border-radius: 5px;
+                    background-color: colors.$gray-100;
+                }
+                .neutral{
+                    font-weight: 700;
+                }
+                .good {
+                    font-weight: 700;
+                    color: green;
+                }
+
+                .warning {
+                    font-weight: 700;
+                    color: red
+                }
+            }
+        }
+
+        &__tfoot {
+            height: 50px;
+
+            .tfoot-tr {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                margin: 5px 0px;
+                gap: 5px;
+
+                &--th {
+                    border: 1px solid colors.$gray-200;
+                    cursor: pointer;
+                    text-align: center;
+                    display: flex;
+                    align-items: center;
+                    height: 40px;
+                    border-radius: 5px;
+                    font-size: 18px;
+
+                    &:hover {
+                        background-color: colors.$blue-900;
+                        color: white;
+                        transition: all ease-in-out 200ms;
+                    }
+                }
+
+                &--active-page {
+                    transition: all ease-in-out 200ms;
+                    background-color: colors.$blue-900;
+                    color: white;
+                }
+            }
+        }
+    }
+
+}

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 import { updateSidebarStatus } from "../lib/store/sideBarState";
 import { useAuth } from "../hooks/auth";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   Drawer,
   DrawerBody,
@@ -11,7 +11,6 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  Input,
   Button,
   useDisclosure,
   Tabs,
@@ -19,26 +18,16 @@ import {
   TabPanels,
   Tab,
   TabPanel,
-  ButtonGroup,
   Stack,
-  IconButton,
   Image,
   Text,
   Container,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
   AlertDialog,
   AlertDialogBody,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogContent,
   AlertDialogOverlay,
-  useToast,
 } from "@chakra-ui/react";
 import AdminResetPassword from "./Admin/AdminResetPassword";
 
@@ -91,7 +80,7 @@ function AdminTopbar() {
             <Tabs>
               <TabList>
                 <Tab>Admin</Tab>
-                <Tab>WRS Profile</Tab>
+                <Tab>WRS Settings</Tab>
               </TabList>
 
               <TabPanels>
@@ -116,7 +105,7 @@ function AdminTopbar() {
                   </Container>
                 </TabPanel>
                 <TabPanel>
-                  <p>Edit wrs profile</p>
+                  <p>Edit wrs settings</p>
                 </TabPanel>
               </TabPanels>
             </Tabs>

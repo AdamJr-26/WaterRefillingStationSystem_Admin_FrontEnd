@@ -10,7 +10,7 @@ function extractRow() {
     ongoingDeliveriesColumn.push({
       field: field,
       headerName: field.toUpperCase(),
-      width: 170,
+      widthead: 170,
     });
   }
   ongoingDeliveriesColumn.push({
@@ -18,7 +18,6 @@ function extractRow() {
     renderCell: (cellValues) => {
       const handleClick = (e, cellValues) => {
         e.stopPropagation();
-       
       };
       return (
         <button
@@ -34,8 +33,9 @@ function extractRow() {
         //   variant="warning"
         // />
       );
-    },flex: 1, minWidth: 150
-    
+    },
+    flex: 1,
+    minWidthead: 150,
   });
 }
 extractRow();
@@ -43,50 +43,65 @@ extractRow();
 function AppDelivery() {
   return (
     <div className="admin-delivery">
-      <p>Request Deliveries</p>
-      <ScrollContainer className="scroll-container">
-        <div className="scroll-wrapper">
-          {[1, 2, 3].map((num, i) => (
-            <div className="scroll-wrapper--request" key={i}>
-              <div className="scroll-wrapper--request__delivery-personel">
-                <img src="https://picsum.photos/200" alt="" srcSet="" />
-                <div className="delivery-name">
-                  <span className="person">Juan Dela Cruz</span>
-                  <span className="vehicle">Tricycle 356</span>
+      <div className="delivery-request-wrapper">
+        <div className="delivery-request-wrapper--header">
+          <p className="delivery-request-wrapper--header__title">
+            Request Delivery
+          </p>
+        </div>
+        <div className="delivery-request-wrapper--cards">
+          {[1, 2, 3].map((item) => (
+            <div key={item} className="delivery-request-wrapper--cards__card">
+              <div className="delivery-card-info">
+                <table className="delivery-card-info--delivery-item-table">
+                  <tbody>
+                    <tr>
+                      <th>Gallon Name</th>
+                      <th>Count</th>
+                    </tr>
+                    <tr>
+                      <td>Imperial Gallon</td>
+                      <td>25</td>
+                    </tr>
+                    <tr>
+                      <td>Faucet Gallon</td>
+                      <td>10</td>
+                    </tr>
+                    <tr>
+                      <td>Imperial Gallon</td>
+                      <td>25</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div className="delivery-card-info--personel-info">
+                  <img
+                    src="https://cdn.motor1.com/images/mgl/nOlNy/s1/1x1/elon-musk.webp"
+                    alt="personel"
+                    className="delivery-card-info--personel-info__image"
+                  />
+                  <p className="delivery-card-info--personel-info__name">
+                    Juan Dela Cruz
+                  </p>
+                  <div className="delivery-card-info--personel-info__total">
+                    <p>Total</p>
+                    <p>60 Items</p>
+                  </div>
                 </div>
               </div>
-              <table className="scroll-wrapper--request__load">
-                <tbody>
-                  <tr>
-                    <td>US-Gallon</td>
-                    <td>25</td>
-                  </tr>
-                  <tr>
-                    <td>US-Gallon</td>
-                    <td>25</td>
-                  </tr>
-                  <tr>
-                    <td>Total</td>
-                    <td>50</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div className="scroll-wrapper--request__buttons">
-                <button className="deny">Deny</button>
-                <button className="accept">Accept</button>
+
+              <div className="delivery-card-buttons">
+                <div className="delivery-card-buttons--vehicle-id">
+                  <p>Vehicle ID</p>
+                  <p>66D58S4</p>
+                </div>
+                <div className="delivery-card-buttons--button">
+                  <button>Reject</button>
+                  <button>Accept</button>
+                </div>
               </div>
             </div>
           ))}
         </div>
-      </ScrollContainer>
-      <div className="admin-delivery--ongoing-deliveries">
-        <div className="admin-delivery--ongoing-deliveries__header">
-          <span>Ongoing Deliveries</span>
-        </div>
-        <AdminDataGrid
-          TableRows={onGoingDeliveries}
-          TableColumns={ongoingDeliveriesColumn}
-        />
       </div>
     </div>
   );

@@ -47,7 +47,6 @@
             height: auto;
 
         }
-
         &__close-menu-button {
             position: absolute;
             right: -10px;
@@ -166,6 +165,9 @@
         position: sticky;
         height: auto;
         min-height: 100vh;
+        &--wrsss-logo__close-menu-button{
+            display: none;
+        }
 
         &::-webkit-scrollbar {
             display: none;

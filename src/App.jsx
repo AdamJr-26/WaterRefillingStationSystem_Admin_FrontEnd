@@ -7,15 +7,16 @@ import store from "./lib/store/store";
 import theme from "./config/chakra.config";
 import AppProvider from "./hooks/AppProvider"; // route protection
 import { ChakraProvider } from "@chakra-ui/react";
-console.log(theme);
 
 function App() {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <Provider store={store}>
-        <AppProvider>
-          <Router />
-        </AppProvider>
+          <AppProvider>
+            <Router />
+          </AppProvider>
+
+
       </Provider>
     </ChakraProvider>
   );
