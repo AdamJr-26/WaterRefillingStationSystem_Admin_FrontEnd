@@ -6,18 +6,27 @@
 @use './components/adminCredits';
 @use './components/adminCreditsTransactions';
 @use './components//adminDelivery';
-@use './components/adminInventory';
 @use './components/textinput';
 @use './components/textinputPassword.';
 @use './components/textinputSelect';
-@use './components//adminInventoryAddGallon';
-@use './components/adminInventoryFloatingActionButton';
-@use './components/adminInventoryAddVehicle';
-@use './components/adminInventoryUpdateGallon';
+
+
+@use './components/inventory/adminInventory';
+@use './components/inventory/adminInventoryAddGallon';
+@use './components/inventory/adminInventoryFloatingActionButton';
+@use './components/inventory/adminInventoryAddVehicle';
+@use './components/inventory/adminInventoryUpdateGallon';
+
+
+@use './components/employees/adminEmployees';
+
 @use './components/adminReports';
-@use './components/adminDashboard';
-@use './components/adminDashboardCard';
-@use './components/adminDashboardCard2';
+
+
+@use './components/dashboard/adminDashboard';
+@use './components/dashboard/adminDashboardCard';
+@use './components/dashboard/adminDashboardCard2';
+
 @use './components/adminCreditsNewTransaction';
 @use './components/smallComponents';
 @use './components/adminCustomerViewer';

@@ -1,17 +1,16 @@
 import React, { useState, useRef } from "react";
 import { Icon } from "@iconify/react";
-import gallon from "../assets/images/gallons_transparent/icons/6L.png";
 import ScrollContainer from "react-indiana-drag-scroll";
-import AdminTextinput from "./AdminTextinput";
-import { addVehicleState } from "../lib/store/globalPopupSlice";
+import { addVehicleState } from "../../lib/store/globalPopupSlice";
 import { useDispatch } from "react-redux";
 
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import TextInput from "./TextInput";
-import { vehicles } from "../assets/images/vehicles";
-import { addVehicle } from "../services/api/inventory/inventory.post";
+import TextInput from "../TextInput";
+import { vehicles } from "../../assets/images/vehicles";
+import { addVehicle } from "../../services/api/inventory/inventory.post";
 import { useToast, Button } from "@chakra-ui/react";
+
 function AdminInventoryAddVehicle() {
   const dispatch = useDispatch();
   const [vehicle_image, setVehicleImage] = useState(null);

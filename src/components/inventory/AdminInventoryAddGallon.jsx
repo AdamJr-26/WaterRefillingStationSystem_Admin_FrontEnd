@@ -1,15 +1,15 @@
 import React, { useRef, useState } from "react";
 import { Icon } from "@iconify/react";
-import { gallonIcon } from "../assets/images/gallons_transparent/icons/gallon";
+import { gallonIcon } from "../../assets/images/gallons_transparent/icons/gallon";
 
 import ScrollContainer from "react-indiana-drag-scroll";
-import { addGallonState } from "../lib/store/globalPopupSlice";
+import { addGallonState } from "../../lib/store/globalPopupSlice";
 import { useDispatch } from "react-redux";
-import TextInput from "./TextInput";
+import TextInput from "../TextInput";
 
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { addGallon } from "../services/api/inventory/inventory.post";
+import { addGallon } from "../../services/api/inventory/inventory.post";
 import { useToast, Button } from "@chakra-ui/react";
 
 function AdminInventoryAddGallon() {

@@ -20,16 +20,15 @@ import {
   useDisclosure,
   useToast,
 } from "@chakra-ui/react";
-import useGallon from "../hooks/api/useGallon";
+import useGallon from "../../hooks/api/useGallon";
 import { Icon } from "@iconify/react";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
-import TextInputPassword from "./TextInputPassword";
-import TextInput from "./TextInput";
+import TextInput from "../TextInput";
 import useSWR, { useSWRConfig } from "swr";
 
 // API
-import { updateGallon } from "../services/api/inventory/inventory.post";
+import { updateGallon } from "../../services/api/inventory/inventory.post";
 function AdminInventoryGallon({ data }) {
   const gallonThead = [
     "Image",
@@ -39,13 +38,13 @@ function AdminInventoryGallon({ data }) {
     "Total",
   ];
 
+  // we just edit here some data before putting in table.
   const dataTr = (data) => {
     let value = [];
     for (let i = 0; i < data?.length; i++) {
       const total = data[i]?.total;
       const borrowed = data[i].borrowed;
       data[i].available = total - borrowed;
-
       value.push(data[i]);
     }
     return value;

@@ -3,8 +3,8 @@ import { Outlet, useLocation, Navigate } from "react-router-dom";
 import AdminSidebar from "../components/AdminSidebar";
 import AdminTopbar from "../components/AdminTopbar";
 import { useSelector } from "react-redux";
-import AdminInventoryAddGallon from "../components/AdminInventoryAddGallon";
-import AdminInventoryAddVehicle from "../components/AdminInventoryAddVehicle";
+import AdminInventoryAddGallon from "../components/inventory/AdminInventoryAddGallon";
+import AdminInventoryAddVehicle from "../components/inventory/AdminInventoryAddVehicle";
 
 // import { useLocation, Navigate } from "react-router-dom";
 //

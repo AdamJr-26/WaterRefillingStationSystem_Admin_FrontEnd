@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import { Icon } from "@iconify/react";
-import { axios } from "../services/axios";
 // authenticating
 import { Link, useNavigate, useLocation, Navigate } from "react-router-dom";
 import loginHero from "../components/svg/login-hero.svg";
@@ -12,8 +11,10 @@ import { Button, ButtonGroup } from "@chakra-ui/react";
 
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
-import LoadingSpinner from "../components/LoadingSpinner";
+
 import { useAuth } from "../hooks/auth";
+import { Spinner } from "@chakra-ui/react";
+import useProfile from "../hooks/api/useProfile";
 
 function HomeLogin() {
   const navigate = useNavigate();
@@ -21,20 +22,24 @@ function HomeLogin() {
   const from = location.state?.from?.pathname || "/";
   const [loginLoading, setLoginLoading] = useState(false);
   // ======= login form ----------------------------------
-  const { login, cookies } = useAuth();
+  const { login, isLoading, userProfile, userProfileError } = useAuth();
   const toast = useToast();
+  console.log("[LOGIN] userProfile", userProfile);
   const loginSubmit = async (values) => {
     if (values.gmail && values.password) {
-      try {
-        await login({
-          gmail: values.gmail,
-          password: values.password,
-        });
-      } catch (err) {
-        const message =
-          err.response?.data?.errors?.login_admin?.message;
+      setLoginLoading(true);
+      const { data, error } = await login({
+        gmail: values.gmail,
+        password: values.password,
+      });
+      if (data && !error) {
+        setLoginLoading(false);
+        console.log("user logged in.");
+        // maybe create little succes message??
+      } else {
+        setLoginLoading(false);
         toast({
-          title: message,
+          title: "Logg in error",
           description: "Please double check your input",
           status: "error",
           duration: "4000",
@@ -43,8 +48,7 @@ function HomeLogin() {
       }
     }
   };
-
-  return cookies?.user ? (
+  return userProfile ? (
     <Navigate to="/admin/dashboard" exact />
   ) : (
     <Formik

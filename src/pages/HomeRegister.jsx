@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
 import Map from "../components/Map";
-import { axios } from "../services/axios";
+import axiosAPI from "../services/axios";
 import ErrorModal from "../components/ErrorModal";
 
 import { Formik, Field, Form } from "formik";
@@ -65,7 +65,7 @@ function HomeRegister() {
       ...values,
       geolocation: geolocation.geolocation,
     };
-    axios({
+    axiosAPI()({
       url: "auth/register/station",
       method: "post",
       withCredentials: true,

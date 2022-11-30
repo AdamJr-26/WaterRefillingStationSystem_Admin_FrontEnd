@@ -1,4 +1,5 @@
-import { axios } from "../../axios";
+import axiosAPI from "../../axios";
+import handleError from "../../axios.handleError";
 
 export const addGallon = async (object, file) => {
   const formData = new FormData();
@@ -6,11 +7,13 @@ export const addGallon = async (object, file) => {
   formData.append("data", JSON.stringify(object));
   formData.append("image", file);
   try {
-    const res = await axios.post("/api/gallon", formData, {
+    const res = await axiosAPI().post("/api/gallon", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
     return { data: res.data };
   } catch (error) {
+    const statusCode = error?.response.status;
+    handleError(statusCode);
     return { error };
   }
 };
@@ -21,11 +24,13 @@ export const addVehicle = async (object, file) => {
   formData.append("data", JSON.stringify(object));
   formData.append("image", file);
   try {
-    const res = await axios.post("/api/vehicle", formData, {
+    const res = await axiosAPI().post("/api/vehicle", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
     return { data: res.data };
   } catch (error) {
+    const statusCode = error?.response.status;
+    handleError(statusCode);
     return { error };
   }
 };
@@ -33,9 +38,11 @@ export const addVehicle = async (object, file) => {
 export const updateGallon = async ({ url, payload }) => {
   try {
     const data = payload;
-    const res = await axios.put(url, data);
+    const res = await axiosAPI().put(url, data);
     return { updatedGallon: res };
   } catch (error) {
+    const statusCode = error?.response.status;
+    handleError(statusCode);
     return { error };
   }
 };

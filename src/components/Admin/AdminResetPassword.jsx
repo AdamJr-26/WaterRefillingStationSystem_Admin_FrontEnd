@@ -21,7 +21,7 @@ import {
 import TextInputPassword from "../TextInputPassword";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
-import { axios } from "../../services/axios";
+import axiosAPI from "../../services/axios";
 import { useAuth } from "../../hooks/auth";
 import { Icon } from "@iconify/react";
 
@@ -40,7 +40,7 @@ function AdminResetPassword() {
       cookies?.user?.gmail
     ) {
       setIsloadingButton(true); //set loading button to true.
-      axios({
+      axiosAPI()({
         url: "/auth/update-admin-password",
         method: "post",
         withCredentials: true,

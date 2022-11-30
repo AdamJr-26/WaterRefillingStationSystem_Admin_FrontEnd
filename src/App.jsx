@@ -15,8 +15,6 @@ function App() {
           <AppProvider>
             <Router />
           </AppProvider>
-
-
       </Provider>
     </ChakraProvider>
   );

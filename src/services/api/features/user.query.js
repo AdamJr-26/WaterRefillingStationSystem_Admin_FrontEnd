@@ -1,5 +1,7 @@
-import { axios } from "../../axios";
+import axiosAPI from "../../axios";
+import handleError from "../../axios.handleError";
 
 export const updatePassword = (payload) => {
-  return axios.post("/auth/admin/update-password", payload);
+  return axiosAPI().post("/auth/admin/update-password", payload);
+  
 };

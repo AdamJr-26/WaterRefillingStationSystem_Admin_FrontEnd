@@ -5,7 +5,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import TextInputPassword from "../../components/TextInputPassword";
-import { axios } from "../../services/axios";
+import axiosAPI from "../../services/axios";
 import { useCookies } from "react-cookie";
 import { useToast, Button } from "@chakra-ui/react";
 
@@ -25,7 +25,7 @@ function SetNewPassword() {
     const userId = searchParams.get("id");
     const token = searchParams.get("token");
     if (values?.password && values?.confirm_password) {
-      await axios({
+      await axiosAPI()({
         url: "/auth/reset-password/set-new-password",
         method: "post",
         withCredentials: true,

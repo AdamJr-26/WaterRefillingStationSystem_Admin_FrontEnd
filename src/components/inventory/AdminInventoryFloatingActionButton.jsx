@@ -1,9 +1,9 @@
 import React from "react";
 import { Icon } from "@iconify/react";
-import { addGallonState, addVehicleState } from "../lib/store/globalPopupSlice";
+import { addGallonState, addVehicleState } from "../../lib/store/globalPopupSlice";
 import { useDispatch, useSelector } from "react-redux";
-import tricycle from "../assets/images/transparent/tricycle-white.png";
-import gallon from "../assets/images/transparent/gallon-white.png";
+import tricycle from "../../assets/images/transparent/tricycle-white.png";
+import gallon from "../../assets/images/transparent/gallon-white.png";
 function AdminInventoryFloatingActionButton() {
   const dispatch = useDispatch();
 

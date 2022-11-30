@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import AdminInventoryFloatingActionButton from "../components/AdminInventoryFloatingActionButton";
-import AdminInventoryUpdateGallon from "../components/AdminInventoryUpdateGallon";
-
-import AdminInventoryDataTableGallon from "../components/AdminInventoryDataTableGallon";
+import AdminInventoryFloatingActionButton from "../components/inventory/AdminInventoryFloatingActionButton";
+import AdminInventoryDataTableGallon from "../components/inventory/AdminInventoryDataTableGallon";
 import useGallons from "../hooks/api/useGallons";
-import AdminInventoryDataTableVehicle from "../components/AdminInventoryDataTableVehicle";
+import AdminInventoryDataTableVehicle from "../components/inventory/AdminInventoryDataTableVehicle";
 import useVehicles from "../hooks/api/useVehicles";
 
 function AppInventory() {
@@ -47,8 +45,6 @@ function AppInventory() {
           error={vehiclesError}
         />
       </div>
-      {/* {updateGallonModalState && <AdminInventoryUpdateGallon />} */}
-
       <AdminInventoryFloatingActionButton />
     </div>
   );

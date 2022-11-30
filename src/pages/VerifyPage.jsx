@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { axios } from "../services/axios";
+import axiosAPI from "../services/axios";
 
 function VerifyPage() {
 
@@ -12,7 +12,7 @@ function VerifyPage() {
   const id = searchParams.get("id");
 
   useEffect(() => {
-    axios({
+    axiosAPI()({
       url: `auth/verify-admin?id=${id}`,
       method: "get",
       withCredentials: true,
