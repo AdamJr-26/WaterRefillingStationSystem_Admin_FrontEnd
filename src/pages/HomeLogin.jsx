@@ -24,7 +24,6 @@ function HomeLogin() {
   // ======= login form ----------------------------------
   const { login, isLoading, userProfile, userProfileError } = useAuth();
   const toast = useToast();
-  console.log("[LOGIN] userProfile", userProfile);
   const loginSubmit = async (values) => {
     if (values.gmail && values.password) {
       setLoginLoading(true);
@@ -34,7 +33,6 @@ function HomeLogin() {
       });
       if (data && !error) {
         setLoginLoading(false);
-        console.log("user logged in.");
         // maybe create little succes message??
       } else {
         setLoginLoading(false);

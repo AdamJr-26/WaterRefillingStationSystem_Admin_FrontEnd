@@ -17,7 +17,7 @@ function SetNewPassword() {
   const toast = useToast();
 
   React.useEffect(() => {
-    if (!cookies?.forgot_password) {
+    if (!cookies?.forgot_passworg_gmail) {
       navigate("/login");
     }
   }, []);

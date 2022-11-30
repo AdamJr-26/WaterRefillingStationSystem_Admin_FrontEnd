@@ -46,8 +46,8 @@ function AdminTopbar() {
     dispatch(updateSidebarStatus());
     setPathname(active_route);
   }, [active_route]);
-  const { cookies, logout } = useAuth();
-
+  const { userProfile, userProfileError, logout } = useAuth();
+  const user = userProfile?.data;
   // ======= logut --------------
   const handleLogout = async () => {
     await logout();
@@ -62,7 +62,7 @@ function AdminTopbar() {
         <p className="route"></p>
       </div>
       <div className="topbar--profile" ref={btnRef} onClick={onOpen}>
-        <span className="name">{cookies?.user?.firstname?.toUpperCase()}</span>
+        <span className="name">{user?.firstname?.toUpperCase()}</span>
         <img src="https://picsum.photos/200" alt="admin image" srcSet="" />
       </div>
       <Drawer
@@ -96,8 +96,8 @@ function AdminTopbar() {
                     <Text
                       textAlign="center"
                       fontSize="xl"
-                    >{`${cookies?.user?.firstname?.toUpperCase()} 
-                    ${cookies?.user?.lastname?.toUpperCase()}`}</Text>
+                    >{`${user?.firstname?.toUpperCase()} 
+                    ${user?.lastname?.toUpperCase()}`}</Text>
                   </Stack>
 
                   <Container width="100%">
@@ -138,9 +138,7 @@ function AdminTopbar() {
               Log Out?
             </AlertDialogHeader>
 
-            <AlertDialogBody>
-              Are you sure you want to logout?
-            </AlertDialogBody>
+            <AlertDialogBody>Are you sure you want to logout?</AlertDialogBody>
 
             <AlertDialogFooter>
               <Button type="button" ref={cancelRef} onClick={warning.onClose}>

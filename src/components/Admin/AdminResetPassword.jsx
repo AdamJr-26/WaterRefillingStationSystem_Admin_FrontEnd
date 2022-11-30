@@ -30,21 +30,22 @@ function AdminResetPassword() {
   const toast = useToast();
   const warning = useDisclosure();
   const cancelRef = React.useRef();
-  const { cookies } = useAuth();
+  const { userProfile } = useAuth();
   const [isLoadingButton, setIsloadingButton] = useState(false);
+  const user = userProfile?.data;
   const onSubmitReset = (values) => {
     if (
       values.current_password &&
       values.new_password &&
       values.confirm_new_password &&
-      cookies?.user?.gmail
+      user?.gmail
     ) {
       setIsloadingButton(true); //set loading button to true.
       axiosAPI()({
         url: "/auth/update-admin-password",
         method: "post",
         withCredentials: true,
-        data: { ...values, gmail: cookies?.user?.gmail },
+        data: { ...values, gmail: user?.gmail },
       })
         .then((res) => {
           console.log(res);
@@ -129,8 +130,8 @@ function AdminResetPassword() {
                 <div style={{ fontSize: "12px", display: "flex", gap: 5 }}>
                   <Icon icon="dashicons:warning" fontSize={16} color="gray" />{" "}
                   <span>
-                    If you can't remember your password, logout then go to login page and click forgot
-                    password.
+                    If you can't remember your password, logout then go to login
+                    page and click forgot password.
                   </span>
                 </div>
                 <Stack direction={["column"]} spacing="24px">

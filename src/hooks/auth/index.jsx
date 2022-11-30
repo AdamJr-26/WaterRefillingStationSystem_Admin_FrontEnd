@@ -12,7 +12,7 @@ export const UserProvider = ({ children }) => {
   const { mutate } = useSWRConfig();
   const [token] = useTokenStorage("userToken");
   const { isLoading, userProfile, userProfileError } = useProfile();
-  console.log("[/auth/index.js]",userProfile)
+
 
   // ================== USER PROFILE
   // const { data: userProfile, error: userProfileError } = useSWR(
@@ -50,7 +50,6 @@ export const UserProvider = ({ children }) => {
 
   io.on("/api/inventory", (args) => {
     if (args) {
-      console.log("args-===", args);
       mutate("/api/inventory");
     }
   });
@@ -63,33 +62,22 @@ export const UserProvider = ({ children }) => {
       });
       const data = res.data;
       const token = data?.data?.token;
-      console.log("data token", token);
       if (data && token) {
         localStorage.setItem("userToken", token);
         mutate("/api/admin/profile");
       }
       return { data };
     } catch (error) {
-      console.log("errrrrr login", error);
+
       return { error };
     }
-    // const res = await axiosAPI().post("/auth/login-admin", {
-    //   gmail,
-    //   password,
-    // });
 
-    // console.log(res.data.user);
-    // const token = res.data?.data?.token;
-    // console.log("token-----", token);
-    // const userInfo = JSON.stringify(res.data?.data?.user);
-    // localStorage.setItem("userToken", token);
-    // localStorage.setItem("userInfo", userInfo);
   };
 
   const logout = async () => {
     localStorage.removeItem("userToken");
-    // await axiosAPI().get("/auth/logout-admin");
-    // localStorage.removeItem("userToken");
+    mutate("/api/admin/profile")
+    window.location.reload();
   };
 
   const sendForgotPasswordRequest = async ({ gmail }) => {

@@ -4,19 +4,17 @@ import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
-
+import { useCookies } from "react-cookie";
 import TextInput from "../../components/TextInput";
 import { useAuth } from "../../hooks/auth/index";
 import { useToast, Button } from "@chakra-ui/react";
 function ForgotPassword() {
   const navigate = useNavigate();
   const toast = useToast();
-
+  const [cookies, setCookies, removeCookie] = useCookies();
   const [isSending, setIsSending] = useState(false);
   const { sendForgotPasswordRequest } = useAuth();
-  useEffect(() => {
-    console.log("render once");
-  }, []);
+
   // form valitaiton
   const validateForm = Yup.object({
     gmail: Yup.string().email().required("Email is required"),
@@ -24,14 +22,15 @@ function ForgotPassword() {
 
   const emailSubmit = async (values) => {
     if (values.gmail) {
-      setIsSending(true) //loading button
+      setIsSending(true); //loading button
       try {
         const isValid = await sendForgotPasswordRequest({
           gmail: values.gmail,
         });
         if (isValid) {
+          setCookies("forgot_passworg_gmail", values.gmail, { path: "/" });
           navigate("check-email");
-          setIsSending(false) // for loading button
+          setIsSending(false); // for loading button
           toast({
             title: "Request for Forgot Password",
             description: "Check your email",
@@ -42,7 +41,7 @@ function ForgotPassword() {
         }
       } catch (err) {
         const { response } = err;
-        setIsSending(false) //loading button
+        setIsSending(false); //loading button
         toast({
           title: response?.data?.fullError,
           description: response?.data?.errors?.forgot_password_admin?.message,
@@ -86,16 +85,17 @@ function ForgotPassword() {
           </button> */}
           <Button
             type="submit"
-            isLoading ={isSending}
+            isLoading={isSending}
             loadingText="Please Wait"
             backgroundColor="#2389DA"
             color="white"
-            _fucos={{backgroundColor:"#2563eb", color: "#374151"}}
+            _fucos={{ backgroundColor: "#2563eb", color: "#374151" }}
             variant="solid"
             width="100%"
             height="45px"
-            
-          >Reset Password</Button>
+          >
+            Reset Password
+          </Button>
           <button
             type="button"
             onClick={() => navigate("/login")}

@@ -11,17 +11,17 @@ function CheckEmail() {
   const { sendForgotPasswordRequest } = useAuth();
   const toast = useToast();
   React.useEffect(() => {
-    if (!cookies.forgot_password) {
+    if (!cookies.forgot_passworg_gmail) {
       navigate("/login");
     }
   }, []);
 
   // click to resent
   const resendRequest = async () => {
-    if (cookies.forgot_password) {
+    if (cookies.forgot_passworg_gmail) {
       try {
         const isValid = await sendForgotPasswordRequest({
-          gmail: cookies.forgot_password,
+          gmail: cookies.forgot_passworg_gmail,
         });
         if (isValid) {
           toast({
@@ -53,7 +53,7 @@ function CheckEmail() {
         </div>
         <p className="check-email--wrapper__title">Check your email</p>
         <p className="check-email--wrapper__description">
-          We sent a password reset link to {cookies?.forgot_password}
+          We sent a password reset link to {cookies?.forgot_passworg_gmail}
         </p>
         <a
           href="https://mail.google.com/"
