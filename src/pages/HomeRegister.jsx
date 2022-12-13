@@ -8,10 +8,25 @@ import ErrorModal from "../components/ErrorModal";
 
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
+import { Icon } from "@iconify/react";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  Button,
+} from "@chakra-ui/react";
 
 function HomeRegister() {
   const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
+
+  // modal
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   // ========== geolocation form -----------------
   const geolocation = {
@@ -55,7 +70,7 @@ function HomeRegister() {
     firstname: "",
     lastname: "",
     gender: "",
-    age: "",
+    birthday: "",
     password: "",
     confirm_password: "",
   };
@@ -95,9 +110,47 @@ function HomeRegister() {
         onSubmit={onRegisterSubmit}
       >
         <Form>
+          <button
+            onClick={onOpen}
+            type="button"
+            className="home-register--admin-register-pin-location"
+          >
+            <Icon
+              icon="material-symbols:pin-drop"
+              className="home-register--admin-register-pin-location__icon"
+            />
+            <span>Mark your location.</span>
+          </button>
           <Outlet />
         </Form>
       </Formik>
+      {/* modal para sa mobile view */}
+
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Mark Your Location</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <div className="mark-location">
+              <div className="hmark-location--header">
+                <p>
+                  By marking your location you are helping the customers to
+                  easily find your Water Refilling Station
+                </p>
+                <p>Step 1: Click the map to find your location</p>
+                <p>Step 2: Drag the marker to manually set position</p>
+              </div>
+            </div>
+            <Map formData={geolocation} />
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={onClose}>
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
 
       <div className="home-register--map">
         <div className="home-register--map__header">

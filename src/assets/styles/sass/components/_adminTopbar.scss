@@ -1,4 +1,5 @@
 @use '../colors';
+@use '../breakpoints';
 
 .topbar {
     background-color: white;
@@ -34,25 +35,43 @@
         }
 
     }
+    &--right-options{
+        display: flex;
+        flex-direction: row;
+        gap: 0px 10px;
+        padding: 5px;
+        overflow: hidden;
+        max-height: 100%;
 
-    &--profile {
-        display: flex;  
-        align-items: center;
-        gap: 15px;
-        cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 10px;
-        background-color: colors.$gray-100;
-        .name{
-            font-size: 1rem;
-            font-weight: 500;
-            color: colors.$gray-800;
+        &__profile {
+            display: flex;  
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 10px;
+            background-color: colors.$gray-100;
+            .name{
+                font-size: 1rem;
+                font-weight: 500;
+                color: colors.$gray-800;
+            }
+    
+            img {
+                border-radius: 50%;
+                height: 40px;
+                width: auto;
+            }
         }
+    }
 
-        img {
-            border-radius: 50%;
-            height: 40px;
-            width: auto;
+}
+@media only screen and (max-width: breakpoints.$xs) {
+    .topbar{
+        &--right-options{
+            .name{
+                display: none;
+            }
         }
     }
 }

@@ -3,9 +3,10 @@ import { NavLink } from "react-router-dom";
 
 import { Icon } from "@iconify/react";
 
-import TextInput from "../components/TextInput";
+import TextInput from "../components/general/TextInput";
 import TextInputPassword from "../components/TextInputPassword";
 import TextInputSelect from "../components/TextInputSelect";
+import SelectDate from "../components/general/SelectDate";
 
 function HomeRegisterStepTwo() {
   const selectGenderOptions = [
@@ -52,7 +53,12 @@ function HomeRegisterStepTwo() {
         name="gender"
         selectValues={selectGenderOptions}
       />
-      <TextInput label="Age" name="age" type="number" placeholder="age" />
+      <TextInput
+        label="Birthday"
+        name="birthday"
+        type="date"
+        placeholder="birthday"
+      />
       <TextInputPassword
         label="Password"
         name="password"

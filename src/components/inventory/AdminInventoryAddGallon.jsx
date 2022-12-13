@@ -5,7 +5,7 @@ import { gallonIcon } from "../../assets/images/gallons_transparent/icons/gallon
 import ScrollContainer from "react-indiana-drag-scroll";
 import { addGallonState } from "../../lib/store/globalPopupSlice";
 import { useDispatch } from "react-redux";
-import TextInput from "../TextInput";
+import TextInput from "../general/TextInput";
 
 import { Formik, Form } from "formik";
 import * as Yup from "yup";

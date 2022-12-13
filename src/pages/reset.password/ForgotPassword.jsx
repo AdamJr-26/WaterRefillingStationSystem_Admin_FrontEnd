@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import { useCookies } from "react-cookie";
-import TextInput from "../../components/TextInput";
+import TextInput from "../../components/general/TextInput";
 import { useAuth } from "../../hooks/auth/index";
 import { useToast, Button } from "@chakra-ui/react";
 function ForgotPassword() {

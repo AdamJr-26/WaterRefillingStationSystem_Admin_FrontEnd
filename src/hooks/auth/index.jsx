@@ -2,8 +2,6 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import axiosAPI from "../../services/axios";
 import socketIO from "socket.io-client";
 import useSWR, { useSWRConfig } from "swr";
-import fetcher from "../api/fetcher";
-import handleError from "../../services/axios.handleError";
 
 import useTokenStorage from "../custom/useTokenStorage";
 import useProfile from "../api/useProfile";
@@ -13,47 +11,14 @@ export const UserProvider = ({ children }) => {
   const [token] = useTokenStorage("userToken");
   const { isLoading, userProfile, userProfileError } = useProfile();
 
-
-  // ================== USER PROFILE
-  // const { data: userProfile, error: userProfileError } = useSWR(
-  //   "/api/admin/profile",
-  //   fetcher
-  // );
-
-  // useEffect(() => {
-  //   if (userProfile && !userProfileError) {
-  //     setIsLoggedIn(true);
-  //     setIsloading(false);
-  //   } else if (!userProfile && userProfileError) {
-  //     setIsLoggedIn(false);
-  //   }else if(!userProfile && !userProfileError){
-  //     setIsLoggedIn(false);
-  //     setIsloading(true)
-  //   }
-  //   return () => {
-  //     setIsLoggedIn(false);
-  //     setIsloading(true);
-  //   };
-  // }, []);
-
-  // ==================
-
   // update socket io.
   const io = socketIO.connect(`http://localhost:4000`);
-  // useEffect(() => {
-  //   const docID = cookies?.user?.docID;
-  //   console.log("db_id", docID);
-  //   io.on("connect", () => {
-  //     io.emit("room", docID);
-  //   });
-  // }, [cookies]);
-
-  io.on("/api/inventory", (args) => {
-    if (args) {
-      mutate("/api/inventory");
-    }
-  });
-
+  useEffect(() => {
+    io.on("connect", () => {
+      io.emit("timezone", "asia/manila");
+    });
+  }, []);
+  // LOGIN
   const login = async ({ gmail, password }) => {
     try {
       const res = await axiosAPI().post("/auth/login-admin", {
@@ -68,18 +33,17 @@ export const UserProvider = ({ children }) => {
       }
       return { data };
     } catch (error) {
-
       return { error };
     }
-
   };
-
+  // LOGOUT
   const logout = async () => {
     localStorage.removeItem("userToken");
-    mutate("/api/admin/profile")
+    mutate("/api/admin/profile");
     window.location.reload();
   };
 
+  // FORGOT PASSWORD //BA'T NANDITO PA TO AHHA
   const sendForgotPasswordRequest = async ({ gmail }) => {
     const res = await axiosAPI().post("/auth/reset-password/request", {
       gmail,

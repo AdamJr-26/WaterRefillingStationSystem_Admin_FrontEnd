@@ -24,7 +24,7 @@ import useGallon from "../../hooks/api/useGallon";
 import { Icon } from "@iconify/react";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
-import TextInput from "../TextInput";
+import TextInput from "../general/TextInput";
 import useSWR, { useSWRConfig } from "swr";
 
 // API

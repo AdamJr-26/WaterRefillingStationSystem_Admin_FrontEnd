@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
-import TextInput from "../components/TextInput";
+import TextInput from "../components/general/TextInput";
+
 function HomeRegisterStepOne() {
   return (
     <div className="home-register--steps__one">

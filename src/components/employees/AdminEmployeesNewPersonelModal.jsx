@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
-import TextInput from "../TextInput";
+import TextInput from "../general/TextInput";
 import React, { useState, useEffect } from "react";
 import { applyNewPersonel } from "../../services/api/employees/employee.post";
 

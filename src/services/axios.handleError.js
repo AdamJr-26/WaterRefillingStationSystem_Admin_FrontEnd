@@ -1,10 +1,11 @@
 
 function handleError(statusCode) {
   const usertoken = localStorage.getItem("userToken")
-  if ([401, 403].includes(statusCode)) {
-    console.log("removing userToken")
-    localStorage.removeItem("userToken");
+  if ([401, 403].includes(statusCode) ) {
     location.reload()
+    localStorage.removeItem("userToken");
+    console.log("removing userToken")
+    
   }
 }
 

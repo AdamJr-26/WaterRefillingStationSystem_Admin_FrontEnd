@@ -30,7 +30,7 @@ import {
   AlertDialogOverlay,
 } from "@chakra-ui/react";
 import AdminResetPassword from "./Admin/AdminResetPassword";
-
+import DateTime from "./general/DateTime";
 function AdminTopbar() {
   const btnRef = React.useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -61,9 +61,12 @@ function AdminTopbar() {
         </button>
         <p className="route"></p>
       </div>
-      <div className="topbar--profile" ref={btnRef} onClick={onOpen}>
-        <span className="name">{user?.firstname?.toUpperCase()}</span>
-        <img src="https://picsum.photos/200" alt="admin image" srcSet="" />
+      <div className="topbar--right-options">
+        <DateTime />
+        <div className="topbar--right-options__profile" ref={btnRef} onClick={onOpen}>
+          <span className="name">{user?.firstname?.toUpperCase()}</span>
+          <img src="https://picsum.photos/200" alt="admin image" srcSet="" />
+        </div>
       </div>
       <Drawer
         isOpen={isOpen}

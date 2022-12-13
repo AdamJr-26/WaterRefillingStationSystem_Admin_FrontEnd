@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 import { Link, useNavigate, useLocation, Navigate } from "react-router-dom";
 import loginHero from "../components/svg/login-hero.svg";
 import { useToast } from "@chakra-ui/react";
-import TextInput from "../components/TextInput";
+import TextInput from "../components/general/TextInput";
 import TextInputPassword from "../components/TextInputPassword";
 import { Button, ButtonGroup } from "@chakra-ui/react";
 

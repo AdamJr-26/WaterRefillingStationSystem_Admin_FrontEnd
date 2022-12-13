@@ -4,6 +4,10 @@ import AdminCreditNewTransaction from "../components/AdminCreditNewTransaction";
 import AdminDataGrid from "../components/AdminDataGrid";
 import AdminDataGridButton from "../components/AdminDataGridButton";
 import { onGoingDeliveries } from "../lib/sample/data";
+import useFetch from "../hooks/api/useFetch";
+import DeliveryRequest from "../components/delivery/DeliveryRequest";
+import AdminDeliveryDataTableOngoing from "../components/delivery/AdminDeliveryDataTableOngoing";
+
 let ongoingDeliveriesColumn = [];
 function extractRow() {
   for (let field in onGoingDeliveries[0]) {
@@ -49,59 +53,19 @@ function AppDelivery() {
             Request Delivery
           </p>
         </div>
-        <div className="delivery-request-wrapper--cards">
-          {[1, 2, 3].map((item) => (
-            <div key={item} className="delivery-request-wrapper--cards__card">
-              <div className="delivery-card-info">
-                <table className="delivery-card-info--delivery-item-table">
-                  <tbody>
-                    <tr>
-                      <th>Gallon Name</th>
-                      <th>Count</th>
-                    </tr>
-                    <tr>
-                      <td>Imperial Gallon</td>
-                      <td>25</td>
-                    </tr>
-                    <tr>
-                      <td>Faucet Gallon</td>
-                      <td>10</td>
-                    </tr>
-                    <tr>
-                      <td>Imperial Gallon</td>
-                      <td>25</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div className="delivery-card-info--personel-info">
-                  <img
-                    src="https://cdn.motor1.com/images/mgl/nOlNy/s1/1x1/elon-musk.webp"
-                    alt="personel"
-                    className="delivery-card-info--personel-info__image"
-                  />
-                  <p className="delivery-card-info--personel-info__name">
-                    Juan Dela Cruz
-                  </p>
-                  <div className="delivery-card-info--personel-info__total">
-                    <p>Total</p>
-                    <p>60 Items</p>
-                  </div>
-                </div>
-              </div>
+        {/* the style of this shit is embedded from this parent module */}
+        <DeliveryRequest />
+      </div>
 
-              <div className="delivery-card-buttons">
-                <div className="delivery-card-buttons--vehicle-id">
-                  <p>Vehicle ID</p>
-                  <p>66D58S4</p>
-                </div>
-                <div className="delivery-card-buttons--button">
-                  <button>Reject</button>
-                  <button>Accept</button>
-                </div>
-              </div>
-            </div>
-          ))}
+      {/* ongling deliveries */}
+      <div className="table-ongoing-delivery">
+        <div className="table-ongoing-delivery--header">
+          <p className="table-ongoing-delivery--header__title">Ongoing Deliveries</p>
+          <p className="table-ongoing-delivery--header__description">
+            Tracks your ongoing deliveries
+          </p>
         </div>
+        <AdminDeliveryDataTableOngoing data= {[]} />
       </div>
     </div>
   );

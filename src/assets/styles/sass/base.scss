@@ -10,6 +10,7 @@
 @use './components/textinputPassword.';
 @use './components/textinputSelect';
 
+@use './components/general/datetime';
 
 @use './components/inventory/adminInventory';
 @use './components/inventory/adminInventoryAddGallon';

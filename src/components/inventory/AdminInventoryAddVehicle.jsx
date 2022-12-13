@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import TextInput from "../TextInput";
+import TextInput from "../general/TextInput";
 import { vehicles } from "../../assets/images/vehicles";
 import { addVehicle } from "../../services/api/inventory/inventory.post";
 import { useToast, Button } from "@chakra-ui/react";
@@ -34,7 +34,7 @@ function AdminInventoryAddVehicle() {
           vehicle_id: "",
         }}
         validationSchema={Yup.object().shape({
-          vehicle_name: Yup.string().max(10, "Vehicle name must not exceed 20 letters").required("Vehicle Name is Required"),
+          vehicle_name: Yup.string().max(20, "Vehicle name must not exceed 20 letters").required("Vehicle Name is Required"),
           vehicle_id: Yup.string().max(20, "Vehicle ID must not exceed 20 letters").required("Vehicle ID is Required"),
         })}
         onSubmit={async (values) => {

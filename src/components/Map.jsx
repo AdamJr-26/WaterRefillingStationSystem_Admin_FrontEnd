@@ -11,6 +11,7 @@ import { MapContainer, TileLayer, Popup, Marker } from "react-leaflet";
 import { Icon } from "@iconify/react";
 
 function Map({ formData }) {
+  
   const center = {
     lat: "14.344800",
     lng: "121.00000",
