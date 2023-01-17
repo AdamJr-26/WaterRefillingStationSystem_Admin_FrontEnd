@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 
 import TextInput from "../components/general/TextInput";
 import TextInputPassword from "../components/TextInputPassword";
-import TextInputSelect from "../components/TextInputSelect";
+import TextInputSelect from "../components/general/TextInputSelect";
 import SelectDate from "../components/general/SelectDate";
 
 function HomeRegisterStepTwo() {

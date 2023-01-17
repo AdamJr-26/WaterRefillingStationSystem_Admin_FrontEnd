@@ -1,0 +1,9 @@
+@use '../../colors';
+@use '../../breakpoints';
+
+.customer-create-discount{
+    p:nth-child(1){
+        font-size: 14px;
+
+    }
+}

@@ -9,11 +9,11 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 function AdminInventoryUpdateGallon() {
   const dispatch = useDispatch();
-  const [borrowed, setBorrowed] = useState(360);
-  const [available, setAvailable] = useState(30);
-  const [total, setTotal] = useState(390);
+  const [borrowed, setBorrowed] = useState(0);
+  const [available, setAvailable] = useState(0);
+  const [total, setTotal] = useState(0);
   const [add, setAdd] = useState(0);
-  const [price, setPrice] = useState(25);
+  const [price, setPrice] = useState(0);
   return (
     <div className="admin-inventory-update-gallon">
       <div className="admin-inventory-update-gallon--header">

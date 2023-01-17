@@ -48,10 +48,13 @@
 @use './components/inside_modal_elements/updateInventory';
 
 
-@use  './pages/reset.password/forgotPassword';
-@use  './pages/reset.password/checkEmail';
-@use  './pages/reset.password/passwordReset';
-@use  './pages/reset.password/setNewPassword';
+@use './pages/reset.password/forgotPassword';
+@use './pages/reset.password/checkEmail';
+@use './pages/reset.password/passwordReset';
+@use './pages/reset.password/setNewPassword';
+
+@use './components/customers/CustomerDiscount';
+@use './components/customers/adminCustomerAddDiscount';
 
 *,
 ::after,
@@ -63,14 +66,14 @@
 
 body {
     background-color: colors.$gray-200;
-    
+
     position: relative;
     padding: 0;
     margin: 0;
     scroll-behavior: smooth;
     overflow-x: hidden;
     overflow-y: scroll;
-    
+
     &::-webkit-scrollbar {
         width: 10px;
         height: 5px;

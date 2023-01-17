@@ -19,20 +19,27 @@
         &--header {
             display: flex;
             flex-flow: row wrap;
-            justify-content:space-between;
+            justify-content: space-between;
+
             &__title-description {
                 .title {
                     font-size: 24px;
                     font-weight: 500;
                     color: colors.$gray-800;
                 }
+
                 .description {
                     font-size: 14px;
                     color: colors.$gray-400;
                 }
             }
-            &__menu{
 
+            &__menu {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+
+                .add-discount {}
             }
 
         }
