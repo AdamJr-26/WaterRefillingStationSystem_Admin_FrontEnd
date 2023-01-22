@@ -6,15 +6,16 @@
     flex-direction: column;
     gap: 3px;
     width: 100%;
-    &--label{
+
+    &--label {
         text-align: start;
         font-size: 16px;
         font-weight: 700;
         color: colors.$gray-600;
-        padding: 2px 0px ;
+        padding: 2px 0px;
     }
 
-    &--input{
+    &--input {
         outline: none;
         // border: none;
         height: 45px;
@@ -24,85 +25,59 @@
         font-weight: 500;
         background-color: colors.$gray-50;
         border: 1px solid colors.$gray-300;
-        &:focus{
+
+        &:focus {
             border: 2px solid rgba(colors.$blue-900, $alpha: 0.7);
         }
     }
-    &--input-err{
+
+    &--input-err {
         border: 1px solid rgb(238, 68, 16);
     }
 }
-.text-input-error{
+
+.text-input-error {
     padding-left: 20px;
     font-size: 0.7rem;
-    color:rgb(238, 68, 16);
+    color: rgb(238, 68, 16);
     margin: 0px;
 
 }
-// .textinput{
-//     position: relative;
-//     height: 60px;
-//     width: 100%;
-//     overflow: hidden;
-//     border-radius: 2px;
-    
-//     &--label, &--input{
-//         height: 100%;
-//         width: 100%;
-//     }
-//     &--input{
-//         background: rgba($color: colors.$gray-100, $alpha: 1);
-//         border: none;
-//         outline: none;
-        
-//         padding: 10px;
-//         // min-width: 300px;
-//         // padding: 10px;
-//         bottom: 0px;
-        
-//         font-weight: 500;
-//         color: colors.$gray-800;
-//         font-size: 16px;
-//     }
-//     &--label{
-//         pointer-events: none;
-//         position: absolute;
-//         top: -4px;
-//         left: 10px;
-//         font-weight: 600;
-//         font-size: 16px;
-//         font-weight: 400;
-//         color: colors.$gray-800;
-//         border-bottom: 1px solid colors.$gray-300;
-//         &::after{
-//             content: '';
-//             position: absolute;
-//             left: -10px;
-//             bottom: 0px;
-//             height: 100%;
-//             width: 100%;
-//             border-bottom: 2px solid colors.$blue-900;
-//             transform: translateX(-120%);
-//             transition: transform 300ms ease-in-out ;
 
-//         }
-//         span{
-//             position: absolute;
-//             bottom: 5px;
-//             left: 0px;
-//             transition: all 300ms ease;
-//         }
+// second text input without formik.
 
-//     }
-//     &--input:focus + &--label .content-name, 
-//     &--input:not(:placeholder-shown) + &--label .content-name{
-//         transform: translateY(-170%);
-//         font-size: 14px;
-//         color: colors.$gray-800;
-//     }
-//     &--input:focus + &--label::after,
-//     &--input:not(:placeholder-shown) + &--label::after{
-//         transform: translateX(0%);
-//     }
+.textinput-div {
+    position: relative;
 
-// }
+    width: 100%;
+    overflow: hidden;
+    border-radius: 2px;
+    align-items: center;
+
+    &--label {
+        font-weight: 500;
+        color: colors.$gray-500;
+    }
+
+    &--label,
+    &--input {
+        height: 100%;
+        width: 100%;
+    }
+
+    &--input {
+        background: rgba($color: colors.$gray-100, $alpha: 1);
+        border: none;
+        height: 60px;
+        outline: none;
+        align-items: center;
+        padding: 0px 10px;
+        font-weight: 500;
+        color: colors.$gray-800;
+        font-size: 16px;
+        border-radius: 15px;
+    }
+
+
+
+}

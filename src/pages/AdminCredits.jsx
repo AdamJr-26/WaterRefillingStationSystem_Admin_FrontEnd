@@ -1,48 +1,56 @@
-import React from 'react'
-import { NavLink, Outlet } from 'react-router-dom'
-import AdminCreditNewTransaction from '../components/AdminCreditNewTransaction'
+import React from "react";
+import { NavLink, Outlet } from "react-router-dom";
+import AdminCreditNewTransaction from "../components/credits/AdminCreditNewTransaction";
 import { newTransactionState } from "../lib/store/globalPopupSlice";
 import { useDispatch, useSelector } from "react-redux";
+import AccountReceivable from "../components/credits/AccountReceivable";
+import useFetch from "../hooks/api/useFetch";
+
 function AppCredits() {
   const dispatch = useDispatch();
-  const newTransactionPopupState = useSelector((state)=>state.globalPopupSlice.newTransactionValue)
-  const isNotActive = ()=> window.location.pathname !== "/admin/credits/last-transactions"? true: false;
+  const newTransactionPopupState = useSelector(
+    (state) => state.globalPopupSlice.newTransactionValue
+  );
+  const isNotActive = () =>
+    window.location.pathname !== "/admin/credits/history" ? true : false;
+
+  const {
+    data: receivable,
+    error,
+    mutate: mutateReceivable,
+    isValidating,
+  } = useFetch({
+    url: "/api/credits/account-receivable",
+  });
+
   return (
-    <div className='admin-credits'>
-      <div className="admin-credits--total">
-        <div className="admin-credits--total__receivable">
-          <span className='title'>Account Receivable</span>
-          <span className='amount'>P 35,450</span>
+    <div className="admin-credits">
+      <AccountReceivable data={receivable} />
+      <div className="admin-credits--transactions-wrapper">
+        <div className="admin-credits--transactions-wrapper__links">
+          <NavLink
+            to=""
+            className={({ isActive }) =>
+              isActive && isNotActive() ? "active" : ""
+            }
+          >
+            Credits
+          </NavLink>
+          <NavLink
+            to="history"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            History
+          </NavLink>
         </div>
-        <div className='admin-credits--total__summary'>
-          <p className="admin-credits-summary-title">Summary</p>          
-          <div className="admin-has-credits-wrapper">
-            <span className='title'>Total has credits</span>
-            <span className='amount'>36</span>
-          </div>
-          <div className="admin-credits-summary-wrapper">
-            <span className='title'>Items</span>
-            <span className='amount'>16623</span>
-          </div>
-          <button onClick={()=>dispatch(newTransactionState())}>
-            New Transaction
-          </button>
+        <div className="admin-credits--transactions-wrapper__outlet">
+          <Outlet context={{ mutateReceivable }} />
         </div>
-      </div>
-      <div className='admin-credits--transactions-wrapper'>
-        <div className='admin-credits--transactions-wrapper__links'>
-        <NavLink to="" className={({isActive})=>(isActive && isNotActive()? "active":"")} >Account Receivable</NavLink>
-        <NavLink to="last-transactions" className={({isActive})=>(isActive? "active":"")} >Last transactions</NavLink>
-        </div>
-        <div className='admin-credits--transactions-wrapper__outlet'>
-          
-            <Outlet />
-          </div>
       </div>
       {/* pop ups / modal */}
       {newTransactionPopupState && <AdminCreditNewTransaction />}
     </div>
-  )
+  );
 }
 
-export default AppCredits
+export default AppCredits;

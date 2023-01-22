@@ -55,6 +55,8 @@
 
 @use './components/customers/CustomerDiscount';
 @use './components/customers/adminCustomerAddDiscount';
+// credits
+@use "./components/credits/paycreditsModal";
 
 *,
 ::after,

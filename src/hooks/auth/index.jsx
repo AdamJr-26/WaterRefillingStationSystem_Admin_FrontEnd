@@ -11,13 +11,13 @@ export const UserProvider = ({ children }) => {
   const [token] = useTokenStorage("userToken");
   const { isLoading, userProfile, userProfileError } = useProfile();
 
-  // update socket io.
-  const io = socketIO.connect(`http://localhost:4000`);
-  useEffect(() => {
-    io.on("connect", () => {
-      io.emit("timezone", "asia/manila");
-    });
-  }, []);
+  // // update socket io.
+  // const io = socketIO.connect(`http://localhost:4000`);
+  // useEffect(() => {
+  //   io.on("connect", () => {
+  //     io.emit("timezone", "asia/manila");
+  //   });
+  // }, []);
   // LOGIN
   const login = async ({ gmail, password }) => {
     try {
@@ -55,7 +55,6 @@ export const UserProvider = ({ children }) => {
 
   const value = {
     token,
-    io,
     login,
     logout,
     sendForgotPasswordRequest,

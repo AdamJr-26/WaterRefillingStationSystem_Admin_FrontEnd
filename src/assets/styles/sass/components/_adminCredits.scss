@@ -60,7 +60,7 @@
                 gap: 20px;
 
                 .title {
-                    color: colors.$gray-400;
+                    color: colors.$gray-500;
                 }
 
                 .amount {
@@ -151,7 +151,7 @@
             }
         }
 
-        &--transactions-wrapper  {
+        &--transactions-wrapper {
             margin-left: 0px;
         }
 
@@ -160,4 +160,3 @@
 
 
 // how to center a div?
-

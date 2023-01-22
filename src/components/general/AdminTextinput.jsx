@@ -1,7 +1,5 @@
 import React from "react";
 
-
-
 function AdminTextinput({
   label,
   type,
@@ -14,51 +12,33 @@ function AdminTextinput({
   // just for animation of an input, do not remove.
   const placeholder = " ";
 
-
   const onTextChange = (event) => {
+    console.log("event", event.target.value);
     const { name, value, type, checked } = event.target;
-    setValue((preValue) => {
-      return {
-        ...preValue,
-        [name]: type === "checkbox"? checked: value
-      }
-    });
+    setValue(value);
   };
   return (
-    <div className="textinput">
+    <div className="textinput-div">
+      <label htmlFor={label} className="textinput-div--label">
+        <span className="content-name">{label}</span>
+      </label>
       <input
         name={name}
         label={label}
-        className="textinput--input"
+        className="textinput-div--input"
         placeholder={placeholder}
         type={type}
         required={isRequired}
         autoComplete="off"
         value={inputValue}
-        onChange={onTextChange}
+        onChange={(e) => onTextChange(e)}
         disabled={isDisabled}
-        // required
       />
-      {/* <input
-        ref={inputRef}
-        name={label}
-        className="textinput--input"
-        placeholder={placeholder}
-        type={type}
-        autoComplete="off"
-        // value={value}
-        // onChange={(event)=>setValue(event.target.value)}
-        disabled={isDisabled}
-        // required
-      /> */}
-      <label htmlFor={label} className="textinput--label" >
-        <span className="content-name">{label}</span>
-        {/* {label} */}
-      </label>
     </div>
   );
 }
 AdminTextinput.defaultProps = {
   value: "",
 };
+
 export default AdminTextinput;

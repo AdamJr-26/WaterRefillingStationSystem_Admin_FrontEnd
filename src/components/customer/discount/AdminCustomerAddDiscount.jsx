@@ -115,9 +115,9 @@ function AdminCustomerAddDiscount() {
                   </Formik>
                 </TabPanel>
                 <TabPanel>
-                    <div>
-                      <p>Coming soon!</p>
-                    </div>
+                  <div>
+                    <p>Coming soon!</p>
+                  </div>
                 </TabPanel>
               </TabPanels>
             </Tabs>

@@ -1,50 +1,34 @@
-import React from "react";
-import ScrollContainer from "react-indiana-drag-scroll";
-import AdminCreditNewTransaction from "../components/AdminCreditNewTransaction";
-import AdminDataGrid from "../components/AdminDataGrid";
-import AdminDataGridButton from "../components/AdminDataGridButton";
+import React, { useState } from "react";
+// import ScrollContainer from "react-indiana-drag-scroll";
+// import AdminCreditNewTransaction from "../components/AdminCreditNewTransaction";
+// import AdminDataGrid from "../components/AdminDataGrid";
+// import AdminDataGridButton from "../components/AdminDataGridButton";
 import { onGoingDeliveries } from "../lib/sample/data";
 import useFetch from "../hooks/api/useFetch";
 import DeliveryRequest from "../components/delivery/DeliveryRequest";
 import AdminDeliveryDataTableOngoing from "../components/delivery/AdminDeliveryDataTableOngoing";
 
-let ongoingDeliveriesColumn = [];
-function extractRow() {
-  for (let field in onGoingDeliveries[0]) {
-    ongoingDeliveriesColumn.push({
-      field: field,
-      headerName: field.toUpperCase(),
-      widthead: 170,
-    });
-  }
-  ongoingDeliveriesColumn.push({
-    field: "Cancel",
-    renderCell: (cellValues) => {
-      const handleClick = (e, cellValues) => {
-        e.stopPropagation();
-      };
-      return (
-        <button
-          onClick={(e) => handleClick(e, cellValues)}
-          type="button"
-          className="admin-dataGrid-button-danger"
-        >
-          Cancel
-        </button>
-        // <AdminDataGridButton
-        //   onClick={(e) => handleClick(e, cellValues)}
-        //   label="Cancel"
-        //   variant="warning"
-        // />
-      );
-    },
-    flex: 1,
-    minWidthead: 150,
-  });
-}
-extractRow();
-
 function AppDelivery() {
+  const {
+    data: ongoing_deliveries,
+    error: deliveries_error,
+    mutate: mutateOngoingDeliveries,
+    isValidating,
+  } = useFetch({
+    url: "/api/deliveries/ongoing",
+  });
+  // console.log("ongoing_deliveries", ongoing_deliveries);
+
+  // fetch finished deliveries by date.
+  const [fromDate, setFromDate] = useState(null);
+  const [toDate, setToDate] = useState(null);
+  const {
+    data: finishedDeliveries,
+    error: finishedDeliveriesError,
+    mutate: mutateFinishedDeliveries,
+    isValidating: isValidatingFD,
+  } = useFetch({ url: `/api/deliveries/finished/${fromDate}/${toDate}` });
+  console.log("finishedDeliveries", finishedDeliveries);
   return (
     <div className="admin-delivery">
       <div className="delivery-request-wrapper">
@@ -60,12 +44,32 @@ function AppDelivery() {
       {/* ongling deliveries */}
       <div className="table-ongoing-delivery">
         <div className="table-ongoing-delivery--header">
-          <p className="table-ongoing-delivery--header__title">Ongoing Deliveries</p>
+          <p className="table-ongoing-delivery--header__title">
+            Ongoing Deliveries
+          </p>
           <p className="table-ongoing-delivery--header__description">
             Tracks your ongoing deliveries
           </p>
         </div>
-        <AdminDeliveryDataTableOngoing data= {[]} />
+        <AdminDeliveryDataTableOngoing
+          data={ongoing_deliveries}
+          error={deliveries_error}
+        />
+      </div>
+
+      <div className="table-ongoing-delivery">
+        <div className="table-ongoing-delivery--header">
+          <p className="table-ongoing-delivery--header__title">
+            Finished Deliveries
+          </p>
+          <p className="table-ongoing-delivery--header__description">
+            Tracks the finished deliveries
+          </p>
+        </div>
+        <AdminDeliveryDataTableOngoing
+          data={finishedDeliveries}
+          error={finishedDeliveriesError}
+        />
       </div>
     </div>
   );

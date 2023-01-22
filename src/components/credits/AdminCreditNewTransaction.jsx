@@ -1,8 +1,8 @@
 import React from "react";
-import AdminSearchbox from "./AdminSearchbox";
+import AdminSearchbox from "../AdminSearchbox";
 import { Icon } from "@iconify/react";
-import AdminTextinput from "./general/AdminTextinput";
-import { newTransactionState } from "../lib/store/globalPopupSlice";
+import AdminTextinput from "../general/AdminTextinput";
+import { newTransactionState } from "../../lib/store/globalPopupSlice";
 import { useDispatch } from "react-redux";
 function AdminCreditNewTransaction() {
     const dispatch = useDispatch();

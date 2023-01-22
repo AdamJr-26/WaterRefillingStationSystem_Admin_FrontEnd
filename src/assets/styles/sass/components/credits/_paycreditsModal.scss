@@ -1,0 +1,71 @@
+@use '../../colors';
+@use '../../breakpoints';
+
+.paycredits-modal {
+    &--customer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 15px;
+
+        &__display-photo {
+            height: 70px;
+            width: 70px;
+            background-color: colors.$gray-100;
+            border-radius: 15px;
+            align-items: center;
+        }
+
+        &__info {
+            p:nth-child(1) {
+                font-weight: 700;
+            }
+
+            p:nth-child(2) {
+                font-size: 12px;
+            }
+        }
+
+        &__credit {
+            margin-top: 20px;
+            .paycredits-modal-customer-credit-gallon-info {
+                display: flex;
+                flex-direction: row;
+                gap: 15px;
+                align-items: center;
+                
+                &--gallon-image-wrapper {
+                    height: 70px;
+                    width: 70px;
+                    background-color: colors.$gray-100;
+                    border-radius: 15px;
+                    align-items: center;
+                }
+
+                &--texts {
+                    p:nth-child(1) {
+                        font-weight: 700;
+                    }
+                }
+
+            }
+
+            .paycredits-modal-customer-credit-pay-credit-inputs {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+                margin-top: 20px;
+
+            }
+        }
+    }
+}
+
+@media only screen and (min-width:breakpoints.$md) {
+    .paycredits-modal-customer-credit-pay-credit-inputs {
+        display: flex;
+        flex-direction: row;
+
+    }
+}

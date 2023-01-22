@@ -8,7 +8,8 @@ import AdminEmployess from "../pages/AdminEmployess";
 import AdminInventory from "../pages/AdminInventory";
 import AdminReports from "../pages/AdminReports";
 import Admin from "../pages/Admin";
-import AdminCreditsTransactions from "../components/AdminCreditsTransactions";
+
+import AdminCreditsTransactions from "../components/credits/AdminCreditsTransactions";
 import React from "react";
 import Home from "../pages/Home";
 import HomeRegister from "../pages/HomeRegister";
@@ -25,7 +26,7 @@ import CheckEmail from "../pages/reset.password/CheckEmail";
 import ForgotPassword from "../pages/reset.password/ForgotPassword";
 import PassworReset from "../pages/reset.password/PassworReset";
 import SetNewPassword from "../pages/reset.password/SetNewPassword";
-
+import CreditsPayersHistory from "../components/credits/CreditsPayersHistory";
 import { ProtectRoutes } from "../hooks/protectRoutes";
 function Router() {
   return (
@@ -56,8 +57,8 @@ function Router() {
           <Route path="credits" element={<AdminCredits />}>
             <Route index element={<AdminCreditsTransactions />} />
             <Route
-              path="last-transactions"
-              element={<AdminCreditsTransactions />}
+              path="history"
+              element={<CreditsPayersHistory />}
             />
           </Route>
           <Route path="customers" element={<AdminCustomers />} />

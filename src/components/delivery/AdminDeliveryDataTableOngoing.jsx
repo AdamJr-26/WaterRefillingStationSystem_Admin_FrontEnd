@@ -28,19 +28,26 @@ import {
   EditIcon,
   DeleteIcon,
 } from "@chakra-ui/icons";
-function AdminDeliveryDataTableOngoing() {
-    // FETCH DELIVERIES WITH APPROVED:TRUE, RETURNED:FALSE
+import DeliveryProgressModal from "./modal/DeliveryProgressModal";
+function AdminDeliveryDataTableOngoing({ data }) {
+  // FETCH DELIVERIES WITH APPROVED:TRUE, RETURNED:FALSE
+
   const deliveryThead = [
     "IMAGE",
-    "NAME",
-    "NUMBER",
-    "VEHICLE",
-    "DELIVERED GLN",
-    "RETURNED GLN",
-    "CREDITED GLN",
-    "PAID",
-    "SALES",
+    "DELIVERY PERSONNEL",
+    "MOBILE NUMBER",
+    "VEHICLE IMAGE",
+    "VEHICLE NAME",
+    "VEHICLE ID",
   ];
+  // handle modal
+  const [deliveryId, setDeliveryId] = useState(null);
+  const showDelivery = async (delivery_id) => {
+    setDeliveryId(delivery_id);
+    progressModalClosure.onOpen();
+  };
+  const progressModalClosure = useDisclosure();
+  // { isOpen, onOpen, onClose }
 
   return (
     <TableContainer
@@ -50,6 +57,12 @@ function AdminDeliveryDataTableOngoing() {
       whiteSpace="nowrap"
       className="chakra-table-container"
     >
+      <DeliveryProgressModal
+        isOpen={progressModalClosure.isOpen}
+        onOpen={progressModalClosure.onOpen}
+        onClose={progressModalClosure.onClose}
+        deliveryId={deliveryId}
+      />
       <Table>
         <Thead className="chakra-table-container--table__thead">
           <Tr className="thead--tr">
@@ -60,6 +73,38 @@ function AdminDeliveryDataTableOngoing() {
             ))}
           </Tr>
         </Thead>
+        <Tbody className="chakra-table-container--table__tbody">
+          {data?.data?.map((delivery) => (
+            <Tr
+              onClick={() => showDelivery(delivery?._id)}
+              className="tbody-tr"
+              key={delivery._id}
+            >
+              <Td className="tbody-tr--td">
+                <img
+                  className="tbody-tr--image"
+                  src={delivery?.delivery_personnel[0]?.display_photo}
+                  alt=""
+                />
+              </Td>
+              <Td>
+                {delivery?.delivery_personnel[0]?.firstname +
+                  " " +
+                  delivery?.delivery_personnel[0]?.lastname}
+              </Td>
+              <Td>{delivery?.delivery_personnel[0]?.contact_number}</Td>
+              <Td className="tbody-tr--td">
+                <img
+                  className="tbody-tr--image"
+                  src={delivery?.vehicle[0]?.vehicle_image}
+                  alt=""
+                />
+              </Td>
+              <Td>{delivery?.vehicle[0]?.vehicle_name}</Td>
+              <Td>{delivery?.vehicle[0]?.vehicle_id}</Td>
+            </Tr>
+          ))}
+        </Tbody>
       </Table>
     </TableContainer>
   );

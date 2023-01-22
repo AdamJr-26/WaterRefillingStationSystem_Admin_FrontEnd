@@ -4,12 +4,96 @@
 .transactions-wrapper {
     padding: 5px 10px;
 
-    
+
     gap: 10px;
 
-    p {
-        font-weight: 700;
-        color: colors.$gray-800;
+    &--header {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &__title {
+            font-weight: 700;
+            color: colors.$gray-800;
+        }
+
+        &__query-dates {
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+
+            div {
+                p {
+                    font-weight: 700;
+                    color: colors.$gray-500;
+                }
+            }
+        }
+    }
+
+    &--pagination-buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+
+        &__current-page {
+            padding: 5px;
+            font-weight: 700;
+            border-radius: 15px;
+
+        }
+
+        &__back {
+            display: flex;
+            flex-direction: row;
+            gap: 2px;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            p:nth-child(1),
+            p:nth-child(2) {
+                font-size: 24px;
+                color: colors.$blue-900;
+            }
+
+            p:nth-child(3) {
+                font-weight: 700;
+                color: colors.$blue-900;
+            }
+
+        }
+
+        &__next {
+            display: flex;
+            flex-direction: row;
+            gap: 2px;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            p:nth-child(1) {
+                font-weight: 700;
+                color: colors.$blue-900;
+            }
+
+            p:nth-child(2),
+            p:nth-child(3) {
+                font-size: 24px;
+                color: colors.$blue-900;
+            }
+        }
+    }
+
+    &--date-from-results {
+        p {}
+
+        button {
+            background: colors.$blue-900;
+            padding: 2px 8px;
+            color: white;
+            border-radius: 15px;
+        }
     }
 
     &--item {
@@ -18,12 +102,28 @@
         gap: 10px;
         padding: 10px 0px;
         border-bottom: 1px solid colors.$gray-200;
+        cursor: pointer;
+        padding-left: 5px;
 
-        img {
-            height: 50px;
-            width: auto;
-            border-radius: 8px;
+        &:hover {
+            background-color: colors.$gray-100;
         }
+
+        &__image-wrapper {
+            min-height: 60px;
+            min-width: 60px;
+            border-radius: 8px;
+            background-color: colors.$gray-200;
+            padding: 5px;
+
+            img {
+                height: 50px;
+                width: auto;
+                border-radius: 8px;
+            }
+        }
+
+
 
         &__person-info {
             display: flex;
@@ -49,7 +149,7 @@
 
             .address {
                 font-size: 14px;
-                color: colors.$gray-400;
+                color: colors.$gray-500;
                 white-space: nowrap;
                 overflow: hidden;
                 width: 170px;
@@ -64,7 +164,7 @@
                 display: flex;
                 white-space: nowrap;
                 overflow: hidden;
-                width: 170px;
+                width: 180px;
                 display: -webkit-box;
                 -webkit-line-clamp: 3;
                 -webkit-box-orient: vertical;
@@ -87,37 +187,61 @@
         }
 
         &__amount-buttons {
+            display: flex;
             align-self: flex-end;
             background-color: white;
             z-index: 1;
-            .amount {
-                font-size: 1.6rem;
-                font-weight: 600;
-                white-space: nowrap;
-                margin: 0;
-                color: colors.$blue-900;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            margin-right: 10px;
+            flex-direction: column;
+            gap: 5px;
 
+            div {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                white-space: nowrap;
+                align-items: center;
+                padding: 5px;
+                justify-content: flex-end;
+
+                p:nth-child(1) {
+                    font-size: 12px;
+
+                }
+
+                p:nth-child(2) {
+                    font-weight: 700;
+                    font-size: 19px;
+                }
             }
 
-            button {
-                white-space: nowrap;
-                margin: 0;
-                background: none;
-                border: 1px solid colors.$blue-900;
-                border-radius: 8px;
-                padding: 4px;
+            // button {
+            //     white-space: nowrap;
+            //     margin: 0;
+            //     background: none;
+            //     border: 1px solid colors.$blue-900;
+            //     border-radius: 8px;
+            //     padding: 4px;
 
-            }
+            // }
         }
 
     }
 }
 
-@media only screen and (min-width:breakpoints.$lg) {
+@media only screen and (min-width:breakpoints.$sm) {
     .transactions-wrapper {
-     
+        &--header {
+            flex-direction: row;
+        }
+
         &--item {
             &__person-info {
+
+
                 .name {
                     width: fit-content;
 
@@ -126,6 +250,13 @@
                 .address {
                     width: fit-content;
                 }
+                .regular-date-wrapper {
+                    width: 200px;
+                }
+            }
+
+            &__amount-buttons {
+                flex-direction: row;
             }
 
         }

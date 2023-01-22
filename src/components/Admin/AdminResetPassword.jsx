@@ -174,44 +174,6 @@ function AdminResetPassword() {
                 </Button>
               </ModalFooter>
             </ModalContent>
-
-            {/* warning modal */}
-            {/* <AlertDialog
-              isOpen={warning.isOpen}
-              leastDestructiveRef={cancelRef}
-              onClose={warning.onClose}
-            >
-              <AlertDialogOverlay>
-                <AlertDialogContent>
-                  <AlertDialogHeader fontSize="lg" fontWeight="bold">
-                    Change Password?
-                  </AlertDialogHeader>
-
-                  <AlertDialogBody>
-                    Are you sure you want to change password? You can't undo
-                    this action afterwards.
-                  </AlertDialogBody>
-
-                  <AlertDialogFooter>
-                    <Button
-                      type="button"
-                      ref={cancelRef}
-                      onClick={warning.onClose}
-                    >
-                      Cancel
-                    </Button>
-                    <Button
-                      colorScheme="red"
-                      backgroundColor="#FF7046"
-                      ml={3}
-                      type="submit"
-                    >
-                      Confirm
-                    </Button>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialogOverlay>
-            </AlertDialog> */}
           </Form>
         </Formik>
       </Modal>
