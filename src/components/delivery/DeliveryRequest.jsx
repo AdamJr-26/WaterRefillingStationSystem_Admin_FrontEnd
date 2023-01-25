@@ -3,6 +3,7 @@ import useFetch from "../../hooks/api/useFetch";
 import { DeliveryAccept } from "../../services/api/delivery/delivery.accept";
 import useSWR, { useSWRConfig } from "swr";
 import { useToast, Button } from "@chakra-ui/react";
+import NoData from "../general/NoData";
 
 function DeliveryRequest() {
   const { data, error } = useFetch({ url: "/api/deliveries/pending" });
@@ -106,7 +107,7 @@ function DeliveryRequest() {
             </div>
           ))
         ) : (
-          <h1>No Delivery Request Yet </h1>
+          <NoData />
         )}
       </div>
     );

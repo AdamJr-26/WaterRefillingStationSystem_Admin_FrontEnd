@@ -39,24 +39,24 @@ function AdminInventoryGallon({ data }) {
   ];
 
   // we just edit here some data before putting in table.
-  const dataTr = (data) => {
-    let value = [];
-    for (let i = 0; i < data?.length; i++) {
-      const total = data[i]?.total;
-      const borrowed = data[i].borrowed;
-      data[i].available = total - borrowed;
-      value.push(data[i]);
-    }
-    return value;
-  };
-  dataTr(data);
+  // const dataTr = (data) => {
+  //   let value = [];
+  //   for (let i = 0; i < data?.length; i++) {
+  //     const total = data[i]?.total;
+  //     const borrowed = data[i]?.borrowed?.total_borrowed;
+  //     data[i].available = total - borrowed;
+  //     value.push(data[i]);
+  //   }
+  //   return value;
+  // };
+  // dataTr(data);
 
   const [page, setPage] = useState(1);
   const [limitPerPage, setLimitPerPage] = useState(5);
   const indexOfLastItem = page * limitPerPage;
   const indexOfFirstItem = indexOfLastItem - limitPerPage;
-  const currentItems = dataTr(data).slice(indexOfFirstItem, indexOfLastItem); // data should change for every table;
-  const totalItems = dataTr(data).length;
+  const currentItems = data?.slice(indexOfFirstItem, indexOfLastItem); // data should change for every table;
+  const totalItems = data?.length;
 
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(totalItems / limitPerPage); i++) {
@@ -67,6 +67,7 @@ function AdminInventoryGallon({ data }) {
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [showItem, setShowItem] = useState({});
+
   const handleModal = (item) => {
     onOpen();
     setShowItem({ id: item._id, admin: item?.admin });
@@ -149,7 +150,7 @@ function AdminInventoryGallon({ data }) {
         },
       };
       const responseHandler = (data, error) => {
-        console.log('dataaaa',data)
+        console.log("dataaaa", data);
         if (data && !error) {
           mutate("/api/gallons");
           // toast
@@ -327,14 +328,23 @@ function AdminInventoryGallon({ data }) {
                 />
               </Td>
               <Td>{item.name}</Td>
-              <Td isNumeric className={item?.borrowed < 0 ? "warning" : "good"}>
-                {item.borrowed}
+              <Td
+                isNumeric
+                className={
+                  item?.borrowed[0]?.total_borrowed < 0 ? "warning" : "good"
+                }
+              >
+                {item.borrowed[0]?.total_borrowed}
               </Td>
               <Td
                 isNumeric
-                className={item?.available < 0 ? "warning" : "neutral"}
+                className={
+                  item?.total - item.borrowed[0]?.total_borrowed < 0
+                    ? "warning"
+                    : "neutral"
+                }
               >
-                {item.available}
+                {item?.total - item.borrowed[0]?.total_borrowed}
               </Td>
               <Td isNumeric className={item?.total < 0 ? "warning" : "neutral"}>
                 {item.total}

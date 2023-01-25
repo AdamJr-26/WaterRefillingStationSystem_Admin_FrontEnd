@@ -154,7 +154,7 @@
                 overflow: hidden;
                 width: 170px;
                 display: -webkit-box;
-                -webkit-line-clamp: 3;
+                -webkit-line-clamp: 4;
                 -webkit-box-orient: vertical;
                 position: relative;
 
@@ -166,7 +166,7 @@
                 overflow: hidden;
                 width: 180px;
                 display: -webkit-box;
-                -webkit-line-clamp: 3;
+                -webkit-line-clamp: 0;
                 -webkit-box-orient: vertical;
                 // position: relative;
 
@@ -182,6 +182,7 @@
                 .date {
                     font-size: 12px;
                     margin-left: 10px;
+                    font-weight: 500;
                 }
             }
         }
@@ -251,7 +252,7 @@
                     width: fit-content;
                 }
                 .regular-date-wrapper {
-                    width: 200px;
+                    width: 220px;
                 }
             }
 

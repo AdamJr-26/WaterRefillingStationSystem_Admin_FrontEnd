@@ -1,0 +1,21 @@
+@use '../../colors';
+@use '../../breakpoints';
+
+
+.no-data-to-show {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+
+    &--image-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        img {
+            height: 150px;
+            width: auto;
+
+        }
+    }
+}

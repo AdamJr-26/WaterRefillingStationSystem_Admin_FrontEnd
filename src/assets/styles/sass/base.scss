@@ -5,12 +5,15 @@
 @use './components/adminTopbar.scss';
 @use './components/adminCredits';
 @use './components/adminCreditsTransactions';
-@use './components//adminDelivery';
+
+@use './components/delivery/adminDelivery';
+
 @use './components/textinput';
 @use './components/textinputPassword.';
 @use './components/textinputSelect';
 
 @use './components/general/datetime';
+@use './components/general/noData';
 
 @use './components/inventory/adminInventory';
 @use './components/inventory/adminInventoryAddGallon';

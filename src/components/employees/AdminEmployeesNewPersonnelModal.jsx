@@ -18,7 +18,7 @@ import TextInput from "../general/TextInput";
 import React, { useState, useEffect } from "react";
 import { applyNewPersonel } from "../../services/api/employees/employee.post";
 
-function AdminEmployeesNewPersonelModal({ isOpen, onOpen, onClose }) {
+function AdminEmployeesNewPersonnelModal({ isOpen, onOpen, onClose }) {
   const [isSending, setIsSending] = useState(false);
   const [applyID, setApplyID] = useState(false);
   const [expiry, setExpiry] = useState(10);
@@ -29,7 +29,7 @@ function AdminEmployeesNewPersonelModal({ isOpen, onOpen, onClose }) {
       <Modal onClose={onClose} isOpen={isOpen} isCentered>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>New Delivery Personel</ModalHeader>
+          <ModalHeader>New Delivery Personnel</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Formik
@@ -128,4 +128,4 @@ function AdminEmployeesNewPersonelModal({ isOpen, onOpen, onClose }) {
   );
 }
 
-export default AdminEmployeesNewPersonelModal;
+export default AdminEmployeesNewPersonnelModal;

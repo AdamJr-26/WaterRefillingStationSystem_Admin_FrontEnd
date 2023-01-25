@@ -1,13 +1,13 @@
 import React from "react";
-import AdminEmployeesDataTableDeliveryPersonels from "../components/employees/AdminEmployeesDataTableDeliveryPersonels";
+import AdminEmployeesDataTableDeliveryPersonnels from "../components/employees/AdminEmployeesDataTableDeliveryPersonels";
 import { Icon } from "@iconify/react";
 import { useDisclosure } from "@chakra-ui/react";
-import AdminEmployeesNewPersonelModal from "../components/employees/AdminEmployeesNewPersonelModal";
-import usePersonels from "../hooks/api/usePersonels";
+import AdminEmployeesNewPersonnelModal from "../components/employees/AdminEmployeesNewPersonnelModal";
+import usePersonnels from "../hooks/api/usePersonnels";
 
 function AdminEmployess() {
   const newPersonelClosure = useDisclosure();
-  const { personels, personelsError } = usePersonels({
+  const { personnels, personelsError } = usePersonnels({
     url: "/api/delivery-personels",
   });
   return (
@@ -16,10 +16,10 @@ function AdminEmployess() {
         <div className="personel-search-new-wrapper">
           <div className="personel-search-new-wrapper--header">
             <p className="personel-search-new-wrapper--header__title">
-              Delivery Personels
+              Delivery Personnels
             </p>
             <p className="personel-search-new-wrapper--header__description">
-              Manage your delivery personels.
+              Manage your delivery personnels.
             </p>
           </div>
           <div className="personel-search-new-wrapper--search-new-personel">
@@ -30,9 +30,9 @@ function AdminEmployess() {
             </div>
             <div className="personel-search-new-wrapper--search-new-personel__new-personel">
               <button onClick={newPersonelClosure.onOpen}>
-                <Icon icon="material-symbols:add" /> New Personel
+                <Icon icon="material-symbols:add" /> New Personnel
               </button>
-              <AdminEmployeesNewPersonelModal
+              <AdminEmployeesNewPersonnelModal
                 isOpen={newPersonelClosure.isOpen}
                 onOpen={newPersonelClosure.onOpen}
                 onClose={newPersonelClosure.onClose}
@@ -40,7 +40,7 @@ function AdminEmployess() {
             </div>
           </div>
         </div>
-        <AdminEmployeesDataTableDeliveryPersonels data={personels?.data} />
+        <AdminEmployeesDataTableDeliveryPersonnels data={personnels?.data} />
       </div>
     </div>
   );

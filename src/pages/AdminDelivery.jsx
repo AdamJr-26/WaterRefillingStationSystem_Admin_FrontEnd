@@ -6,14 +6,14 @@ import React, { useState } from "react";
 import { onGoingDeliveries } from "../lib/sample/data";
 import useFetch from "../hooks/api/useFetch";
 import DeliveryRequest from "../components/delivery/DeliveryRequest";
-import AdminDeliveryDataTableOngoing from "../components/delivery/AdminDeliveryDataTableOngoing";
+import AdminDeliveryDataTable from "../components/delivery/AdminDeliveryDataTable";
 
 function AppDelivery() {
   const {
     data: ongoing_deliveries,
     error: deliveries_error,
     mutate: mutateOngoingDeliveries,
-    isValidating,
+    isValidating: isValidatingOD,
   } = useFetch({
     url: "/api/deliveries/ongoing",
   });
@@ -51,9 +51,10 @@ function AppDelivery() {
             Tracks your ongoing deliveries
           </p>
         </div>
-        <AdminDeliveryDataTableOngoing
+        <AdminDeliveryDataTable
           data={ongoing_deliveries}
           error={deliveries_error}
+          isValidating={isValidatingOD}
         />
       </div>
 
@@ -66,9 +67,10 @@ function AppDelivery() {
             Tracks the finished deliveries
           </p>
         </div>
-        <AdminDeliveryDataTableOngoing
+        <AdminDeliveryDataTable
           data={finishedDeliveries}
           error={finishedDeliveriesError}
+          isValidating={isValidatingFD}
         />
       </div>
     </div>

@@ -15,7 +15,7 @@ function AppInventory() {
   const { gallons, gallonsError } = useGallons({
     url: "/api/gallons",
   });
-  const gallonsData = gallons?.data;
+  console.log("gallons", gallons);
   const { vehicles, vehiclesError } = useVehicles({ url: "/api/vehicles" });
   const vehiclesData = vehicles?.data;
 
@@ -29,7 +29,7 @@ function AppInventory() {
           </p>
         </div>
         <AdminInventoryDataTableGallon
-          data={gallonsData}
+          data={gallons?.data}
           error={gallonsError?.data}
         />
       </div>

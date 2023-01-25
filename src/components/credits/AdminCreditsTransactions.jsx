@@ -3,7 +3,6 @@ import useFetch from "../../hooks/api/useFetch";
 import { Icon } from "@iconify/react";
 import transformDate from "../../utils/date.toString";
 
-
 import {
   Skeleton,
   SkeletonCircle,
@@ -12,6 +11,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import PayCreditsModal from "./PayCreditsModal";
+import NoData from "../general/NoData";
 
 function AdminCreditsLastransactions() {
   // set initial value of current page, total_pages, and limit per page.
@@ -22,7 +22,6 @@ function AdminCreditsLastransactions() {
   const [limitItems, setLimitItems] = useState(5);
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
-
 
   const {
     data,
@@ -68,7 +67,6 @@ function AdminCreditsLastransactions() {
     if (to_date_unix > from_date_unix) {
       setCurrentPage(1);
       mutatePagination();
-      
     } else {
     }
   }, [fromDate, toDate]);
@@ -117,14 +115,8 @@ function AdminCreditsLastransactions() {
           </p>
         </div>
       ) : null}
-      {isValidating ? (
-        <div>
-          <Stack>
-            <Skeleton height="40px" />
-            <Skeleton height="40px" />
-            <Skeleton height="40px" />
-          </Stack>
-        </div>
+      {!data?.data?.length ? (
+        <NoData />
       ) : (
         data?.data.map((credit, index) => (
           <div
@@ -187,9 +179,12 @@ function AdminCreditsLastransactions() {
             <p>Prev</p>
           </div>
         ) : null}
-        <p className="transactions-wrapper--pagination-buttons__current-page">
-          {currentPage}
-        </p>
+        {data?.data.length ? (
+          <p className="transactions-wrapper--pagination-buttons__current-page">
+            {currentPage}
+          </p>
+        ) : null}
+
         {data?.data.length >= limitItems ? (
           <div
             onClick={() => onPressnext()}
