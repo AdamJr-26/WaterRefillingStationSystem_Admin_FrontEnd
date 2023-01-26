@@ -2,7 +2,7 @@
 @use '../breakpoints';
 
 // $$$$$$
-// THIS STYLE IS THE UNIVERSAL OF ALL CHAKRA UI'S TABLE.
+// THIS STYLE IS FOR ALL CHAKRA UI'S TABLE.
 // $$$$$$$$
 .chakra-table-container {
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
@@ -10,7 +10,7 @@
 
     &--table {
         &__thead {
-            height: 45px;
+            height: 70px;
             background-color: colors.$gray-200;
         }
 

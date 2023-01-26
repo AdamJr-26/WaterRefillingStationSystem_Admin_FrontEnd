@@ -30,7 +30,7 @@ import {
 } from "@chakra-ui/icons";
 import DeliveryProgressModal from "./modal/DeliveryProgressModal";
 import NoData from "../general/NoData";
-function AdminDeliveryDataTableOngoing({ data, error, isValidating }) {
+function AdminDeliveryDataTable({ data, error, isValidating }) {
   // FETCH DELIVERIES WITH APPROVED:TRUE, RETURNED:FALSE
 
   const deliveryThead = [
@@ -124,4 +124,4 @@ function AdminDeliveryDataTableOngoing({ data, error, isValidating }) {
   }
 }
 
-export default AdminDeliveryDataTableOngoing;
+export default AdminDeliveryDataTable;

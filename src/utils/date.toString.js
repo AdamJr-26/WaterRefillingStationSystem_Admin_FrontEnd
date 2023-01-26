@@ -25,7 +25,7 @@ function transformDate(date_str) {
   const date = new Date(date_str);
   const current_date = `${
     monthNames[date?.getMonth()]
-  }, ${date?.getDate()}, ${date?.getFullYear().toLocaleString()}`;
+  }, ${date?.getDate()}, ${date?.getFullYear()}`;
   const day = weekdays[date?.getDay()];
   return { string_date: current_date, day };
 }

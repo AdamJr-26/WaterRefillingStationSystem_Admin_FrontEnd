@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import ScrollContainer from "react-indiana-drag-scroll";
 // import AdminCreditNewTransaction from "../components/AdminCreditNewTransaction";
 // import AdminDataGrid from "../components/AdminDataGrid";
@@ -7,6 +7,8 @@ import { onGoingDeliveries } from "../lib/sample/data";
 import useFetch from "../hooks/api/useFetch";
 import DeliveryRequest from "../components/delivery/DeliveryRequest";
 import AdminDeliveryDataTable from "../components/delivery/AdminDeliveryDataTable";
+import { Icon } from "@iconify/react";
+import FinishedDeliveryWrapper from "../components/delivery/component.wrapper/FinishedDeliveryWrapper";
 
 function AppDelivery() {
   const {
@@ -17,39 +19,31 @@ function AppDelivery() {
   } = useFetch({
     url: "/api/deliveries/ongoing",
   });
-  // console.log("ongoing_deliveries", ongoing_deliveries);
-
-  // fetch finished deliveries by date.
-  const [fromDate, setFromDate] = useState(null);
-  const [toDate, setToDate] = useState(null);
-  const {
-    data: finishedDeliveries,
-    error: finishedDeliveriesError,
-    mutate: mutateFinishedDeliveries,
-    isValidating: isValidatingFD,
-  } = useFetch({ url: `/api/deliveries/finished/${fromDate}/${toDate}` });
-  console.log("finishedDeliveries", finishedDeliveries);
   return (
     <div className="admin-delivery">
       <div className="delivery-request-wrapper">
         <div className="delivery-request-wrapper--header">
-          <p className="delivery-request-wrapper--header__title">
-            Request Delivery
-          </p>
+          <div>
+            <p className="delivery-request-wrapper--header__title">
+              Request Delivery
+            </p>
+          </div>
         </div>
         {/* the style of this shit is embedded from this parent module */}
         <DeliveryRequest />
       </div>
 
       {/* ongling deliveries */}
-      <div className="table-ongoing-delivery">
-        <div className="table-ongoing-delivery--header">
-          <p className="table-ongoing-delivery--header__title">
-            Ongoing Deliveries
-          </p>
-          <p className="table-ongoing-delivery--header__description">
-            Tracks your ongoing deliveries
-          </p>
+      <div className="delivery-data-table">
+        <div className="delivery-data-table--header">
+          <div>
+            <p className="delivery-data-table--header__title">
+              Ongoing Deliveries
+            </p>
+            <p className="delivery-data-table--header__description">
+              Tracks your ongoing deliveries
+            </p>
+          </div>
         </div>
         <AdminDeliveryDataTable
           data={ongoing_deliveries}
@@ -57,22 +51,8 @@ function AppDelivery() {
           isValidating={isValidatingOD}
         />
       </div>
+      <FinishedDeliveryWrapper /> 
 
-      <div className="table-ongoing-delivery">
-        <div className="table-ongoing-delivery--header">
-          <p className="table-ongoing-delivery--header__title">
-            Finished Deliveries
-          </p>
-          <p className="table-ongoing-delivery--header__description">
-            Tracks the finished deliveries
-          </p>
-        </div>
-        <AdminDeliveryDataTable
-          data={finishedDeliveries}
-          error={finishedDeliveriesError}
-          isValidating={isValidatingFD}
-        />
-      </div>
     </div>
   );
 }

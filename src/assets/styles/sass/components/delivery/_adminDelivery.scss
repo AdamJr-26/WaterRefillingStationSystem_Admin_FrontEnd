@@ -9,15 +9,20 @@
     gap: 10px;
     width: 100%;
 
-    .table-ongoing-delivery {
+    .delivery-data-table {
         display: flex;
         flex-direction: column;
         gap: 10px;
         // box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         // padding: 10px;
         // border-radius: 15px;
-
+        border-bottom: 3px solid colors.$gray-100;
+        padding: 10px 0px;
         &--header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
             &__title {
                 font-size: 24px;
                 font-weight: 500;
@@ -28,6 +33,13 @@
             &__description {
                 font-size: 14px;
                 color: colors.$gray-400;
+            }
+
+            &__menu {
+                .delivery-data-table-header-menu-date-query {
+                    display: flex;
+                    flex-direction: row;
+                }
             }
         }
     }
