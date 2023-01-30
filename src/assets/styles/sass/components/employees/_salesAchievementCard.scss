@@ -1,0 +1,130 @@
+@use '../../colors';
+@use '../../breakpoints';
+
+.admin-employee-sales-achievement-card {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    max-width: 260px;
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 1 1 0;
+
+    &--personnel-info {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        justify-content: center;
+        align-items: center;
+
+        &__image-wrapper {
+            height: 60px;
+            width: 60px;
+            background-color: colors.$gray-200;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img{
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &__name {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        &__type {
+            font-size: 12px;
+        }
+    }
+
+    &--statistic {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        border-radius: 10px;
+        border: 1px solid colors.$gray-300;
+        padding: 5px 10px;
+        align-items: center;
+
+        &__border {
+            height: 30px;
+            width: 2px;
+            border-radius: 50%;
+            background-color: colors.$gray-300;
+        }
+
+        &__sales,
+        &__engagement {
+            flex: 1 1 0;
+            padding: 5px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            P:nth-child(1) {
+                font-size: 12px;
+                white-space: nowrap;
+
+            }
+            p:nth-child(2) {
+                font-weight: 600;
+                white-space: nowrap;
+                font-size: 16px;
+            }
+
+            div {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+                align-items: center;
+
+                p:nth-child(1) {
+                    font-weight: 600;
+                    white-space: nowrap;
+                    font-size: 16px;
+                }
+
+                p:nth-child(2) {
+                    font-size: 12px;
+                    font-weight: 800;
+                    color: green;
+
+                }
+            }
+        }
+    }
+
+    &--other-info {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        // padding: 5px 10px;
+        align-items: center;
+
+        // justify-content: center;
+        &__profile {
+            border-radius: 15px;
+            border: 1px solid colors.$gray-300;
+            padding: 8px 20px;
+            font-weight: 600;
+            transition: all ease-in-out 100ms;
+
+            &:hover {
+                background: colors.$blue-900;
+                color: white;
+                font-weight: 600;
+                border: 1px solid colors.$blue-900;
+            }
+        }
+    }
+}

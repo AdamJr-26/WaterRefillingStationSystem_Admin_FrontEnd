@@ -62,8 +62,11 @@ function AdminTopbar() {
         <p className="route"></p>
       </div>
       <div className="topbar--right-options">
-        <DateTime />
-        <div className="topbar--right-options__profile" ref={btnRef} onClick={onOpen}>
+        <div
+          className="topbar--right-options__profile"
+          ref={btnRef}
+          onClick={onOpen}
+        >
           <span className="name">{user?.firstname?.toUpperCase()}</span>
           <img src="https://picsum.photos/200" alt="admin image" srcSet="" />
         </div>

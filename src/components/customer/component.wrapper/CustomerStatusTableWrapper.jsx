@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import AdminCustomerDataTable from "../AdminCustomerDataTable";
 import useFetch from "../../../hooks/api/useFetch";
 import { Icon } from "@iconify/react";
+import AdminSearchBox from "../../../components/AdminSearchbox";
+
 function CustomerStatusTableWrapper() {
   const [currentPage, setCurrentPage] = useState(1);
   const [limitItems, setLimitItems] = useState(5);
-
+  const [searchText, setSearchText] = useState("");
+  const [sortby, setSortby] = useState("firstname");
+  const [existsOnly, setExistsOnly] = useState("firstname");
   const onPressPrev = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
@@ -19,10 +23,16 @@ function CustomerStatusTableWrapper() {
   const customersStatus = useFetch({
     url: `/api/customers/status/borrowed/credits/lastdelivery/${limitItems}/${
       limitItems * currentPage - limitItems
-    }`,
+    }/${searchText ? searchText : null}/${sortby}/${existsOnly}`,
   });
-  console.log("customersStatus", customersStatus?.data);
+  console.log("customersStatus", customersStatus);
 
+  const handleSortOption = (e) => {
+    setSortby(e.target.value);
+  };
+  const handleSelectOnly = (e) => {
+    setExistsOnly(e.target.value);
+  };
   return (
     <div className="table-customers">
       <div className="table-customers--header">
@@ -32,14 +42,61 @@ function CustomerStatusTableWrapper() {
         </div>
         <div className="table-customers--header__menu">
           <div className="query-by">
-            <p className="query-by--title">Query by</p>
             <div className="query-by--options">
-              <button className="query-by--options__button">All</button>
+              <AdminSearchBox
+                placeholder="Search"
+                value={searchText}
+                setValue={setSearchText}
+              />
+            </div>
+            <div className="query-by--options">
+              <p>Sort by: </p>
+              <select
+                onChange={(e) => handleSortOption(e)}
+                name="sort"
+                id="sort"
+              >
+                <option value="firstname">Sort by firstname</option>
+                <option value="lastname">Sort by lastname</option>
+                <option value="last_delivery.date.unix_timestamp">
+                  Last Delivery
+                </option>
+                {/* <option value="schedules.schedule.unix_timestamp">
+                  Schedule
+                </option> */}
+              </select>
+            </div>
+            <div className="query-by--options">
+              <p>Select only: </p>
+              <select
+                onChange={(e) => handleSelectOnly(e)}
+                name="sort"
+                id="sort"
+              >
+                <option value="firstname" disabled selected>
+                  Options
+                </option>
+                <option value="last_delivery.date.unix_timestamp">
+                  With Last Delivery
+                </option>
+                <option value="schedules.schedule.unix_timestamp">
+                  With schedule
+                </option>
+                <option value="credit.total_credit_amount">With credit</option>
+                <option value="borrow.total_borrowed_gallon">
+                  With Borrowed
+                </option>
+              </select>
             </div>
           </div>
         </div>
       </div>
-      <AdminCustomerDataTable data={customersStatus?.data} />
+      <AdminCustomerDataTable
+        data={customersStatus?.data}
+        error={customersStatus.error}
+        isValidating={customersStatus.isValidating}
+        setSortby={setSortby}
+      />
 
       <div className="transactions-wrapper--pagination-buttons">
         {currentPage > 1 ? (

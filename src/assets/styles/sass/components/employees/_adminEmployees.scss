@@ -9,10 +9,64 @@
     gap: 10px;
     width: 100%;
 
+    .admin-employees-page-sales-achievement {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        &--header {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+            flex-flow: row wrap;
+            p:nth-child(1) {
+                font-size: 19px;
+                font-weight: 500;
+                color: colors.$gray-600;
+                white-space: nowrap;
+
+            }
+
+            &__top {
+                display: flex;
+                flex-direction: row;
+                gap: 5px;
+                align-items: center;
+
+                p:nth-child(1) {
+                    font-size: 12px;
+                    font-weight: 500;
+                }
+                input {
+                    border: 2px solid colors.$blue-900;
+                    outline: none;
+                    padding: 2px 5px;
+                    border-radius: 15px;
+                    max-width: 50px;
+                    text-align: center;
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+        }
+
+        &--personnel-cards {
+            display: flex;
+            // flex-flow: row wrap;
+            padding: 15px;
+            gap: 20px;
+            overflow-x: auto;
+            overflow-y: hidden;
+
+        }
+    }
+
     .admin-employee-personel-table {
         display: flex;
         flex-direction: column;
         gap: 10px;
+
         .personel-search-new-wrapper {
             display: flex;
             flex-direction: column;
@@ -34,7 +88,9 @@
                     font-size: 14px;
                     color: colors.$gray-400;
                 }
+
             }
+
 
             &--search-new-personel {
                 display: flex;
@@ -43,24 +99,28 @@
                 flex-flow: row wrap;
                 justify-content: space-between;
                 align-items: center;
-                &__search{
-                    button:nth-child(1){
+
+                &__search {
+                    button:nth-child(1) {
                         font-size: 24px;
                         border: 1px solid colors.$gray-100;
                         padding: 10px;
                         border-radius: 10px;
-                        &:hover{
+
+                        &:hover {
                             background-color: colors.$gray-100;
                             transition: all ease-in-out 200ms;
                         }
                     }
                 }
-                &__new-personel{
+
+                &__new-personel {
                     background-color: colors.$blue-900;
                     padding: 10px;
                     border-radius: 10px;
                     color: white;
-                    button:nth-child(1){
+
+                    button:nth-child(1) {
                         display: flex;
                         flex-direction: row;
                         align-items: center;

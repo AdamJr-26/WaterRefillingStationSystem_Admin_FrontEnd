@@ -72,7 +72,7 @@ function AdminEmployeesDataTableDeliveryPersonels({ data }) {
     setShowItem({ id: item._id, admin: item?.admin });
   };
 
-
+console.log("currentItems",currentItems)
   return (
     <div>
       <TableContainer
@@ -109,7 +109,7 @@ function AdminEmployeesDataTableDeliveryPersonels({ data }) {
                 <Td className="tbody-tr--td">
                   <img
                     className="tbody-tr--image"
-                    src={personel?.image}
+                    src={personel?.display_photo}
                     alt=""
                   />
                 </Td>
@@ -119,7 +119,7 @@ function AdminEmployeesDataTableDeliveryPersonels({ data }) {
                 <Td>{personel?.nickname}</Td>
                 <Td>{personel?.contact_number}</Td>
                 <Td>{personel?.gmail}</Td>
-                <Td>{personel?.status}</Td>
+                <Td>{personel?.on_delivery}</Td>
 
                 <Td>
                   <Menu>

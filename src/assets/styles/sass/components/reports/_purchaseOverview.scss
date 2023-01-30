@@ -1,0 +1,92 @@
+@use '../../colors';
+@use '../../breakpoints';
+
+.purchase-overview {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin: 5px;
+    border-radius: 15px;
+    padding: 5px;
+    gap: 10px;
+
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+    &--header {
+        padding: 10px 0;
+
+        &__title {
+            font-weight: 500;
+            font-size: 19px;
+            color: colors.$gray-700;
+        }
+
+        &__description {
+            font-size: 12px;
+            font-weight: 500;
+            color: colors.$gray-500;
+        }
+
+    }
+
+    &--main-bar {
+        padding: 5px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        border-radius: 15px;
+        background-color: white;
+        margin: auto;
+        width: 100%;
+
+    }
+
+    &--summary {
+        display: flex;
+        flex-flow: row wrap;
+        gap: 7px;
+        margin: auto;
+        width: 100%;
+        justify-content: space-around;
+
+        &__item {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 5px;
+            flex: 1 1 0;
+
+            .icon {
+                color: colors.$blue-900;
+                background-color: colors.$gray-200;
+                font-size: 32px;
+                padding: 5px;
+                height: 50px;
+                width: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 10px;
+
+            }
+
+            div {
+                p:nth-child(1) {
+                    color: colors.$gray-500;
+                    font-weight: 500;
+                    font-size: 12px;
+                    white-space: nowrap;
+                }
+
+                p:nth-child(2) {
+                    font-weight: 700;
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width:breakpoints.$md) {
+    .purchase-overview {
+        padding: 15px 5px;
+    }
+}

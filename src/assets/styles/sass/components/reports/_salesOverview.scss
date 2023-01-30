@@ -1,0 +1,142 @@
+@use '../../colors';
+@use '../../breakpoints';
+
+.admin-reports-profit-sales-expenses {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin: 5px;
+    border-radius: 15px;
+    padding: 15px 5px;
+    gap: 10px;
+
+    flex-flow: row wrap;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+
+    &--profit {
+        display: flex;
+        flex-direction: column;
+        flex-flow: row wrap;
+        gap: 5px;
+        flex: 1 1 0;
+        &__card {
+            flex: 1 1 0;
+            height: 100px;
+            border: 1px solid colors.$gray-200;
+            border-radius: 15px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            position: relative;
+
+            .title {
+                font-weight: 600;
+                white-space: nowrap;
+                font-size: 14px;
+            }
+            .content{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                &--additonal-content{
+                    p:nth-child(1){
+                        font-size: 10px;
+                        color: green;
+                    }
+                    p:nth-child(2){
+                        font-weight: 600;
+                        color: green;
+                        font-size: 14px;
+                    }
+                }
+            }
+            
+            .month {
+                position: absolute;
+                right: 10px;
+                top: 10px;
+                font-weight: 700;
+                font-size: 10px;
+                background-color: colors.$blue-900;
+                padding: 2px 5px;
+                color: white;
+                border-radius: 5px;
+            }
+
+            div {
+                p {
+                    color: colors.$gray-700;
+                    font-weight: 700;
+                    font-size: 24px;
+
+                }
+            }
+        }
+
+        &__bar {
+            padding: 5px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            border-radius: 15px;
+            background-color: white;
+            margin: auto;
+            width: 100%;
+        }
+    }
+
+    &--sales-expenses {
+        display: flex;
+        flex-flow: row wrap;
+        gap: 5px;
+        flex: 1 1 0;
+
+        &__card {
+            height: 100px;
+            border: 1px solid colors.$gray-200;
+            border-radius: 15px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            position: relative;
+            flex: 1 1 0;
+
+            .title {
+                font-weight: 600;
+                white-space: nowrap;
+                font-size: 14px;
+            }
+
+            .month {
+                position: absolute;
+                right: 10px;
+                top: 10px;
+                font-weight: 700;
+                font-size: 10px;
+                background-color: colors.$blue-900;
+                padding: 2px 5px;
+                color: white;
+                border-radius: 5px;
+            }
+
+            div {
+                p {
+                    color: colors.$gray-700;
+                    font-weight: 700;
+                    font-size: 24px;
+
+                }
+            }
+        }
+
+        &__bar {
+            padding: 5px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            border-radius: 15px;
+            background-color: white;
+            margin: auto;
+            width: 100%;
+        }
+    }
+}

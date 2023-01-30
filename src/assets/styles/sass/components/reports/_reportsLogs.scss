@@ -1,0 +1,57 @@
+@use '../../colors';
+@use '../../breakpoints';
+
+.admin-report-log {
+    background-color: white;
+    padding: 5px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    flex-flow: nowrap;
+
+    &--image {
+        height: 50px;
+        width: 50px;
+        min-height: 50px;
+        max-width: 50px;
+        background-color: colors.$gray-200;
+        border-radius: 100%;
+        flex-flow: nowrap;
+    }
+
+    &--responsible {
+        display: flex;
+        flex-direction: column;
+        flex-flow: column nowrap;
+
+        p:nth-child(1) {
+            font-weight: 600;
+            white-space: none;
+        }
+
+        p:nth-child(2) {
+            font-size: 13px;
+            white-space: none;
+        }
+    }
+
+    &--amount-type {
+        display: flex;
+        flex-direction: column;
+        flex-flow: column nowrap;
+
+        p:nth-child(1) {
+            font-weight: 600;
+            align-self: flex-end;
+            white-space: none;
+        }
+
+        p:nth-child(2) {
+            font-size: 13px;
+            align-self: flex-end;
+            white-space: none;
+        }
+    }
+}

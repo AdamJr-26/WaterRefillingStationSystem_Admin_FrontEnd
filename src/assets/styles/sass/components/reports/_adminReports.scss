@@ -1,0 +1,78 @@
+@use '../../colors';
+@use '../../breakpoints';
+
+.admin-reports {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+
+    .admin-reports-wrapper-for-charts-logs {
+        display: flex;
+        flex-flow: row wrap;
+        gap: 5px;
+    }
+
+    &--query-option {
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+        background-color: white;
+        border-radius: 15px;
+
+        &__title {
+            font-size: 18px;
+            color: colors.$gray-700
+        }
+
+        &__select-date {
+            padding: 5px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+    }
+
+    &--charts {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background: white;
+        border-radius: 15px;
+        gap: 0px;
+        padding: 10px;
+        flex: 2 1 0;
+        
+        &__item {
+            height: auto;
+            max-width: 900px;
+            margin: auto;
+            width: 100%;
+        }
+    }
+
+    &--logs {
+        background-color: white;
+        border-radius: 15px;
+        padding: 15px;
+        flex: 1 1 0;
+
+        &__header {
+            p:nth-child(1) {
+                font-size: 16px;
+                font-weight: 600;
+            }
+        }
+
+    }
+}
+
+@media only screen and (min-width:breakpoints.$md) {
+    .admin-reports {
+
+        &--charts {
+            padding: 10px;
+        }
+    }
+}
