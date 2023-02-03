@@ -34,6 +34,8 @@
 @use './components/dashboard/adminDashboard';
 @use './components/dashboard/adminDashboardCard';
 @use './components/dashboard/adminDashboardCard2';
+@use './components/dashboard/dashboardTodaysOverview';
+@use './components/dashboard/dashboardEngagementToCustomers';
 
 @use './components/adminCreditsNewTransaction';
 @use './components/smallComponents';

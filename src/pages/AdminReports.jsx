@@ -56,10 +56,10 @@ function AdminReports() {
         </div>
         <div className="admin-reports--logs">
           <div className="admin-reports--logs__header">
-            <p>Logs</p>
+            <p>Credits</p>
           </div>
           <div>
-            <ReportLogs />
+            <ReportLogs data={data} selectedDate={selectedDate} />
           </div>
         </div>
       </div>

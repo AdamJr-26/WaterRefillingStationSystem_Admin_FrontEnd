@@ -1,7 +1,7 @@
 import React from "react";
 import { eachDayOfInterval, startOfMonth, endOfMonth } from "date-fns";
 
-import { Bar, Line, Pie } from "react-chartjs-2";
+import { Bar, Line, Pie, Polar } from "react-chartjs-2";
 
 import transformDate from "../../utils/date.toString";
 import { Icon } from "@iconify/react";
@@ -30,7 +30,7 @@ function PurchasesOverview({ selectedDate, data }) {
         pointBorderWidth: 1,
       },
       {
-        id: 1,
+        id: 2,
         label: "Total Paid Products",
         data: data?.data[0].purchases?.map((purchase) => purchase.paid_orders),
         fill: false,
@@ -39,7 +39,7 @@ function PurchasesOverview({ selectedDate, data }) {
         pointBorderWidth: 1,
       },
       {
-        id: 1,
+        id: 3,
         label: "Total Unpaid Amount",
         data: data?.data[0].purchases?.map(
           (purchase) => purchase.credited_amount
@@ -50,7 +50,7 @@ function PurchasesOverview({ selectedDate, data }) {
         pointBorderWidth: 1,
       },
       {
-        id: 1,
+        id: 4,
         label: "Total Paid Amount",
         data: data?.data[0].purchases?.map(
           (purchase) => purchase.paid_orders_amount
@@ -82,7 +82,7 @@ function PurchasesOverview({ selectedDate, data }) {
             <Icon icon="fluent-mdl2:product" />
           </p>
           <div className="">
-            <p>Total product</p>
+            <p>Total sold gallons</p>
             <p>{data?.data[0]?.total_purchased_product}</p>
           </div>
         </div>
@@ -91,7 +91,7 @@ function PurchasesOverview({ selectedDate, data }) {
             <Icon icon="fluent-mdl2:product" />
           </p>
           <div className="">
-            <p>Total paid product</p>
+            <p>Paid gallons</p>
             <p>{data?.data[0]?.total_paid_product}</p>
           </div>
         </div>
@@ -100,7 +100,7 @@ function PurchasesOverview({ selectedDate, data }) {
             <Icon icon="material-symbols:arrow-circle-up-outline" />
           </p>
           <div className="">
-            <p>Total paid amount</p>
+            <p>Paid purchase</p>
             <p>₱ {data?.data[0]?.total_paid_product_amount}</p>
           </div>
         </div>
@@ -109,7 +109,7 @@ function PurchasesOverview({ selectedDate, data }) {
             <Icon icon="material-symbols:arrow-circle-down-outline" />
           </p>
           <div className="">
-            <p>Total unpaid amount</p>
+            <p>Credited gallons</p>
             <p>₱ {data?.data[0]?.total_unpaid_amount}</p>
           </div>
         </div>

@@ -1,0 +1,170 @@
+@use '../../colors';
+@use '../../breakpoints';
+
+
+.dashboard-todays-overview {
+    background-color: white;
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    gap: 10px;
+    overflow: hidden;
+    &--profit-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        flex: 2 1 0;
+        white-space: nowrap;
+
+        &__content {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            p:nth-child(1) {
+                font-weight: 600;
+                font-size: 14px;
+                color: colors.$gray-400;
+            }
+
+            p:nth-child(2) {
+                font-weight: 600;
+                font-size: 36px;
+                padding: 5px 0px;
+            }
+        }
+
+        &__buttons {
+            display: flex;
+            gap: 10px;
+            flex-flow: row wrap;
+
+            button:nth-child(1) {
+                background-color: colors.$gray-200;
+                padding: 10px 20px;
+                border-radius: 15px;
+                font-weight: 600;
+                font-size: 14px;
+                white-space: nowrap;
+            }
+
+            button:nth-child(2) {
+                background-color: colors.$blue-900;
+                padding: 10px 20px;
+                border-radius: 15px;
+                font-weight: 600;
+                color: white;
+                font-size: 14px;
+                white-space: nowrap;
+            }
+        }
+    }
+
+    &--sales-expenses {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        flex: 1 1 0;
+        white-space: nowrap;
+
+
+
+        &__expenses,
+        &__sales {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            padding: 10px 10px;
+            border-radius: 15px;
+
+            div:nth-child(1) {
+                height: 40px;
+                width: 40px;
+                border-radius: 15px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: colors.$gray-100;
+
+                p {
+                    color: colors.$blue-900;
+                    font-size: 24px;
+                }
+
+            }
+
+            div:nth-child(2) {
+                p:nth-child(1) {
+                    font-size: 12px;
+                    font-weight: 600;
+                    color: colors.$gray-400;
+
+                }
+
+                p:nth-child(2) {
+                    font-weight: 700;
+                    font-size: 19px;
+                }
+            }
+        }
+
+        &__sales {
+            animation: sales_expenses_slide_right_animation 0.75s 0s ease-in-out forwards;
+        }
+
+        &__expenses {
+            // animation: name duration timing-function delay iteration-count direction fill-mode;
+            animation: sales_expenses_slide_right_animation 0.75s 100ms ease-in-out forwards;
+        }
+    }
+}
+
+// animation
+@keyframes sales_expenses_slide_right_animation {
+    0% {
+        transform: translateX(100%);
+    }
+
+    60% {
+        transform: translateX(0%);
+    }
+
+    75% {
+        transform: translateX(5%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+
+    // from {
+    //     transform: translateX(100%);
+    // }
+
+    // to {
+    //     transform: translateX(0px);
+    // }
+}
+
+@media only screen and (min-width:breakpoints.$sm) {
+    .dashboard-todays-overview {
+        &--sales-expenses {
+            margin-right: 30px;
+
+            &__sales {
+                margin-left: -30px;
+
+            }
+
+            &__expenses {
+                margin-right: -30px;
+
+            }
+        }
+    }
+}

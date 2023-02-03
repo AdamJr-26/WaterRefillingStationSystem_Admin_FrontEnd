@@ -29,6 +29,44 @@
         }
     }
 
+    &--overview {
+        background-color: white;
+        padding: 10px;
+        border-radius: 15px;
+
+        &__title {
+            font-size: 24px;
+            font-weight: 600;
+            color: colors.$gray-500;
+        }
+    }
+
+    &--engagements {
+        background-color: white;
+        padding: 10px;
+        border-radius: 15px;
+
+        &__title {
+            font-size: 24px;
+            font-weight: 600;
+            color: colors.$gray-500;
+           
+        }
+    }
+
+    &--responses {
+        background-color: white;
+        padding: 10px;
+        border-radius: 15px;
+
+        &__title {
+            font-size: 24px;
+            font-weight: 600;
+            color: colors.$gray-500;
+        }
+    }
+
+    // the rest is deleted
     &--charts {
         display: flex;
         flex-flow: row wrap;
@@ -44,7 +82,7 @@
                 gap: 10px;
 
                 &--graph {
-                    
+
                     background-color: white;
                     padding: 10px;
                     border-radius: 15px;
@@ -68,7 +106,7 @@
                 }
 
                 &--cards {
-                    
+
                     // display: flex;
                     // flex-direction: row;
                     // gap: 10px;
@@ -202,6 +240,7 @@
             gap: 10px;
             width: 100%;
             height: auto;
+
             .label {
 
                 .title {
@@ -225,39 +264,41 @@
         .admin-dashboard {
             &--charts {
                 width: 100%;
-                &__graph-by-month {    
+
+                &__graph-by-month {
                     .graph-card-wrapper {
                         &--graph {
                             width: 100%;
                         }
-    
+
                         &--cards {
                             width: 100%;
                         }
                     }
+
                     .compare-charts-group {
                         gap: 0px;
-    
+
                         .graph-pies {
                             width: 50%;
                             height: 100%;
                             align-items: center;
-                            
-    
-                            
+
+
+
                         }
-    
+
                         .line-charts-profit-expenses {
                             width: 50%;
                         }
                     }
                 }
-               
+
             }
+        }
+
+
     }
-
-
-}
 }
 
 

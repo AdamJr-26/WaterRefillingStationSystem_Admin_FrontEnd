@@ -4,17 +4,10 @@ import { Icon } from "@iconify/react";
 import ScrollContainer from "react-indiana-drag-scroll";
 
 import { Bar, Line, Pie } from "react-chartjs-2";
+import DashboardTodaysOverView from "../components/dashboard/DashboardTodaysOverView";
+import DashboardEngagementCustomers from "../components/dashboard/DashboardEngagementCustomers";
 
-import {
-  income,
-  mostRefilledGallon,
-  orderAndSchedule,
-  placesData,
-} from "../lib/sample/data";
-import AdminDashboardCard2 from "../components/AdminDashboardCard2";
 function AdminDashboard() {
-
-
   return (
     <div className="admin-dashboard">
       <div className="admin-dashboard--greeting">
@@ -23,8 +16,17 @@ function AdminDashboard() {
         </p>
         <p className="admin-dashboard--greeting__date">October 3,2022</p>
       </div>
-
-      
+      <div className="admin-dashboard--overview">
+        <p className="admin-dashboard--overview__title">Overview</p>
+        <DashboardTodaysOverView />
+      </div>
+      <div className="admin-dashboard--engagements">
+        <p className="admin-dashboard--overview__title">Engagements</p>
+        <DashboardEngagementCustomers />
+      </div>
+      <div className="admin-dashboard--responses">
+        <p className="admin-dashboard--overview__title">Responses</p>
+      </div>
     </div>
   );
 }

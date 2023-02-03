@@ -1,7 +1,7 @@
 @use '../../colors';
 @use '../../breakpoints';
 
-.admin-reports-profit-sales-expenses {
+.admin-reports-payment-received-sales {
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -14,12 +14,13 @@
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 
 
-    &--profit {
+    &--payment-received {
         display: flex;
         flex-direction: column;
         flex-flow: row wrap;
         gap: 5px;
         flex: 1 1 0;
+
         &__card {
             flex: 1 1 0;
             height: 100px;
@@ -31,28 +32,59 @@
             justify-content: space-around;
             position: relative;
 
-            .title {
-                font-weight: 600;
-                white-space: nowrap;
-                font-size: 14px;
-            }
-            .content{
+            .payment-received-content {
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
                 justify-content: space-between;
-                &--additonal-content{
-                    p:nth-child(1){
-                        font-size: 10px;
-                        color: green;
-                    }
-                    p:nth-child(2){
+                height: 100%;
+
+                &--title {
+                    font-weight: 600;
+                    white-space: nowrap;
+                    font-size: 14px;
+                }
+
+                // &--amount {
+                //     font-size: 24px;
+                //     font-weight: 600;
+
+                // }
+                &--amount {
+                    font-size: 24px;
+                    font-weight: 600;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    p:nth-child(1) {
+                        font-size: 24px;
                         font-weight: 600;
-                        color: green;
-                        font-size: 14px;
+                    }
+
+                    &__other-contents {
+                        div {
+                            display: flex;
+                            gap: 5px;
+                            align-items: center;
+
+                            p:nth-child(1) {
+                                font-size: 14px;
+                                font-weight: normal;
+                            }
+
+                            p:nth-child(2) {
+                                font-size: 14px;
+                                font-weight: normal;
+                                font-weight: 500;
+                                white-space: nowrap;
+                            }
+                        }
                     }
                 }
+
             }
-            
+
+
             .month {
                 position: absolute;
                 right: 10px;
@@ -63,15 +95,6 @@
                 padding: 2px 5px;
                 color: white;
                 border-radius: 5px;
-            }
-
-            div {
-                p {
-                    color: colors.$gray-700;
-                    font-weight: 700;
-                    font-size: 24px;
-
-                }
             }
         }
 
@@ -85,7 +108,7 @@
         }
     }
 
-    &--sales-expenses {
+    &--sales {
         display: flex;
         flex-flow: row wrap;
         gap: 5px;
@@ -97,15 +120,56 @@
             border-radius: 15px;
             padding: 10px;
             display: flex;
-            flex-direction: column;
-            justify-content: space-around;
+            flex-direction: row;
+            justify-content: space-between;
             position: relative;
             flex: 1 1 0;
 
-            .title {
-                font-weight: 600;
-                white-space: nowrap;
-                font-size: 14px;
+            .sales {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 100%;
+                width: 100%;
+
+                &--title {
+                    font-weight: 600;
+                    white-space: nowrap;
+                    font-size: 14px;
+                }
+
+                &--amount {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    width: 100%;
+
+                    p:nth-child(1) {
+                        font-size: 24px;
+                        font-weight: 600;
+                    }
+
+                    &__other-contents {
+
+                        div {
+                            display: flex;
+                            gap: 5px;
+                            align-items: center;
+
+                            p:nth-child(1) {
+                                font-size: 14px;
+                                font-weight: normal;
+                            }
+
+                            p:nth-child(2) {
+                                font-size: 14px;
+                                font-weight: normal;
+                                font-weight: 500;
+                                white-space: nowrap;
+                            }
+                        }
+                    }
+                }
             }
 
             .month {
@@ -118,15 +182,6 @@
                 padding: 2px 5px;
                 color: white;
                 border-radius: 5px;
-            }
-
-            div {
-                p {
-                    color: colors.$gray-700;
-                    font-weight: 700;
-                    font-size: 24px;
-
-                }
             }
         }
 
