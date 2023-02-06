@@ -8,6 +8,7 @@ import {
   SkeletonText,
   Stack,
 } from "@chakra-ui/react";
+import ListSkeletonLoading from "../general/ListSkeletonLoading";
 
 function CreditsPayersHistory() {
   // set initial value of current page, total_pages, and limit per page.
@@ -102,13 +103,7 @@ function CreditsPayersHistory() {
         </div>
       ) : null}
       {isValidating ? (
-        <div>
-          <Stack>
-            <Skeleton height="40px" />
-            <Skeleton height="40px" />
-            <Skeleton height="40px" />
-          </Stack>
-        </div>
+        <ListSkeletonLoading num_lines={limitItems} />
       ) : (
         data?.data.map((credit, index) => (
           <div className="transactions-wrapper--item" key={index}>

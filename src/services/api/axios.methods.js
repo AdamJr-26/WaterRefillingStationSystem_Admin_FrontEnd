@@ -4,7 +4,7 @@ import handleError from "../axios.handleError";
 export const apiPost = async ({ url, payload }) => {
   try {
     const res = await axiosAPI().post(url, payload);
-     handleError(res.status);
+     handleError(res?.status);
     return { data: res?.data };
   } catch (error) {
     return { error };
@@ -13,7 +13,7 @@ export const apiPost = async ({ url, payload }) => {
 export const apiGet = async (url) => {
   try {
     const res = await axiosAPI().get(url);
-     handleError(res.status);
+     handleError(res?.status);
     return { data: res?.data };
   } catch (error) {
     return { error: error?.response?.data };
@@ -22,7 +22,7 @@ export const apiGet = async (url) => {
 export const apiPut = async ({ url, payload }) => {
   try {
     const res = await axiosAPI().put(url, payload);
-     handleError(res.status);
+     handleError(res?.status);
     return { data: res?.data };
   } catch (error) {
     return { error };
@@ -49,7 +49,7 @@ export const apiPutWithFile = async ({ url, payload }) => {
 export const apiDelete = async ({ url }) => {
   try {
     const res = await axiosAPI().delete(url);
-     handleError(res.status);
+     handleError(res?.status);
     return { data: res?.data };
   } catch (error) {
     return { error };

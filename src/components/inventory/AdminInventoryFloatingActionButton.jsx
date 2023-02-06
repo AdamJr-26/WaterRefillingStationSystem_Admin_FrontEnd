@@ -22,9 +22,6 @@ function AdminInventoryFloatingActionButton() {
         >
           <img src={tricycle} alt="tricycle" srcSet="" />
         </div>
-        <button className="admin-inventory-floating-action-button--action-buttons__option-button">
-         return 
-        </button>
         <button className="admin-inventory-floating-action-button--action-buttons__toggle-button">
           <Icon icon="akar-icons:plus" />
         </button>

@@ -1,0 +1,46 @@
+@use '../../colors';
+@use '../../breakpoints';
+
+.purchases-history{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 5px;
+    button{
+        color: colors.$blue-900;
+        font-weight: 500;
+
+    }
+    &--info{
+        &__date{
+            font-size: 16px;
+            font-weight: 600;
+        }
+    }
+
+    &--amounts {
+        display: flex;
+        flex-flow: row wrap;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+
+        &__item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+
+            p:nth-child(1) {
+                font-size: 14px;
+
+            }
+
+            p:nth-child(2) {
+                font-size: 16px;
+                font-weight: 600;
+
+            }
+        }
+    }
+}

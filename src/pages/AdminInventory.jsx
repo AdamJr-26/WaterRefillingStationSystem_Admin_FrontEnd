@@ -6,19 +6,38 @@ import AdminInventoryDataTableGallon from "../components/inventory/AdminInventor
 import useGallons from "../hooks/api/useGallons";
 import AdminInventoryDataTableVehicle from "../components/inventory/AdminInventoryDataTableVehicle";
 import useVehicles from "../hooks/api/useVehicles";
+import useFetch from "../hooks/api/useFetch";
+import ListSkeletonLoading from "../components/general/ListSkeletonLoading";
 
 function AppInventory() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   // const updateGallonModalState = updatedDatauseSelector(
   //   (state) => state.globalPopupSlice.updateGallonValue
   // );
-  const { gallons, gallonsError } = useGallons({
+
+  // const { gallons, gallonsError } = useGallons({
+  //   url: "/api/gallons",
+  // });
+  // console.log("gallons", gallons);
+  // const { vehicles, vehiclesError, } = useVehicles({ url: "/api/vehicles" });
+  // const vehiclesData = vehicles?.data;
+  const {
+    data: gallonData,
+    error: gallonError,
+    mutate: mutateGallon,
+    isValidating: isValidatingGallons,
+  } = useFetch({
     url: "/api/gallons",
   });
-  console.log("gallons", gallons);
-  const { vehicles, vehiclesError } = useVehicles({ url: "/api/vehicles" });
-  const vehiclesData = vehicles?.data;
-
+  const {
+    data: vehicleData,
+    error: vehicleError,
+    mutate: mutateVehicles,
+    isValidating: isValidatingVehicles,
+  } = useFetch({
+    url: "/api/vehicles",
+  });
+  console.log("gallonData", gallonData?.data);
   return (
     <div className="inventory">
       <div className="table-gallon">
@@ -28,10 +47,14 @@ function AppInventory() {
             Tracks your gallons inventory
           </p>
         </div>
-        <AdminInventoryDataTableGallon
-          data={gallons?.data}
-          error={gallonsError?.data}
-        />
+        {!isValidatingGallons ? (
+          <AdminInventoryDataTableGallon
+            data={gallonData?.data}
+            error={gallonError}
+          />
+        ) : (
+          <ListSkeletonLoading num_lines={4} />
+        )}
       </div>
       <div className="table-vehicle">
         <div className="table-vehicle--header">
@@ -40,10 +63,14 @@ function AppInventory() {
             Tracks your vehicles inventory
           </p>
         </div>
-        <AdminInventoryDataTableVehicle
-          data={vehiclesData}
-          error={vehiclesError}
-        />
+        {!isValidatingVehicles ? (
+          <AdminInventoryDataTableVehicle
+            data={vehicleData?.data}
+            error={vehicleError}
+          />
+        ) : (
+          <ListSkeletonLoading num_lines={4} />
+        )}
       </div>
       <AdminInventoryFloatingActionButton />
     </div>

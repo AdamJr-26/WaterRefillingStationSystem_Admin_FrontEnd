@@ -10,8 +10,10 @@ import {
   Stack,
   useDisclosure,
 } from "@chakra-ui/react";
-import PayCreditsModal from "./PayCreditsModal";
+import PayCreditsModal from "../general/modal/PayCreditsModal";
+
 import NoData from "../general/NoData";
+import ListSkeletonLoading from "../general/ListSkeletonLoading";
 
 function AdminCreditsLastransactions() {
   // set initial value of current page, total_pages, and limit per page.
@@ -84,6 +86,7 @@ function AdminCreditsLastransactions() {
         credit={selectedCredit}
         mutatePagination={mutatePagination}
       />
+
       <div className="transactions-wrapper--header">
         <div>
           <p className="transactions-wrapper--header__title">Credits</p>
@@ -115,54 +118,57 @@ function AdminCreditsLastransactions() {
           </p>
         </div>
       ) : null}
-      {!data?.data?.length ? (
-        <NoData />
-      ) : (
-        data?.data.map((credit, index) => (
-          <div
-            onClick={() => {
-              setSelectedCredit(credit);
-              paycreditsClosure.onOpen();
-            }}
-            className="transactions-wrapper--item"
-            key={index}
-          >
-            <div className="transactions-wrapper--item__image-wrapper">
-              <img src={credit?.customer[0]?.display_photo} alt="" srcSet="" />
-            </div>
-            <div className="transactions-wrapper--item__person-info">
-              <span className="name">
-                {credit?.customer[0]?.firstname || ""}{" "}
-                {credit?.customer[0]?.lastname || ""}
-              </span>
-              <span className="address">
-                {credit?.customer[0]?.address?.street}{" "}
-                {credit?.customer[0]?.address?.barangay}{" "}
-                {credit?.customer[0]?.address?.municipal_city}{" "}
-                {credit?.customer[0]?.address?.province}
-              </span>
-              <div className="regular-date-wrapper">
-                <span className="role">
-                  {credit?.customer[0]?.customer_type}
+      {
+        !isValidating ?
+        !data?.data?.length ? (
+          <NoData min_height={500} />
+        ) : (
+          data?.data.map((credit, index) => (
+            <div
+              onClick={() => {
+                setSelectedCredit(credit);
+                paycreditsClosure.onOpen();
+              }}
+              className="transactions-wrapper--item"
+              key={index}
+            >
+              <div className="transactions-wrapper--item__image-wrapper">
+                <img src={credit?.customer_info[0]?.display_photo} alt="" srcSet="" />
+              </div>
+              <div className="transactions-wrapper--item__person-info">
+                <span className="name">
+                  {credit?.customer_info[0]?.firstname || ""}{" "}
+                  {credit?.customer_info[0]?.lastname || ""}
                 </span>
-                <span className="date">
-                  Updated: {transformDate(credit.date.utc_date).string_date}
+                <span className="address">
+                  {credit?.customer_info[0]?.address?.street}{" "}
+                  {credit?.customer_info[0]?.address?.barangay}{" "}
+                  {credit?.customer_info[0]?.address?.municipal_city}{" "}
+                  {credit?.customer_info[0]?.address?.province}
                 </span>
+                <div className="regular-date-wrapper">
+                  <span className="role">
+                    {credit?.customer_info[0]?.customer_type}
+                  </span>
+                  <span className="date">
+                    Updated: {transformDate(credit.date.utc_date).string_date}
+                  </span>
+                </div>
+              </div>
+              <div className="transactions-wrapper--item__amount-buttons">
+                <div>
+                  <p>Count</p>
+                  <p>{credit?.total}</p>
+                </div>
+                <div>
+                  <p>Price</p>
+                  <p>{credit?.price}</p>
+                </div>
               </div>
             </div>
-            <div className="transactions-wrapper--item__amount-buttons">
-              <div>
-                <p>Count</p>
-                <p>{credit?.total}</p>
-              </div>
-              <div>
-                <p>Price</p>
-                <p>{credit?.price}</p>
-              </div>
-            </div>
-          </div>
-        ))
-      )}
+          ))
+        ) : <ListSkeletonLoading num_lines={5} />
+      }
 
       <div className="transactions-wrapper--pagination-buttons">
         {currentPage > 1 ? (

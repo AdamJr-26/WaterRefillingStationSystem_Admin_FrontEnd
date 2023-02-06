@@ -29,14 +29,29 @@ import useSWR, { useSWRConfig } from "swr";
 
 // API
 import { updateGallon } from "../../services/api/inventory/inventory.post";
+import { Doughnut, Pie } from "react-chartjs-2";
+
 function AdminInventoryGallon({ data }) {
   const gallonThead = [
     "Image",
+    "Chart",
     "Gallon Name",
     "Borrowed",
     "Available",
     "Total",
   ];
+  const chartData = {
+    // labels: ["Red", "Blue"],
+    datasets: [
+      {
+        label: "Availability",
+        data: [],
+        backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)"],
+        borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
+        borderWidth: 1,
+      },
+    ],
+  };
 
   // we just edit here some data before putting in table.
   // const dataTr = (data) => {
@@ -72,7 +87,24 @@ function AdminInventoryGallon({ data }) {
     onOpen();
     setShowItem({ id: item._id, admin: item?.admin });
   };
+  // chart
+  const options = {
+    cutoutPercentage: 45,
+    animation: {
+      animateScale: true,
+      animateRotate: true,
+    },
+    legend: {
+      display: false,
+    },
+    elements: {
+      arc: {
+        borderWidth: 0,
+      },
+    },
+  };
 
+  // put it seperate!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   function ItemModal({ isOpen, onOpen, onClose, showItem }) {
     const id = showItem?.id;
     const admin = showItem?.admin;
@@ -325,6 +357,32 @@ function AdminInventoryGallon({ data }) {
                   className="tbody-tr--image"
                   src={item.gallon_image}
                   alt=""
+                />
+              </Td>
+              <Td className="chart" height="70px" width="70px">
+                <Doughnut
+                  data={{
+                    labels: ["Borrowed", "Available"],
+                    datasets: [
+                      {
+                        label: "Availability",
+                        data: [
+                          item.borrowed[0]?.total_borrowed,
+                          item?.total - item.borrowed[0]?.total_borrowed,
+                        ],
+                        backgroundColor: [
+                          "rgba(255, 99, 132, 1)",
+                          "rgba(75, 192, 192, 1)",
+                        ],
+                        borderColor: [
+                          "rgba(255, 99, 132, 0.5)",
+                          "rgba(54, 162, 235, 0.5)",
+                        ],
+                        borderWidth: 1,
+                      },
+                    ],
+                  }}
+                  options={options}
                 />
               </Td>
               <Td>{item.name}</Td>

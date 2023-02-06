@@ -62,8 +62,14 @@
 @use './pages/reset.password/passwordReset';
 @use './pages/reset.password/setNewPassword';
 
+// customers
 @use './components/customers/CustomerDiscount';
 @use './components/customers/adminCustomerAddDiscount';
+@use './components/customers/customerPersonalInfo';
+@use './components/customers/creditsTabPanel';
+@use './components/customers/borrowsTabPanel';
+@use './components/customers/returnHistory';
+@use './components/customers/purchaseHistory';
 // credits
 @use "./components/credits/paycreditsModal";
 

@@ -3,6 +3,7 @@ import AdminCustomerDataTable from "../AdminCustomerDataTable";
 import useFetch from "../../../hooks/api/useFetch";
 import { Icon } from "@iconify/react";
 import AdminSearchBox from "../../../components/AdminSearchbox";
+import ListSkeletonLoading from "../../general/ListSkeletonLoading";
 
 function CustomerStatusTableWrapper() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -84,19 +85,23 @@ function CustomerStatusTableWrapper() {
                 </option>
                 <option value="credit.total_credit_amount">With credit</option>
                 <option value="borrow.total_borrowed_gallon">
-                  With Borrowed
+                  Borrowers
                 </option>
               </select>
             </div>
           </div>
         </div>
       </div>
-      <AdminCustomerDataTable
-        data={customersStatus?.data}
-        error={customersStatus.error}
-        isValidating={customersStatus.isValidating}
-        setSortby={setSortby}
-      />
+      {!customersStatus.isValidating ? (
+        <AdminCustomerDataTable
+          data={customersStatus?.data}
+          error={customersStatus.error}
+          isValidating={customersStatus.isValidating}
+          setSortby={setSortby}
+        />
+      ) : (
+        <ListSkeletonLoading num_lines={5} />
+      )}
 
       <div className="transactions-wrapper--pagination-buttons">
         {currentPage > 1 ? (

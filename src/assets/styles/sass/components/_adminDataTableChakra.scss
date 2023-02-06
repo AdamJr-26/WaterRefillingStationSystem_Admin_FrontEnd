@@ -16,6 +16,7 @@
 
         &__tbody {
             .tbody-tr {
+                height: 80px;
                 &:hover {
                     background-color: colors.$gray-100;
                     transition: all ease-in 200ms;
@@ -41,6 +42,13 @@
                 .warning {
                     font-weight: 700;
                     color: red
+                }
+                .chart{
+                    max-width: 100px;
+                    max-height: 100px;
+                    padding: 0px;
+                    margin: auto;
+                    min-width: 120px;
                 }
             }
         }

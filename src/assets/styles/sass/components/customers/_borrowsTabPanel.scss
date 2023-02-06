@@ -1,0 +1,80 @@
+@use '../../colors';
+@use '../../breakpoints';
+
+.borrow-tab-panel-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.borrow-tab-panel {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 720px;
+    border: 1px solid colors.$gray-200;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: white;
+    cursor: pointer;
+
+    &:hover {
+        background-color: colors.$gray-50;
+
+    }
+
+    &--image-info-wrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+
+        &__gallon-image-wrapper {
+            padding: 5px;
+            height: 60px;
+            width: 60px;
+            border-radius: 15px;
+            // background-color: colors.$gray-200;
+
+        }
+
+        &__gallon-info {
+            p:nth-child(1) {
+                font-size: 16px;
+                font-weight: 600;
+            }
+
+            p:nth-child(2) {
+                font-size: 14px;
+            }
+        }
+    }
+
+
+    &--amount-count-wrapper {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
+        &__count,
+        &__price {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            justify-content: space-around;
+            align-items: center;
+
+            p:nth-child(1) {
+                font-size: 14px;
+
+            }
+
+            p:nth-child(2) {
+                font-size: 24px;
+                font-weight: 600;
+            }
+        }
+    }
+}

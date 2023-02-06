@@ -1,0 +1,46 @@
+@use '../../colors';
+@use '../../breakpoints';
+
+.customer-info-full-modal{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    &--profile{
+        display: flex;
+        flex-flow: row wrap;
+        padding: 10px;
+        gap: 10px;
+        &__image-wrapper{
+            height: 100px;
+            width: 100px;
+            background-color: colors.$gray-200;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid colors.$gray-100;
+            border-radius: 15px;
+            overflow:hidden;
+            img{
+                object-fit: cover;
+                height: 100%;
+                width: 100%;
+            }
+        }
+        &__info{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            .customer-fullname{
+                font-size: 24px;
+                font-weight: 600;
+                white-space: nowrap;
+                
+            }
+            .customer-mobile-number, .customer-address{
+                font-size: 15px;
+                white-space: nowrap;
+            }
+        }
+    }
+}

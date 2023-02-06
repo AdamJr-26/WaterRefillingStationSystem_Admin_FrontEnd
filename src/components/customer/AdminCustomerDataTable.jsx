@@ -31,8 +31,15 @@ import {
 import transformDate from "../../utils/date.toString";
 import { Icon } from "@iconify/react";
 import NoData from "../general/NoData";
-
+import CustomerPersonalInfo from "./modal/CustomerPersonalInfo";
 function AdminCustomerDataTable({ data, error, isValidating, setSortby }) {
+  // MODAL
+  const customerInfoDC = useDisclosure();
+  const [selectedCustomer, setSelectedCustomer] = useState(null);
+  const onClickCustomer = (customer) => {
+    setSelectedCustomer(customer);
+    customerInfoDC.onOpen();
+  };
   // FETCH DELIVERIES WITH APPROVED:TRUE, RETURNED:FALSE
   const thead = [
     { name: "IMAGE", fieldName: "firstname" },
@@ -58,6 +65,12 @@ function AdminCustomerDataTable({ data, error, isValidating, setSortby }) {
           whiteSpace="nowrap"
           className="chakra-table-container"
         >
+          <CustomerPersonalInfo
+            isOpen={customerInfoDC.isOpen}
+            onOpen={customerInfoDC.onOpen}
+            onClose={customerInfoDC.onClose}
+            selectedCustomer={selectedCustomer}
+          />
           <Table>
             <Thead className="chakra-table-container--table__thead">
               <Tr className="thead--tr">
@@ -70,7 +83,11 @@ function AdminCustomerDataTable({ data, error, isValidating, setSortby }) {
             </Thead>
             <Tbody className="chakra-table-container--table__tbody">
               {data?.data?.map((customer, i) => (
-                <Tr key={i} className="tbody-tr">
+                <Tr
+                  onClick={() => onClickCustomer(customer)}
+                  key={i}
+                  className="tbody-tr"
+                >
                   <Td className="tbody-tr--td">
                     <img
                       className="tbody-tr--image"

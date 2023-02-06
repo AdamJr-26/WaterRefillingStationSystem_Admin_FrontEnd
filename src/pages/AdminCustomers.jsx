@@ -31,7 +31,7 @@ function AdminCustomers() {
         <div className="table-customers--header">
           <div className="table-customers--header__title-description">
             <p className="title">Discounts</p>
-            <p className="description">Crate discounts for customers</p>
+            <p className="description">Create discounts for customers</p>
           </div>
           <div className="table-customers--header__menu">
             <div className="add-discount">

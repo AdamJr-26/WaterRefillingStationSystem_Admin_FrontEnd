@@ -92,9 +92,9 @@ function DeliveryProgressModal({ isOpen, onOpen, onClose, deliveryId }) {
               borderRadius="5px"
               padding={2}
             >
-              <Text>Received debt's payment</Text>
+              <Text>Received debt payment</Text>
               <Text fontSize="xl" fontWeight="bold">
-                {deliveryProgress?.total_of_all_debt_payment}
+              ₱ {deliveryProgress?.total_of_all_debt_payment}
               </Text>
             </Flex>
 
@@ -106,9 +106,9 @@ function DeliveryProgressModal({ isOpen, onOpen, onClose, deliveryId }) {
               backgroundColor="#f4f4f4"
               padding={2}
             >
-              <Text>Total Borrowed Gallon</Text>
+              <Text>Total paid</Text>
               <Text fontSize="xl" fontWeight="bold">
-                {deliveryProgress?.total_of_all_order_to_pay}
+              ₱ {deliveryProgress?.total_of_all_order_to_pay}
               </Text>
             </Flex>
 
@@ -119,9 +119,9 @@ function DeliveryProgressModal({ isOpen, onOpen, onClose, deliveryId }) {
               borderRadius="5px"
               padding={2}
             >
-              <Text>Total Borrowed Gallon</Text>
+              <Text>Total payment received</Text>
               <Text fontSize="xl" fontWeight="bold">
-                {deliveryProgress?.total_of_all_payment}
+              ₱ {deliveryProgress?.total_of_all_payment}
               </Text>
             </Flex>
 
@@ -133,7 +133,7 @@ function DeliveryProgressModal({ isOpen, onOpen, onClose, deliveryId }) {
               backgroundColor="#f4f4f4"
               padding={2}
             >
-              <Text>Total Borrowed Gallon</Text>
+              <Text>Total orders</Text>
               <Text fontSize="xl" fontWeight="bold">
                 {deliveryProgress?.total_orders}
               </Text>
@@ -146,7 +146,7 @@ function DeliveryProgressModal({ isOpen, onOpen, onClose, deliveryId }) {
               borderRadius="5px"
               padding={2}
             >
-              <Text>Total Borrowed Gallon</Text>
+              <Text>Total returned gallon(s)</Text>
               <Text fontSize="xl" fontWeight="bold">
                 {deliveryProgress?.total_returned_gallon}
               </Text>
