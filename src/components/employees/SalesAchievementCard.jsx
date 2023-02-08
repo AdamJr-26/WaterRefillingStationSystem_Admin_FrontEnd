@@ -17,13 +17,13 @@ function SalesAchievementCard({ data }) {
       <div className="admin-employee-sales-achievement-card--statistic">
         <div className="admin-employee-sales-achievement-card--statistic__sales">
           <p>Sales</p>
-          <p>₱ {data?.purchases[0]?.sales} </p>
+          <p>₱ {data?.purchases[0]?.sales || 0} </p>
         </div>
         <div className="admin-employee-sales-achievement-card--statistic__border"></div>
         <div className="admin-employee-sales-achievement-card--statistic__engagement">
           <p>Deliveries </p>
           <div>
-            <p>{data?.deliveries[0]?.total_deliveries}</p>
+            <p>{data?.deliveries[0]?.total_deliveries || 0}</p>
             <p>25%</p>
           </div>
         </div>

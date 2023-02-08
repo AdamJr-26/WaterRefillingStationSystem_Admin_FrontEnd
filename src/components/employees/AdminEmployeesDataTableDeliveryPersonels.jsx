@@ -116,10 +116,10 @@ console.log("currentItems",currentItems)
                 <Td>
                   {personel.firstname} {personel?.lastname}
                 </Td>
-                <Td>{personel?.nickname}</Td>
-                <Td>{personel?.contact_number}</Td>
+                <Td>{personel?.nickname || "N/A"}</Td>
+                <Td>{personel?.contact_number || "None"}</Td>
                 <Td>{personel?.gmail}</Td>
-                <Td>{personel?.on_delivery}</Td>
+                <Td>{personel?.on_delivery ? "On-delivery" : "Standby"}</Td>
 
                 <Td>
                   <Menu>

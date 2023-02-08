@@ -17,13 +17,21 @@ function PurchasesOverview({ selectedDate, data }) {
   // });
   // console.log("[PURCHASES-REPORTS]", data);
 
+  const purchasesData = Array(days.length).fill(0);
+  const paid_orders_data = Array(days.length).fill(0);
+  data?.data[0]?.purchases?.map((purchase) => {
+    var index = purchase._id - 1;
+    purchasesData[index] = purchase.purchases;
+    paid_orders_data[index] = purchase.paid_orders;
+  });
+
   const purchasesStatus = {
-    labels: data?.data[0].purchases?.map((purchase) => purchase?._id),
+    labels: days?.map((date) => transformDate(date).day),
     datasets: [
       {
         id: 1,
         label: "Total Purchased products",
-        data: data?.data[0].purchases?.map((purchase) => purchase.purchases),
+        data: purchasesData, //data?.data[0].purchases?.map((purchase) => purchase.purchases),
         fill: false,
         borderColor: "#1a53ff",
         pointBackgroundColor: "#1a53ff",
@@ -32,29 +40,7 @@ function PurchasesOverview({ selectedDate, data }) {
       {
         id: 2,
         label: "Total Paid Products",
-        data: data?.data[0].purchases?.map((purchase) => purchase.paid_orders),
-        fill: false,
-        borderColor: "#0d88e6",
-        pointBackgroundColor: "#0d88e6",
-        pointBorderWidth: 1,
-      },
-      {
-        id: 3,
-        label: "Total Unpaid Amount",
-        data: data?.data[0].purchases?.map(
-          (purchase) => purchase.credited_amount
-        ),
-        fill: false,
-        borderColor: "#b30000",
-        pointBackgroundColor: "#b30000",
-        pointBorderWidth: 1,
-      },
-      {
-        id: 4,
-        label: "Total Paid Amount",
-        data: data?.data[0].purchases?.map(
-          (purchase) => purchase.paid_orders_amount
-        ),
+        data: paid_orders_data,
         fill: false,
         borderColor: "#5ad45a",
         pointBackgroundColor: "#5ad45a",
@@ -95,7 +81,7 @@ function PurchasesOverview({ selectedDate, data }) {
             <p>{data?.data[0]?.total_paid_product}</p>
           </div>
         </div>
-        <div className="purchase-overview--summary__item">
+        {/* <div className="purchase-overview--summary__item">
           <p className="icon">
             <Icon icon="material-symbols:arrow-circle-up-outline" />
           </p>
@@ -112,7 +98,7 @@ function PurchasesOverview({ selectedDate, data }) {
             <p>Credited gallons</p>
             <p>₱ {data?.data[0]?.total_unpaid_amount}</p>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

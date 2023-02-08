@@ -8,7 +8,7 @@ function DashboardTodaysOverView() {
       </div> */}
       <div className="dashboard-todays-overview--profit-wrapper">
         <div className="dashboard-todays-overview--profit-wrapper__content">
-          <p>Today's profit</p>
+          <p>Today's Cash Received</p>
           <p>₱ 2,454</p>
         </div>
         <div className="dashboard-todays-overview--profit-wrapper__buttons">

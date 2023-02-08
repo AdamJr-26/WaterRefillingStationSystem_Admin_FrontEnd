@@ -46,9 +46,12 @@
         
         &__item {
             height: auto;
-            max-width: 900px;
+            max-width: 1200px;
             margin: auto;
             width: 100%;
+            display: flex;
+            flex-flow: row wrap;
+
         }
     }
 

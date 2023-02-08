@@ -25,10 +25,13 @@
 @use './components/employees/adminEmployees';
 @use './components/employees/salesAchievementCard';
 
+// REPORTS
 @use './components/reports/adminReports';
 @use './components/reports/purchaseOverview';
 @use './components/reports/salesOverview';
 @use './components/reports/reportsLogs';
+@use './components/reports/expensesChart';
+
 
 
 @use './components/dashboard/adminDashboard';

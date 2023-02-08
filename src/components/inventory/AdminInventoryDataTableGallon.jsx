@@ -36,6 +36,7 @@ function AdminInventoryGallon({ data }) {
     "Image",
     "Chart",
     "Gallon Name",
+    "PRICE",
     "Borrowed",
     "Available",
     "Total",
@@ -367,8 +368,8 @@ function AdminInventoryGallon({ data }) {
                       {
                         label: "Availability",
                         data: [
-                          item.borrowed[0]?.total_borrowed,
-                          item?.total - item.borrowed[0]?.total_borrowed,
+                          item.borrowed[0]?.total_borrowed || 0,
+                          item?.total - (item.borrowed[0]?.total_borrowed || 0),
                         ],
                         backgroundColor: [
                           "rgba(255, 99, 132, 1)",
@@ -386,25 +387,26 @@ function AdminInventoryGallon({ data }) {
                 />
               </Td>
               <Td>{item.name}</Td>
+              <Td >₱ {item.price}</Td>
               <Td
-                isNumeric
+                
                 className={
                   item?.borrowed[0]?.total_borrowed < 0 ? "warning" : "good"
                 }
               >
-                {item.borrowed[0]?.total_borrowed}
+                {item.borrowed[0]?.total_borrowed || 0}
               </Td>
               <Td
-                isNumeric
+                
                 className={
                   item?.total - item.borrowed[0]?.total_borrowed < 0
                     ? "warning"
                     : "neutral"
                 }
               >
-                {item?.total - item.borrowed[0]?.total_borrowed}
+                {item?.total  - (item.borrowed[0]?.total_borrowed || 0)}
               </Td>
-              <Td isNumeric className={item?.total < 0 ? "warning" : "neutral"}>
+              <Td  className={item?.total < 0 ? "warning" : "neutral"}>
                 {item.total}
               </Td>
             </Tr>

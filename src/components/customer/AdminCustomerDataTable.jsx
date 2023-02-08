@@ -96,8 +96,8 @@ function AdminCustomerDataTable({ data, error, isValidating, setSortby }) {
                     />
                   </Td>
                   <Td>{customer.firstname + " " + customer.lastname}</Td>
-                  <Td>{customer.mobile_number}</Td>
-                  <Td>{customer.customer_type}</Td>
+                  <Td>{customer.mobile_number || "N/A"}</Td>
+                  <Td>{customer.customer_type || "N/A"}</Td>
                   {customer?.schedules[0] ? (
                     <Td>
                       <p

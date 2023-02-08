@@ -57,8 +57,8 @@ function CustomerStatusTableWrapper() {
                 name="sort"
                 id="sort"
               >
-                <option value="firstname">Sort by firstname</option>
-                <option value="lastname">Sort by lastname</option>
+                <option value="firstname">Firstname</option>
+                <option value="lastname">Lastname</option>
                 <option value="last_delivery.date.unix_timestamp">
                   Last Delivery
                 </option>
@@ -84,9 +84,7 @@ function CustomerStatusTableWrapper() {
                   With schedule
                 </option>
                 <option value="credit.total_credit_amount">With credit</option>
-                <option value="borrow.total_borrowed_gallon">
-                  Borrowers
-                </option>
+                <option value="borrow.total_borrowed_gallon">Borrowers</option>
               </select>
             </div>
           </div>

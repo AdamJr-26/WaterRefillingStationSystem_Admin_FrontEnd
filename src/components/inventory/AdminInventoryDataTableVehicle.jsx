@@ -83,7 +83,7 @@ function AdminInventoryDataTableVehicle({ data }) {
               <Td>{item.vehicle_id}</Td>
               <Td>{item.vehicle_name}</Td>
               <Td className={item.available ? "good" : "warning"}>
-                {item.available.toString()}
+                {item.available ? "YES" : "NO"}
               </Td>
               <Td>
                 <Menu>
