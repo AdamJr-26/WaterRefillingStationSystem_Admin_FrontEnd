@@ -28,6 +28,7 @@ import PassworReset from "../pages/reset.password/PassworReset";
 import SetNewPassword from "../pages/reset.password/SetNewPassword";
 import CreditsPayersHistory from "../components/credits/CreditsPayersHistory";
 import { ProtectRoutes } from "../hooks/protectRoutes";
+import WelcomePage from "../components/home/WelcomePage";
 function Router() {
   return (
     <BrowserRouter>
@@ -43,7 +44,7 @@ function Router() {
 
         <Route path="/" element={<Home />}>
           {/* wrap this with RequireAuth */}
-
+          <Route path="/" element={<WelcomePage />} />
           <Route path="login" element={<HomeLogin />} />
           <Route path="redirect-register" element={<HomeVerify />} />
           <Route path="redirect-verify" element={<VerifyPage />} />

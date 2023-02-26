@@ -34,13 +34,13 @@ function AdminCustomerAddDiscount() {
         color="white"
         onClick={onOpen}
       >
-        Add Discount
+        Add promo
       </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Create Discount</ModalHeader>
+          <ModalHeader>Create Promo</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Tabs>
@@ -86,7 +86,7 @@ function AdminCustomerAddDiscount() {
                     <Form>
                       <div className="customer-create-discount">
                         <p className="customer-create-discount--discription">
-                          Discount by the total of customer's order or purchase.
+                          Promo by the total of customer's order or purchase.
                         </p>
                         <div className="customer-create-discount--form">
                           <TextInput

@@ -2,19 +2,21 @@
 @use '../breakpoints';
 
 .home {
-    // height: 100vh;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    position:relative;
+
     &--outlet {
         height: 100%;
         width: 100%;
         position: relative;
         background-color: white;
         display: flex;
+
         align-items: center;
-        justify-content: center;
-        z-index: 10;
-        margin: 10px;
+        z-index: 99;
+        min-height: 100vh;
     }
 
     &--footer {
@@ -24,4 +26,6 @@
         flex-flow: row wrap;
 
     }
+
+
 }

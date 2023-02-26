@@ -1,0 +1,56 @@
+@use '../../colors';
+@use '../../breakpoints';
+
+.home-welcome-page-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 15px;
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+    &--title {
+        max-width: 500px;
+
+        p {
+            font-size: 45px;
+            font-weight: 700;
+            color: colors.$gray-700;
+        }
+    }
+
+    &--description {
+        max-width: 700px;
+
+        p {
+            font-weight: 500;
+            color: colors.$gray-700;
+        }
+    }
+
+    &--links {
+        display: flex;
+        gap: 15px;
+        width: 1200px;
+        &__create-account-btn {
+            background: colors.$blue-900;
+            padding: 15px 45px;
+            color: white;
+            border-radius: 30px;
+        }
+
+        &__login-account-btn {
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+                color: colors.$blue-900;
+
+            }
+        }
+    }
+}

@@ -42,12 +42,11 @@ function HomeNavbar() {
   const [navState, setNavState] = useState(false);
   return (
     <div className="nav">
-      <div className="nav--logo">
+      <NavLink className="nav--logo" to="/">
         <img src={logo} alt="wrss-logo" srcSet="" />
-        <span className="nav--logo__title">WRSS</span>
-      </div>
-      <NavLinks styleClass="nav--links"  />
-
+        <span className="nav--logo__title">Neptune</span>
+      </NavLink>
+      <NavLinks styleClass="nav--links" />
     </div>
   );
 }

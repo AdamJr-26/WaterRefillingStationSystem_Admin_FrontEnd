@@ -12,7 +12,7 @@
     padding: 10px;
     z-index: 10;
     position: fixed;
-
+    
     scroll-behavior: smooth;
         overflow-x: hidden;
         overflow-y: scroll;
@@ -163,6 +163,7 @@
 @media only screen and (min-width:breakpoints.$xl) {
     .sidebar {
         position: sticky;
+        top: 0px;
         height: auto;
         min-height: 100vh;
         &--wrsss-logo__close-menu-button{

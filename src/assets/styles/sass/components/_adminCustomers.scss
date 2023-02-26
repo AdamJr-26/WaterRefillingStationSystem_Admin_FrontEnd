@@ -7,7 +7,7 @@
     padding: 15px;
     gap: 10px;
     width: 100%;
-
+    min-height: 100dvh;
     .table-customers {
         display: flex;
         flex-direction: column;
@@ -52,9 +52,16 @@
                         }
                     }
                 }
-                .add-discount {}
+                .add-discount {
+                
+
+                }
             }
 
         }
+    }
+    .admin-customers-discounts{
+        min-height: 250px;
+        
     }
 }

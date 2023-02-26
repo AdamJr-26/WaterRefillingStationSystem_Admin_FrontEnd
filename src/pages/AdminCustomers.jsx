@@ -6,6 +6,7 @@ import { Icon } from "@iconify/react";
 import AdminCustomerAddDiscount from "../components/customer/discount/AdminCustomerAddDiscount";
 import useFetch from "../hooks/api/useFetch";
 import CustomerStatusTableWrapper from "../components/customer/component.wrapper/CustomerStatusTableWrapper";
+import ListSkeletonLoading from "../components/general/ListSkeletonLoading";
 
 function AdminCustomers() {
   const [customerToview, setCustomerToview] = useState("");
@@ -30,12 +31,16 @@ function AdminCustomers() {
       <div className="admin-customers-discounts">
         <div className="table-customers--header">
           <div className="table-customers--header__title-description">
-            <p className="title">Discounts</p>
-            <p className="description">Create discounts for customers</p>
+            <p className="title">Promo</p>
+            <p className="description">
+              To increase sales and attract new business, we can create a promo
+              for customers.
+            </p>
           </div>
           <div className="table-customers--header__menu">
             <div className="add-discount">
               <AdminCustomerAddDiscount />
+              
             </div>
           </div>
         </div>

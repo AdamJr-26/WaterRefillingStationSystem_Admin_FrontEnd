@@ -47,7 +47,7 @@
 @use './components/loadingSpinner';
 @use './pages/adminShop';
 @use './components/adminDataTableChakra';
-@use './components/home';
+
 @use './components/HomeNavbar';
 @use './components/homeRegister';
 @use './components/homeLogin';
@@ -55,7 +55,9 @@
 @use './components/errorModal';
 @use './pages/homeVerify';
 
-
+// home
+@use './pages/home';
+@use './components/home/welcomePage';
 
 @use './components/inside_modal_elements/updateInventory';
 

@@ -20,7 +20,7 @@ function AdminSidebar() {
         <div className="sidebar">
           <div className="sidebar--wrsss-logo">
             <img src={wrssLogo} alt="wrss-logo" srcSet="" />
-            <span>WRSS-Admin</span>
+            <span>Neptune [ Admin ]</span>
             <button
               className="sidebar--wrsss-logo__close-menu-button"
               onClick={() => dispatch(updateSidebarStatus())}

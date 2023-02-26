@@ -35,7 +35,7 @@ function AdminInventoryGallon({ data }) {
   const gallonThead = [
     "Image",
     "Chart",
-    "Gallon Name",
+    "Name",
     "PRICE",
     "Borrowed",
     "Available",
