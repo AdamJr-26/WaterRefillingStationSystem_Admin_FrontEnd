@@ -93,7 +93,7 @@ function CustomerStatusTableWrapper() {
       {!customersStatus.isValidating ? (
         <AdminCustomerDataTable
           data={customersStatus?.data}
-          error={customersStatus.error}
+          error={customersStatus?.error}
           isValidating={customersStatus.isValidating}
           setSortby={setSortby}
         />
