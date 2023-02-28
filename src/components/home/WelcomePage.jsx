@@ -32,7 +32,10 @@ function WelcomePage() {
         </NavLink>
       </div>
       <div className="home-welcome-page-wrapper--background-image">
-        <img src="../../src/assets/images/hero/welcome-page-bg-hero.png" alt=""  />
+        <img
+          src="https://res.cloudinary.com/dy1od3qwx/image/upload/v1677588122/thesis/images/welcome-page-bg-hero_g2fjcn.png"
+          alt=""
+        />
       </div>
     </div>
   );
