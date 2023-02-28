@@ -31,6 +31,9 @@ function WelcomePage() {
           <span>Login</span>
         </NavLink>
       </div>
+      <div className="home-welcome-page-wrapper--background-image">
+        <img src="../../src/assets/images/hero/welcome-page-bg-hero.png" alt=""  />
+      </div>
     </div>
   );
 }

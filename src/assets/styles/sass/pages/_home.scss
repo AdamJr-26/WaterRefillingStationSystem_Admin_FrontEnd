@@ -2,10 +2,13 @@
 @use '../breakpoints';
 
 .home {
+    width: 100%;
+    background-color: white;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    position:relative;
+    gap: 10px;
+    overflow-x: hidden;
 
     &--outlet {
         height: 100%;
@@ -13,10 +16,11 @@
         position: relative;
         background-color: white;
         display: flex;
-
         align-items: center;
-        z-index: 99;
-        min-height: 100vh;
+        /* center vertically */
+        justify-content: center;
+        /* center horizontally */
+        margin: 5% auto;
     }
 
     &--footer {
@@ -24,8 +28,5 @@
         display: flex;
         gap: 10px;
         flex-flow: row wrap;
-
     }
-
-
 }

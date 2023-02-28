@@ -8,10 +8,10 @@ function Home() {
       <div className="home--outlet">
         <Outlet />
       </div>
-      <div className="home--footer">
+      {/* <div className="home--footer">
         <NavLink to="about-us" > About-us </NavLink>
         <NavLink to="contact-us" > Contact-us </NavLink>
-      </div>
+      </div> */}
     </div>
   );
 }

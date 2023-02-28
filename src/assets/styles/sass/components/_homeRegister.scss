@@ -5,9 +5,9 @@
     background-color: white;
     display: flex;
     flex-flow: row wrap;
-    padding: 10px;
+    padding: 0px 10px;
     gap: 2.5%;
-    margin: 10px auto;
+    margin: 0px auto;
     justify-content: center;
     align-items: center;
     position: relative;
@@ -143,6 +143,9 @@
 
 @media only screen and (min-width:breakpoints.$lg) {
     .home-register {
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        border-radius: 15px;
+        padding: 10px ;
         &--step-one-form {
             width: 47.25%;
         }

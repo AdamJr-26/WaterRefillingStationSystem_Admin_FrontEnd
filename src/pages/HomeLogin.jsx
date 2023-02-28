@@ -98,13 +98,13 @@ function HomeLogin() {
                 Login
               </button> */}
           </div>
-          <div className="home-login--hero">
+          {/* <div className="home-login--hero">
             <img
               className="home-login--hero__login-hero"
               src={loginHero}
               alt="log-in-hero"
             />
-          </div>
+          </div> */}
         </div>
       </Form>
     </Formik>

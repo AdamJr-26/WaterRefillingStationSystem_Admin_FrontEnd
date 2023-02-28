@@ -3,17 +3,29 @@
 
 .home-welcome-page-wrapper {
     height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     padding: 15px;
     gap: 20px;
-    max-width: 1200px;
     margin: auto;
+    padding: 0px 15px;
+
+    &--background-image {
+        position: absolute;
+        right: 0%;
+        top: 50%;
+        transform: translate(0%, -50%);
+        max-width: 750px;
+
+    }
+
     &--title {
         max-width: 500px;
-
+        z-index: 10;
+        border-radius: 15px;
         p {
             font-size: 45px;
             font-weight: 700;
@@ -23,6 +35,7 @@
 
     &--description {
         max-width: 700px;
+        z-index: 10;
 
         p {
             font-weight: 500;
@@ -30,10 +43,15 @@
         }
     }
 
+    &--description.dark {
+        background-color: white;
+    }
+
+
     &--links {
         display: flex;
         gap: 15px;
-        width: 1200px;
+
         &__create-account-btn {
             background: colors.$blue-900;
             padding: 15px 45px;
@@ -53,4 +71,13 @@
             }
         }
     }
+}
+
+@media only screen and (max-width: breakpoints.$lg) {
+    .home-welcome-page-wrapper {
+        &--background-image {
+            display: none;
+        }
+    }
+
 }
