@@ -10,12 +10,6 @@ import DashboardEngagementCustomers from "../components/dashboard/DashboardEngag
 function AdminDashboard() {
   return (
     <div className="admin-dashboard">
-      <div className="admin-dashboard--greeting">
-        <p className="admin-dashboard--greeting__greeting">
-          Good morning, Boss!
-        </p>
-        <p className="admin-dashboard--greeting__date">October 3,2022</p>
-      </div>
       <div className="admin-dashboard--overview">
         <p className="admin-dashboard--overview__title">Overview</p>
         <DashboardTodaysOverView />

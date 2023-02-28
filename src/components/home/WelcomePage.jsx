@@ -9,7 +9,7 @@ function WelcomePage() {
       </div>
       <div className="home-welcome-page-wrapper--description">
         <p>
-          NEPTUNE is an innovative management system designed to revolutionize
+          <span>NEPTUNE</span> is an innovative management system designed to revolutionize
           the way water refilling stations manage their daily operations. With a
           focus on streamlining the delivery process, tracking sales, and
           managing inventory, Neptune is the ultimate solution for water

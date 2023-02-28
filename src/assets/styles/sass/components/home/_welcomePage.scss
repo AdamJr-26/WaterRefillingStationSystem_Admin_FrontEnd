@@ -25,7 +25,9 @@
     &--title {
         max-width: 500px;
         z-index: 10;
+
         border-radius: 15px;
+
         p {
             font-size: 45px;
             font-weight: 700;
@@ -36,7 +38,14 @@
     &--description {
         max-width: 700px;
         z-index: 10;
+        
+        span {
+            font-weight: 700;
+            word-spacing: 2px;
+        }
+
         text-indent: 1em;
+
         p {
             font-weight: 500;
             color: colors.$gray-700;
