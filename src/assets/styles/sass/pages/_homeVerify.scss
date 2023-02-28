@@ -2,7 +2,6 @@
 
 .verify-page {
    display: flex;
-   background-color: colors.$gray-50;
    margin: 10px 0px;
    padding: 20px;
    height: 100%;
@@ -15,7 +14,7 @@
         align-items: center;
         justify-content: center;
         &__hero {
-            width: 20vw;
+            width: 150px;
             height: auto;
 
         }
@@ -27,13 +26,13 @@
 
             .title {
                 text-align: center;
-                font-size: clamp(1.5rem, 3.5vw, 5rem);
+                font-size: clamp(1.5rem, 2.5vw, 5rem);
                 font-weight: 600;
             }
 
             span {
                 text-align: center;
-                font-size: clamp(0.9rem, 1.7vw, 3rem);
+                font-size: clamp(0.9rem, 1.1vw, 3rem);
             }
         }
 
