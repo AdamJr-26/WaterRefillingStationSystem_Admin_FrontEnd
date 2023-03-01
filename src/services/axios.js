@@ -1,6 +1,4 @@
 import Axios from "axios";
-import dotenv from "dotenv";
-dotenv.config();
 
 const axiosAPI = () => {
   const usertoken = localStorage.getItem("userToken");
