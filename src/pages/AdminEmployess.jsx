@@ -29,7 +29,7 @@ function AdminEmployess() {
       transformDate(selectedDate).y_m_d
     }/${top}`,
   });
-  console.log("selectedDate",  transformDate(selectedDate).y_m_d);
+  console.log("datadatadatadata", data);
   return (
     <div className="admin-employees-page">
       <div className="admin-employees-page-sales-achievement">

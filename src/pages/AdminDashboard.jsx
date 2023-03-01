@@ -6,21 +6,26 @@ import ScrollContainer from "react-indiana-drag-scroll";
 import { Bar, Line, Pie } from "react-chartjs-2";
 import DashboardTodaysOverView from "../components/dashboard/DashboardTodaysOverView";
 import DashboardEngagementCustomers from "../components/dashboard/DashboardEngagementCustomers";
+import WRSInfo from "../components/dashboard/WRSInfo";
 
 function AdminDashboard() {
   return (
     <div className="admin-dashboard">
+      {/* <div className="admin-dashboard--wrs-info-component">
+        <WRSInfo />
+      </div> */}
       <div className="admin-dashboard--overview">
         <p className="admin-dashboard--overview__title">Overview</p>
         <DashboardTodaysOverView />
       </div>
       <div className="admin-dashboard--engagements">
-        <p className="admin-dashboard--overview__title">Engagements</p>
-        <DashboardEngagementCustomers />
+        <h1>In development</h1>
+        {/* <p className="admin-dashboard--overview__title">Engagements</p>
+        <DashboardEngagementCustomers /> */}
       </div>
-      <div className="admin-dashboard--responses">
+      {/* <div className="admin-dashboard--responses">
         <p className="admin-dashboard--overview__title">Responses</p>
-      </div>
+      </div> */}
     </div>
   );
 }

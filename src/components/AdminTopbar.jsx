@@ -67,7 +67,10 @@ function AdminTopbar() {
           ref={btnRef}
           onClick={onOpen}
         >
-          <span className="name">{user?.firstname?.toUpperCase()}</span>
+          <div>
+            <p className="name">{user?.firstname?.toUpperCase()}</p>
+            <p className="wrs-name">{user?.wrs_name}</p>
+          </div>
           <img src="https://picsum.photos/200" alt="admin image" srcSet="" />
         </div>
       </div>

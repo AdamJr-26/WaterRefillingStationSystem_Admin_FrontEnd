@@ -23,7 +23,7 @@ function AdminEmployeesNewPersonnelModal({ isOpen, onOpen, onClose }) {
   const [applyID, setApplyID] = useState(false);
   const [expiry, setExpiry] = useState(10);
   const toast = useToast();
-  
+
   return (
     <div>
       <Modal onClose={onClose} isOpen={isOpen} isCentered>
@@ -55,7 +55,14 @@ function AdminEmployeesNewPersonnelModal({ isOpen, onOpen, onClose }) {
                     isClosable: true,
                   });
                 } else {
-                  console.log("errr", error);
+                  toast({
+                    title: "Failed.",
+                    description: error?.apply_new_personel_admin.message,
+                    status: "error",
+                    duration: 9000,
+                    isClosable: true,
+                  });
+                  console.log("errr", error?.apply_new_personel_admin.message);
                 }
                 values.gmail = "";
               }}

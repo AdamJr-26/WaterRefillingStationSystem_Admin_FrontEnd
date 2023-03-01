@@ -17,7 +17,7 @@
         align-items: center;
         justify-content: center;
         gap: 10px;
-        
+
         button {
             background: none;
             border: none;
@@ -28,14 +28,16 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            &:hover{
+
+            &:hover {
                 background: colors.$gray-200;
                 border-radius: 10px;
             }
         }
 
     }
-    &--right-options{
+
+    &--right-options {
         display: flex;
         flex-direction: row;
         gap: 0px 10px;
@@ -44,19 +46,30 @@
         max-height: 100%;
 
         &__profile {
-            display: flex;  
+            display: flex;
             align-items: center;
             gap: 15px;
             cursor: pointer;
             padding: 5px 10px;
             border-radius: 10px;
             background-color: colors.$gray-100;
-            .name{
-                font-size: 1rem;
-                font-weight: 500;
-                color: colors.$gray-800;
+
+            div:nth-child(1) {
+                .name {
+                    font-size: 1rem;
+                    font-weight: 500;
+                    color: colors.$gray-800;
+                }
+                .wrs-name{
+                    font-size: 0.8rem;
+                    font-weight: 500;
+                    color: colors.$gray-800;
+                    
+                }
+
             }
-    
+
+
             img {
                 border-radius: 50%;
                 height: 40px;
@@ -66,10 +79,11 @@
     }
 
 }
+
 @media only screen and (max-width: breakpoints.$xs) {
-    .topbar{
-        &--right-options{
-            .name{
+    .topbar {
+        &--right-options {
+            .name {
                 display: none;
             }
         }

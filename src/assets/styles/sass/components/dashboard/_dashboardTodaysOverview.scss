@@ -11,6 +11,7 @@
     justify-content: space-between;
     gap: 10px;
     overflow: hidden;
+
     &--profit-wrapper {
         display: flex;
         flex-direction: column;
@@ -83,6 +84,8 @@
             padding: 10px 10px;
             border-radius: 15px;
             height: 80px;
+            background-color: white;
+
             div:nth-child(1) {
                 height: 50px;
                 width: 50px;
@@ -154,6 +157,15 @@
 
 @media only screen and (min-width:breakpoints.$sm) {
     .dashboard-todays-overview {
+        gap: 40px;
+
+        &--profit-wrapper {
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            padding: 0px 20px;
+            border-radius: 15px;
+            width: fit-content;
+        }
+
         &--sales-expenses {
             margin-right: 30px;
 

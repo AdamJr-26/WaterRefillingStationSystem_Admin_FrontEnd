@@ -21,18 +21,18 @@ function SalesAchievementCard({ data }) {
         </div>
         <div className="admin-employee-sales-achievement-card--statistic__border"></div>
         <div className="admin-employee-sales-achievement-card--statistic__engagement">
-          <p>Deliveries </p>
+          <p>Product(s) </p>
           <div>
-            <p>{data?.deliveries[0]?.total_deliveries || 0}</p>
-            <p>25%</p>
+            <p>{data?.purchases[0]?.sold_product || 0}</p>
+            {/* <p>25%</p> */}
           </div>
         </div>
       </div>
-      <div className="admin-employee-sales-achievement-card--other-info">
+      {/* <div className="admin-employee-sales-achievement-card--other-info">
         <button className="admin-employee-sales-achievement-card--other-info__profile">
           Profile
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }

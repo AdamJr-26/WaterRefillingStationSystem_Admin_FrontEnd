@@ -7,7 +7,6 @@ import AdminCustomerAddDiscount from "../components/customer/discount/AdminCusto
 import useFetch from "../hooks/api/useFetch";
 import CustomerStatusTableWrapper from "../components/customer/component.wrapper/CustomerStatusTableWrapper";
 import ListSkeletonLoading from "../components/general/ListSkeletonLoading";
-
 function AdminCustomers() {
   const [customerToview, setCustomerToview] = useState("");
   useEffect(() => {
@@ -29,6 +28,7 @@ function AdminCustomers() {
     <div className="admin-customers">
       <CustomerStatusTableWrapper />
       <div className="admin-customers-discounts">
+
         <div className="table-customers--header">
           <div className="table-customers--header__title-description">
             <p className="title">Promo</p>
@@ -40,7 +40,6 @@ function AdminCustomers() {
           <div className="table-customers--header__menu">
             <div className="add-discount">
               <AdminCustomerAddDiscount />
-              
             </div>
           </div>
         </div>

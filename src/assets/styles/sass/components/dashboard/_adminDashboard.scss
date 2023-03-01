@@ -8,6 +8,12 @@
     flex-direction: column;
     gap: 10px;
 
+    &--wrs-info-component {
+        background-color: white;
+        border-radius: 15px;
+        padding: 15px;
+    }
+
     &--greeting {
         background-color: white;
         border-radius: 15px;
@@ -38,6 +44,7 @@
             font-size: 24px;
             font-weight: 600;
             color: colors.$gray-500;
+            padding: 0px 15px;
         }
     }
 
@@ -50,7 +57,7 @@
             font-size: 24px;
             font-weight: 600;
             color: colors.$gray-500;
-           
+
         }
     }
 
