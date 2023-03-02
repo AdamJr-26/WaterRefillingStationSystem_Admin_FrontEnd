@@ -50,13 +50,13 @@ export const links = [
         icon: "fa6-solid:people-roof",
       },
       // "bi:shop"
-      {
-        name: "Shop",
-        path: "shop",
-        isRequiresAuthentication: true,
-        component: "",
-        icon: "bi:shop",
-      },
+      // {
+      //   name: "Shop",
+      //   path: "shop",
+      //   isRequiresAuthentication: true,
+      //   component: "",
+      //   icon: "bi:shop",
+      // },
     ],
   },
 ];
