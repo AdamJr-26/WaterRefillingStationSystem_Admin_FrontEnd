@@ -2,7 +2,6 @@ import React, {
   useState,
   useMemo,
   useRef,
-
   useEffect,
 } from "react";
 import { useMapEvents } from "react-leaflet/hooks";

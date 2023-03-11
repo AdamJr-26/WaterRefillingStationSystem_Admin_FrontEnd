@@ -1,0 +1,85 @@
+@use '../../colors';
+@use '../../breakpoints';
+
+.shop-products-wrapper {
+    background-color: white;
+    border-radius: 15px;
+    min-height: 250px;
+    margin-top: 10px;
+    padding: 15px;
+
+    &--header {
+        &__title {
+            font-size: 24px;
+            font-weight: 500;
+        }
+
+        &__description {
+            color: colors.$gray-500;
+        }
+    }
+
+    &--card-wrapper {
+        padding: 15px;
+        display: flex;
+        gap: 10px;
+        flex-flow: row wrap;
+
+        &--card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: fit-content;
+            flex: 1 1 0;
+            padding: 30px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+            border-radius: 15px;
+            gap: 10px;
+            max-width: 250px;
+
+            &__image-wrapper {
+                border-radius: 15px;
+                height: 130px;
+                width: 100px;
+                background-color: colors.$gray-200;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+            }
+
+            .shop-products-card-description {
+                &--name {
+                    text-align: center;
+                    font-weight: 500;
+
+                }
+
+                &--volume,
+                &--price {
+                    font-size: 14px;
+                    text-align: center;
+                }
+            }
+
+            &__buttons-wrapper {
+                display: flex;
+                flex-direction: row;
+                gap: 15px;
+
+                button {
+                    padding: 15px;
+                    border-radius: 5px;
+                    border: 1px solid rgb(226, 223, 223);
+                    cursor: pointer;
+                    transition: all ease-in-out 150ms;
+
+                    &:hover {
+                        background-color: colors.$blue-900;
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}

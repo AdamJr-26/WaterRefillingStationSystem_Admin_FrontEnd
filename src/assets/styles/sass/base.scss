@@ -77,6 +77,10 @@
 @use './components/customers/purchaseHistory';
 // credits
 @use "./components/credits/paycreditsModal";
+// shop
+@use "./components/shop/wrsInfo";
+@use "./components/shop/shopProducts";
+@use "./components/shop/addProductModal";
 
 *,
 ::after,

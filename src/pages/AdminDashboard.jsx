@@ -6,7 +6,6 @@ import ScrollContainer from "react-indiana-drag-scroll";
 import { Bar, Line, Pie } from "react-chartjs-2";
 import DashboardTodaysOverView from "../components/dashboard/DashboardTodaysOverView";
 import DashboardEngagementCustomers from "../components/dashboard/DashboardEngagementCustomers";
-import WRSInfo from "../components/dashboard/WRSInfo";
 
 function AdminDashboard() {
   return (

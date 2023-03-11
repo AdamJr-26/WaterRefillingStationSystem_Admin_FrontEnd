@@ -42,9 +42,9 @@ function AppInventory() {
     <div className="inventory">
       <div className="table-gallon">
         <div className="table-gallon--header">
-          <p className="table-gallon--header__title">Products</p>
+          <p className="table-gallon--header__title">Gallon</p>
           <p className="table-gallon--header__description">
-            Tracks products accurately.
+            Tracks gallons accurately.
           </p>
         </div>
         {!isValidatingGallons ? (
