@@ -81,10 +81,12 @@ function AdminResetPassword() {
         onClick={onOpen}
         colorScheme="blue"
         variant="solid"
-        color="blackAlpha.800"
         width="100%"
         background="#f3f4f6"
         type="button"
+        height="50px"
+        color="blackAlpha.800"
+        _hover={{color: "white", backgroundColor:"#2389DA"}}
       >
         Change Password
       </Button>

@@ -37,7 +37,7 @@ function HomeLogin() {
       } else {
         setLoginLoading(false);
         toast({
-          title: "Logg in error",
+          title: "Log in error",
           description: "Please double check your input",
           status: "error",
           duration: "4000",

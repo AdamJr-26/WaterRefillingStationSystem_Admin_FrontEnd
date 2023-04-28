@@ -20,7 +20,8 @@
         img {
             height: 100px;
             width: 100px;
-            background-color: colors.$blue-900;
+            background-color: colors.$gray-100;
+            border: 1px solid colors.$gray-200;
             border-radius: 100%;
         }
 

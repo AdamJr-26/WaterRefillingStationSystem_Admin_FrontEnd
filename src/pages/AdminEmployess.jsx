@@ -84,11 +84,11 @@ function AdminEmployess() {
             </p>
           </div>
           <div className="personel-search-new-wrapper--search-new-personel">
-            <div className="personel-search-new-wrapper--search-new-personel__search">
+            {/* <div className="personel-search-new-wrapper--search-new-personel__search">
               <button>
                 <Icon icon="ic:baseline-search" />
               </button>
-            </div>
+            </div> */}
             <div className="personel-search-new-wrapper--search-new-personel__new-personel">
               <button onClick={newPersonelClosure.onOpen}>
                 <Icon icon="material-symbols:add" /> New Personnel

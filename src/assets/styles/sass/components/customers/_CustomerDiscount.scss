@@ -41,21 +41,5 @@
             }
         }
 
-        &__buttons {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            position: absolute;
-            right: 10px;
-            bottom: 10px;
-
-            button:nth-child(1) {
-                font-weight: 500;
-                color: red;
-                background-color: rgba(201, 201, 201, 0.2);
-                padding: 2px 10px;
-                border-radius: 15px;
-            }
-        }
     }
 }

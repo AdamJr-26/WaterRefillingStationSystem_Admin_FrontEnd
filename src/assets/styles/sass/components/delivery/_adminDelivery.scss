@@ -18,6 +18,7 @@
         // border-radius: 15px;
         border-bottom: 3px solid colors.$gray-100;
         padding: 10px 0px;
+
         &--header {
             display: flex;
             flex-direction: row;
@@ -146,8 +147,9 @@
                     gap: 5px;
 
                     img {
-                        width: 70px;
-                        border-radius: 100%;
+                        width: 80px;
+                        height: 80px;
+                        border-radius: 10%;
                     }
 
                     &__name {

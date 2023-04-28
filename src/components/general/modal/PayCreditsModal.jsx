@@ -26,7 +26,7 @@ function PayCreditsModal({
   const finalRef = React.useRef(null);
   //   fetch a credit with gallons details.
   const [creditInfo, setCreditInfo] = useState(null);
-  console.log("credit, credit", credit);
+  // console.log("credit, credit", credit);
   useEffect(() => {
     async function getCreditInfo() {
       if (!isOpen) return;
@@ -85,7 +85,7 @@ function PayCreditsModal({
   useEffect(() => {
     onChangeTotalCreditGallon(totalGallonToPay);
   }, [totalGallonToPay]);
-
+  console.log('credit', credit)
   return (
     <div>
       <Modal finalFocusRef={finalRef} isOpen={isOpen} onClose={onClose}>
@@ -98,8 +98,8 @@ function PayCreditsModal({
               <div className="paycredits-modal--customer">
                 <div className="paycredits-modal--customer__display-photo">
                   <img
-                    src={credit?.customer[0]?.display_photo}
-                    alt=""
+                    src={creditInfo?.customer[0]?.display_photo}
+                    alt="user"
                     srcSet=""
                   />
                 </div>

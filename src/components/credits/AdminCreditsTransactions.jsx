@@ -118,8 +118,7 @@ function AdminCreditsLastransactions() {
           </p>
         </div>
       ) : null}
-      {
-        !isValidating ?
+      {!isValidating ? (
         !data?.data?.length ? (
           <NoData min_height={500} />
         ) : (
@@ -133,7 +132,11 @@ function AdminCreditsLastransactions() {
               key={index}
             >
               <div className="transactions-wrapper--item__image-wrapper">
-                <img src={credit?.customer_info[0]?.display_photo} alt="" srcSet="" />
+                <img
+                  src={credit?.customer_info[0]?.display_photo}
+                  alt=""
+                  srcSet=""
+                />
               </div>
               <div className="transactions-wrapper--item__person-info">
                 <span className="name">
@@ -167,45 +170,48 @@ function AdminCreditsLastransactions() {
               </div>
             </div>
           ))
-        ) : <ListSkeletonLoading num_lines={5} />
-      }
+        )
+      ) : (
+        <ListSkeletonLoading num_lines={5} />
+      )}
+      {data?.data.length >= limitItems ? (
+        <div className="transactions-wrapper--pagination-buttons">
+          {currentPage > 1 ? (
+            <div
+              onClick={() => onPressPrev()}
+              className="transactions-wrapper--pagination-buttons__back"
+            >
+              <p>
+                <Icon icon="ic:sharp-navigate-before" />
+              </p>
+              <p>
+                <Icon icon="ic:sharp-navigate-before" />
+              </p>
+              <p>Prev</p>
+            </div>
+          ) : null}
+          {data?.data.length ? (
+            <p className="transactions-wrapper--pagination-buttons__current-page">
+              {currentPage}
+            </p>
+          ) : null}
 
-      <div className="transactions-wrapper--pagination-buttons">
-        {currentPage > 1 ? (
-          <div
-            onClick={() => onPressPrev()}
-            className="transactions-wrapper--pagination-buttons__back"
-          >
-            <p>
-              <Icon icon="ic:sharp-navigate-before" />
-            </p>
-            <p>
-              <Icon icon="ic:sharp-navigate-before" />
-            </p>
-            <p>Prev</p>
-          </div>
-        ) : null}
-        {data?.data.length ? (
-          <p className="transactions-wrapper--pagination-buttons__current-page">
-            {currentPage}
-          </p>
-        ) : null}
-
-        {data?.data.length >= limitItems ? (
-          <div
-            onClick={() => onPressnext()}
-            className="transactions-wrapper--pagination-buttons__next"
-          >
-            <p>Next</p>
-            <p>
-              <Icon icon="ic:sharp-navigate-next" />
-            </p>
-            <p>
-              <Icon icon="ic:sharp-navigate-next" />
-            </p>{" "}
-          </div>
-        ) : null}
-      </div>
+          {data?.data.length >= limitItems ? (
+            <div
+              onClick={() => onPressnext()}
+              className="transactions-wrapper--pagination-buttons__next"
+            >
+              <p>Next</p>
+              <p>
+                <Icon icon="ic:sharp-navigate-next" />
+              </p>
+              <p>
+                <Icon icon="ic:sharp-navigate-next" />
+              </p>{" "}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
     </div>
   );
 }

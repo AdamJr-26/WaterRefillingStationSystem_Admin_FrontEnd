@@ -93,42 +93,44 @@ function FinishedDeliveryWrapper() {
         error={finishedDeliveriesError}
         isValidating={isValidatingFD}
       />
-      <div className="transactions-wrapper--pagination-buttons">
-        {currentPage > 1 ? (
-          <div
-            onClick={() => onPressPrev()}
-            className="transactions-wrapper--pagination-buttons__back"
-          >
-            <p>
-              <Icon icon="ic:sharp-navigate-before" />
+      {finishedDeliveries?.data.length >= limitItems ? (
+        <div className="transactions-wrapper--pagination-buttons">
+          {currentPage > 1 ? (
+            <div
+              onClick={() => onPressPrev()}
+              className="transactions-wrapper--pagination-buttons__back"
+            >
+              <p>
+                <Icon icon="ic:sharp-navigate-before" />
+              </p>
+              <p>
+                <Icon icon="ic:sharp-navigate-before" />
+              </p>
+              <p>Prev</p>
+            </div>
+          ) : null}
+          {finishedDeliveries?.data.length ? (
+            <p className="transactions-wrapper--pagination-buttons__current-page">
+              {currentPage}
             </p>
-            <p>
-              <Icon icon="ic:sharp-navigate-before" />
-            </p>
-            <p>Prev</p>
-          </div>
-        ) : null}
-        {finishedDeliveries?.data.length ? (
-          <p className="transactions-wrapper--pagination-buttons__current-page">
-            {currentPage}
-          </p>
-        ) : null}
+          ) : null}
 
-        {finishedDeliveries?.data.length >= limitItems ? (
-          <div
-            onClick={() => onPressnext()}
-            className="transactions-wrapper--pagination-buttons__next"
-          >
-            <p>Next</p>
-            <p>
-              <Icon icon="ic:sharp-navigate-next" />
-            </p>
-            <p>
-              <Icon icon="ic:sharp-navigate-next" />
-            </p>{" "}
-          </div>
-        ) : null}
-      </div>
+          {finishedDeliveries?.data.length >= limitItems ? (
+            <div
+              onClick={() => onPressnext()}
+              className="transactions-wrapper--pagination-buttons__next"
+            >
+              <p>Next</p>
+              <p>
+                <Icon icon="ic:sharp-navigate-next" />
+              </p>
+              <p>
+                <Icon icon="ic:sharp-navigate-next" />
+              </p>{" "}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
     </div>
   );
 }

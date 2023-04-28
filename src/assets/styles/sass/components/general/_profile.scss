@@ -1,0 +1,40 @@
+@use '../../colors';
+@use '../../breakpoints';
+
+.admin-set-profile {
+    border-radius: 8px;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-right: 15px;
+    background-color: none;
+    border: 1px solid colors.$gray-200;
+    object-fit: cover;
+    overflow: hidden;
+    margin: auto;
+    
+    .icon {
+        width: 30px;
+        height: auto;
+        // outline: 2px solid green;
+        position: absolute;
+        color: colors.$blue-900;
+    }
+
+    input {
+        position: absolute;
+        opacity: 0;
+        width: 100%;
+        height: auto;
+        z-index: 1;
+        outline: 1px solid blue;
+    }
+    img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+}

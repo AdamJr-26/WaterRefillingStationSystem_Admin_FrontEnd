@@ -36,7 +36,7 @@ function AdminInventoryDataTableVehicle({ data }) {
     "Vehicle ID / Plate Number",
     "Vehicle Name",
     "Available",
-    "MENU",
+    "ACTION",
   ];
 
   const [page, setPage] = useState(1);

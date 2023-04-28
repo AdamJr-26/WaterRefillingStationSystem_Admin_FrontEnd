@@ -12,25 +12,25 @@
     padding: 10px;
     z-index: 10;
     position: fixed;
-    
+
     scroll-behavior: smooth;
-        overflow-x: hidden;
-        overflow-y: scroll;
-        
-        &::-webkit-scrollbar {
-            width: 4px;
+    overflow-x: hidden;
+    overflow-y: scroll;
 
-        }
+    &::-webkit-scrollbar {
+        width: 4px;
 
-        &::-webkit-scrollbar-track {
-            background-color: colors.$blue-100;
-            border-radius: 2px;
-        }
+    }
 
-        &::-webkit-scrollbar-thumb {
-            background-color: colors.$blue-300;
-            border-radius: 2px;
-        }
+    &::-webkit-scrollbar-track {
+        background-color: colors.$blue-100;
+        border-radius: 2px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: colors.$blue-300;
+        border-radius: 2px;
+    }
 
     &--wrsss-logo {
         position: relative;
@@ -47,6 +47,7 @@
             height: auto;
 
         }
+
         &__close-menu-button {
             position: absolute;
             right: -10px;
@@ -71,9 +72,10 @@
     &--links {
         font-weight: 600;
         color: colors.$gray-800;
-        
+
         .active {
             background-color: colors.$gray-100;
+
             .icon {
                 background-color: colors.$blue-900;
                 color: white;
@@ -117,16 +119,8 @@
             flex-direction: column;
             gap: 10px;
 
-            .active {
+            margin-top: 10px;
 
-                background-color: colors.$gray-100;
-
-                .icon {
-                    background-color: colors.$blue-900;
-                    color: white;
-
-                }
-            }
 
             .link {
                 padding: 15px 10px;
@@ -156,6 +150,16 @@
                     background-color: colors.$gray-100;
                 }
             }
+
+            .active {
+                background-color: colors.$gray-100;
+
+                .icon {
+                    background-color: colors.$blue-900;
+                    color: white;
+
+                }
+            }
         }
     }
 }
@@ -166,14 +170,15 @@
         top: 0px;
         height: auto;
         min-height: 100vh;
-        &--wrsss-logo__close-menu-button{
+
+        &--wrsss-logo__close-menu-button {
             display: none;
         }
 
         &::-webkit-scrollbar {
             display: none;
 
-    
+
         }
     }
 }

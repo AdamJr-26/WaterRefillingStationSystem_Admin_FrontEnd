@@ -100,43 +100,44 @@ function CustomerStatusTableWrapper() {
       ) : (
         <ListSkeletonLoading num_lines={5} />
       )}
+      {customersStatus.data?.data?.length >= limitItems ? (
+        <div className="transactions-wrapper--pagination-buttons">
+          {currentPage > 1 ? (
+            <div
+              onClick={() => onPressPrev()}
+              className="transactions-wrapper--pagination-buttons__back"
+            >
+              <p>
+                <Icon icon="ic:sharp-navigate-before" />
+              </p>
+              <p>
+                <Icon icon="ic:sharp-navigate-before" />
+              </p>
+              <p>PREVIOUS</p>
+            </div>
+          ) : null}
+          {customersStatus.data?.data?.length ? (
+            <p className="transactions-wrapper--pagination-buttons__current-page">
+              {currentPage}
+            </p>
+          ) : null}
 
-      <div className="transactions-wrapper--pagination-buttons">
-        {currentPage > 1 ? (
-          <div
-            onClick={() => onPressPrev()}
-            className="transactions-wrapper--pagination-buttons__back"
-          >
-            <p>
-              <Icon icon="ic:sharp-navigate-before" />
-            </p>
-            <p>
-              <Icon icon="ic:sharp-navigate-before" />
-            </p>
-            <p>PREVIOUS</p>
-          </div>
-        ) : null}
-        {customersStatus.data?.data?.length ? (
-          <p className="transactions-wrapper--pagination-buttons__current-page">
-            {currentPage}
-          </p>
-        ) : null}
-
-        {customersStatus.data?.data?.length >= limitItems ? (
-          <div
-            onClick={() => onPressnext()}
-            className="transactions-wrapper--pagination-buttons__next"
-          >
-            <p>NEXT</p>
-            <p>
-              <Icon icon="ic:sharp-navigate-next" />
-            </p>
-            <p>
-              <Icon icon="ic:sharp-navigate-next" />
-            </p>{" "}
-          </div>
-        ) : null}
-      </div>
+          {customersStatus.data?.data?.length >= limitItems ? (
+            <div
+              onClick={() => onPressnext()}
+              className="transactions-wrapper--pagination-buttons__next"
+            >
+              <p>NEXT</p>
+              <p>
+                <Icon icon="ic:sharp-navigate-next" />
+              </p>
+              <p>
+                <Icon icon="ic:sharp-navigate-next" />
+              </p>{" "}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
     </div>
   );
 }

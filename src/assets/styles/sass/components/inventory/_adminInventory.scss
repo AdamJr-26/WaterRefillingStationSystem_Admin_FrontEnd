@@ -9,23 +9,43 @@
     gap: 10px;
     width: 100%;
 
-    .table-gallon, .table-vehicle {
+    .table-gallon,
+    .table-vehicle {
         display: flex;
         flex-direction: column;
         gap: 10px;
 
         &--header {
-            &__title {
-                font-size: 24px;
-                font-weight: 500;
-                color: colors.$gray-800;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            &__title-description {
+                display: flex;
+                flex-direction: column;
+
+                .table-product-header-title {
+                    font-size: 24px;
+                    font-weight: 500;
+                    color: colors.$gray-800;
+                }
+
+                .table-product-header-description {
+                    font-size: 14px;
+                    color: colors.$gray-400;
+                }
 
             }
+            &__buttons {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                // position: absolute;
+                right: 10px;
+                bottom: 10px;
 
-            &__description {
-                font-size: 14px;
-                color: colors.$gray-400;
+                
             }
+
         }
     }
 

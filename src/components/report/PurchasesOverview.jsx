@@ -10,8 +10,7 @@ import useFetch from "../../hooks/api/useFetch";
 function PurchasesOverview({ selectedDate, data }) {
   const startMonth = startOfMonth(selectedDate);
   const endMonth = endOfMonth(selectedDate);
-  const days = eachDayOfInterval({ start: startMonth, end: endMonth });
-
+  const days = eachDayOfInterval({ start: startMonth, end: endMonth }).filter(day => new Date(day).getDate() <= new Date().getDate());
   // const { data, error } = useFetch({
   //   url: `/api/reports/purchases/${transformDate(selectedDate).y_m_d}`,
   // });

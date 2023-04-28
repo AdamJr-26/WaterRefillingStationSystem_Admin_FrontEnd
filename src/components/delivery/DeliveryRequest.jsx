@@ -71,7 +71,7 @@ function DeliveryRequest() {
                 </table>
                 <div className="delivery-card-info--personel-info">
                   <img
-                    src="https://cdn.motor1.com/images/mgl/nOlNy/s1/1x1/elon-musk.webp"
+                    src={delivery?.delivery_personel?.display_photo}
                     alt="personel"
                     className="delivery-card-info--personel-info__image"
                   />

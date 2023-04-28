@@ -6,6 +6,7 @@ import SalesOverivew from "../components/report/SalesOverivew";
 import useFetch from "../hooks/api/useFetch";
 import ReportLogs from "../components/report/ReportLogs";
 import Expenses from "../components/report/Expenses";
+import ReportsTransactions from "../components/report/ReportsTransactions";
 function AdminReports() {
   // get days of the month
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -14,19 +15,21 @@ function AdminReports() {
   const startYear = startOfYear(new Date());
   const endYear = endOfYear(new Date());
   const months = eachMonthOfInterval({ start: startYear, end: endYear });
-  console.log("months", months);
 
   const { data, error } = useFetch({
     url: `/api/reports/purchases/${transformDate(selectedDate).y_m_d}`,
   });
-  console.log("[PURCHASES-REPORTS]ss", data);
 
+  function changeYear(newSelectedYear) {
+    let split_date = transformDate(selectedDate).y_m_d.split("-");
+    setSelectedDate(
+      new Date(`${newSelectedYear}-${split_date[1]}-${split_date[2]}`)
+    );
+  }
   return (
     <div className="admin-reports">
       <div className="admin-reports--query-option">
-        <p className="admin-reports--query-option__title">
-          Sales report / Overview /
-        </p>
+        <p className="admin-reports--query-option__title">Month</p>
         <select
           onChange={(e) => setSelectedDate(new Date(e.target.value))}
           name="date"
@@ -45,12 +48,21 @@ function AdminReports() {
             )
           )}
         </select>
-        <select name="" id="">
-          <option value="2022">2022</option>
-          <option value="2020">2020</option>
-          <option value="2021">2021</option>
-          <option value="2023">2023</option>
+        <p className="admin-reports--query-option__title">Year</p>
+        <select
+          name=""
+          id=""
+          className="admin-reports--query-option__select-date"
+          onChange={(e) => changeYear(e.target.value)}
+        >
+          {/* <option value="2021">2022</option> */}
+          <option selected value="2023">
+            2023
+          </option>
         </select>
+      </div>
+      <div className="admin-reports--transactions">
+        <ReportsTransactions date={transformDate(selectedDate).y_m_d} />
       </div>
       <div className="admin-reports-wrapper-for-charts-logs">
         <div className="admin-reports--charts">

@@ -50,7 +50,6 @@ function AdminCustomerDataTable({ data, error, isValidating, setSortby }) {
     { name: "CREDIT ", fieldName: "firstname" },
     { name: "BORROWED ", fieldName: "firstname" },
     { name: "LAST DELIVERY", fieldName: "firstname" },
-    { name: "MENU", fieldName: "firstname" },
   ];
 
   if (!data && !error && isValidating) {
@@ -102,7 +101,7 @@ function AdminCustomerDataTable({ data, error, isValidating, setSortby }) {
                     <Td>
                       <p
                         style={{
-                          fontWeight: 600,
+                          // fontWeight: 600,
                           fontSize: "16px",
                         }}
                       >
@@ -119,49 +118,22 @@ function AdminCustomerDataTable({ data, error, isValidating, setSortby }) {
                     </Td>
                   )}
                   <Td>
-                    <div
+                    <p
                       style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "space-around",
+                        // fontWeight: 600,
+                        fontSize: "16px",
+                        // textAlign: "center",
                       }}
                     >
-                      <div style={{ margin: "0px 5px" }}>
-                        <p style={{ fontSize: 12, color: "green" }}>
-                          Total amount
-                        </p>
-                        <p
-                          style={{
-                            fontWeight: 600,
-                            fontSize: "19px",
-                            textAlign: "center",
-                          }}
-                        >
-                          {customer.credit[0]?.total_credit_amount || 0}
-                        </p>
-                      </div>
-                      <div style={{ margin: "0px 5px" }}>
-                        <p style={{ fontSize: 12, color: "green" }}>
-                          Total gallons
-                        </p>
-                        <p
-                          style={{
-                            fontWeight: 600,
-                            fontSize: "19px",
-                            textAlign: "center",
-                          }}
-                        >
-                          {customer.credit[0]?.total_credited_gallon || 0}
-                        </p>
-                      </div>
-                    </div>
+                      ₱ {customer.credit[0]?.total_credit_amount || 0}
+                    </p>
                   </Td>
                   <Td>
                     <p
                       style={{
-                        fontWeight: 600,
-                        fontSize: "19px",
-                        textAlign: "center",
+                        // fontWeight: 600,
+                        fontSize: "16px",
+                        // textAlign: "center",
                       }}
                     >
                       {customer.borrow[0]?.total_borrowed_gallon || 0}
@@ -171,7 +143,7 @@ function AdminCustomerDataTable({ data, error, isValidating, setSortby }) {
                     <Td>
                       <p
                         style={{
-                          fontWeight: 600,
+                          // fontWeight: 600,
                           fontSize: "16px",
                         }}
                       >
@@ -187,7 +159,7 @@ function AdminCustomerDataTable({ data, error, isValidating, setSortby }) {
                       <p>No Delivery</p>
                     </Td>
                   )}
-                  <Td>
+                  {/* <Td>
                     <Menu>
                       <MenuButton
                         as={IconButton}
@@ -206,7 +178,7 @@ function AdminCustomerDataTable({ data, error, isValidating, setSortby }) {
                         </MenuItem>
                       </MenuList>
                     </Menu>
-                  </Td>
+                  </Td> */}
                 </Tr>
               ))}
             </Tbody>
@@ -219,7 +191,7 @@ function AdminCustomerDataTable({ data, error, isValidating, setSortby }) {
   } else {
     return (
       <div>
-        <p>Error, click to refresh.</p>
+        <p>Loading...</p>
       </div>
     );
   }

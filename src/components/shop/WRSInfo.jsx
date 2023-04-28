@@ -10,7 +10,7 @@ function WRSInfo() {
   return (
     <div className="shop-wrs-info">
       <div className="shop-wrs-info--image-wrapper">
-        <img src="" alt="" />
+        <img src={userProfile.data.display_photo} alt="" />
       </div>
       <div className="shop-wrs-info--additional-info">
         <div className="shop-wrs-info--additional-info__name-icon">
@@ -26,16 +26,16 @@ function WRSInfo() {
         </div>
       </div>
       <div className="shop-wrs-info--buttons-wrapper">
-        <Tooltip label="Edit">
+        {/* <Tooltip label="Edit">
           <button>
             <Icon icon="majesticons:edit-pen-2-line" />
           </button>
-        </Tooltip>
-        <Tooltip label="Schedules">
+        </Tooltip> */}
+        {/* <Tooltip label="Schedules">
           <button>
             <Icon icon="grommet-icons:schedules" />
           </button>
-        </Tooltip>
+        </Tooltip> */}
         <AddProductModal />
       </div>
     </div>

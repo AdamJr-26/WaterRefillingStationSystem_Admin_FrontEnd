@@ -13,7 +13,7 @@ function SalesOverivew({ selectedDate, data }) {
   // SALES
   data?.data[0]?.purchases?.map((purchase) => {
     var index = purchase._id - 1;
-    salesData[index] = purchase.total_orders_paid_unpaid_amount;
+    salesData[index] = purchase.sales;
   });
   // EXPENSES
   const expenseData = Array(days.length).fill(0);
@@ -116,30 +116,7 @@ function SalesOverivew({ selectedDate, data }) {
             <div className="sales--amount">
               {/* paid invoices and debt payment */}
               <p>₱ {data?.data[0].total_sales}</p>
-              <div className="sales--amount__other-contents">
-                <Tooltip hasArrow label="Paid gallons" bg="gray.100" color="black">
-                  <div>
-                    <p>
-                      <Icon icon="game-icons:water-gallon" />
-                    </p>
-                    <p> {data?.data[0]?.total_paid_product}</p>
-                  </div>
-                </Tooltip>
-
-                <Tooltip
-                  hasArrow
-                  label="Credited gallons"
-                  bg="gray.100"
-                  color="black"
-                >
-                  <div>
-                    <p>
-                      <Icon icon="game-icons:water-gallon" />
-                    </p>
-                    <p>{data?.data[0]?.total_credited_gallons_count}</p>
-                  </div>
-                </Tooltip>
-              </div>
+             
             </div>
           </div>
           <p className="month">{transformDate(startMonth).monthName}</p>

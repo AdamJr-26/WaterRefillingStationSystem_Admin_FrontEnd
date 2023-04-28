@@ -39,7 +39,7 @@ function AdminInventoryGallon({ data }) {
     "PRICE",
     "Borrowed",
     "Available",
-    "Total",
+    "Quantity",
   ];
   const chartData = {
     // labels: ["Red", "Blue"],
@@ -232,7 +232,7 @@ function AdminInventoryGallon({ data }) {
                       <p>₱ {data?.price}</p>
                     </div>
                     <div className="grallon-total-tag">
-                      <p>Total</p>
+                      <p>Quantity</p>
                       <p>{data?.total}</p>
                     </div>
                   </div>
@@ -391,22 +391,18 @@ function AdminInventoryGallon({ data }) {
               <Td
                 
                 className={
-                  item?.borrowed[0]?.total_borrowed < 0 ? "warning" : "good"
+                  item?.borrowed[0]?.total_borrowed > 0 ? "warning" : "neutral"
                 }
               >
                 {item.borrowed[0]?.total_borrowed || 0}
               </Td>
               <Td
                 
-                className={
-                  item?.total - item.borrowed[0]?.total_borrowed < 0
-                    ? "warning"
-                    : "neutral"
-                }
+                className='good'
               >
                 {item?.total  - (item.borrowed[0]?.total_borrowed || 0)}
               </Td>
-              <Td  className={item?.total < 0 ? "warning" : "neutral"}>
+              <Td  className={item?.total <= 0 ? "warning" : "neutral"}>
                 {item.total}
               </Td>
             </Tr>

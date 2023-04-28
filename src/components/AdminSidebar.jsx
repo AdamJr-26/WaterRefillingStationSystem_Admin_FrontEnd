@@ -40,7 +40,7 @@ function AdminSidebar() {
               <Icon className="icon" icon={links[0].icon} />
               <span>{links[0].name}</span>
             </NavLink>
-            <p className="pages">Pages</p>
+            {/* <p className="pages">Pages</p> */}
             <div className="sidebar--links__pages">
               {links[1].pages.map((link) => (
                 <NavLink
@@ -51,7 +51,7 @@ function AdminSidebar() {
                   key={link.path}
                 >
                   <span className="icon">
-                  <Icon  icon={link.icon} />
+                    <Icon icon={link.icon} />
                   </span>
                   <span>{link.name}</span>
                 </NavLink>

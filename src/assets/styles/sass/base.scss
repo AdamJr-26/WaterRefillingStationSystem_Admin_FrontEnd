@@ -14,6 +14,7 @@
 
 @use './components/general/datetime';
 @use './components/general/noData';
+@use './components/general/profile';
 
 @use './components/inventory/adminInventory';
 @use './components/inventory/adminInventoryAddGallon';
@@ -31,8 +32,8 @@
 @use './components/reports/salesOverview';
 @use './components/reports/reportsLogs';
 @use './components/reports/expensesChart';
-
-
+@use './components/reports/reportsTransactions';
+@use './components/reports/adminReportsTransactionTable';
 
 @use './components/dashboard/adminDashboard';
 @use './components/dashboard/adminDashboardCard';

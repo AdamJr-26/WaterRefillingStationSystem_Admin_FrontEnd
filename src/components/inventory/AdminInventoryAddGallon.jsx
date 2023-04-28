@@ -146,7 +146,7 @@ function AdminInventoryAddGallon() {
 
           <div className="admin-inventory-add-gallon--inputs">
             <TextInput
-              label="Create Name"
+              label="Name"
               name="name"
               placeholder="Gallon Name"
             />
@@ -160,13 +160,13 @@ function AdminInventoryAddGallon() {
               label="Price"
               type="number"
               name="price"
-              placeholder="Price"
+              placeholder="0"
             />
             <TextInput
-              label="Total"
+              label="Quantity"
               type="number"
               name="total"
-              placeholder="total"
+              placeholder="0"
             />
           </div>
           <div className="admin-inventory-add-gallon--buttons">
