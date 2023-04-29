@@ -25,14 +25,14 @@ function TransactionTableExpenses({ data, currentPage, setPage }) {
     console.log("endRange--------", endRange);
     pages.push(i);
   }
-  let heading = ["ID", "DATE", "CUSTOMER", "TITLE", "AMOUNT", "DESCRIPTION"];
+  let heading = ["ID", "DATE", "TITLE", "AMOUNT", "DESCRIPTION"];
 
   return (
     <TableContainer>
       <Table variant="simple">
         <TableCaption>
-          This is just a list of expenses that have been made up to the
-          selected date,
+          This is just a list of expenses that have been made up to the selected
+          date,
         </TableCaption>
         <Thead backgroundColor="gray.100">
           <Tr>
@@ -48,10 +48,9 @@ function TransactionTableExpenses({ data, currentPage, setPage }) {
               <Td fontSize="14px">
                 {format(new Date(item.date.utc_date), "MMMM d, yyyy")}
               </Td>
-              <Td fontSize="14px">{item.customer.fullname}</Td>
-              <Td fontSize="14px">{item.gallon.name}</Td>
-              <Td fontSize="14px">{item.quantity}</Td>
-              <Td fontSize="14px">₱ {item.payment}</Td>
+              <Td fontSize="14px">{item.title}</Td>
+              <Td fontSize="14px">{item.amount}</Td>
+              <Td fontSize="14px">{item.description}</Td>
             </Tr>
           ))}
         </Tbody>

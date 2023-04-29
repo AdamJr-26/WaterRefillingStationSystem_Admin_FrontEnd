@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import transformDate from "../../../../utils/date.toString";
 import { Icon } from "@iconify/react";
 import useFetch from "../../../../hooks/api/useFetch";
+import TablePaginationButtons from "../../../general/TablePaginationButtons";
 
 function PurchasesHistory({ customer_id }) {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [limitItems, setLimitItems] = useState(5);
+  const [limit, setLimit] = useState(5);
+  const [page, setPage] = useState(1);
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
 
@@ -14,22 +15,11 @@ function PurchasesHistory({ customer_id }) {
     error,
     mutate: mutatePagination,
     isValidating,
+    isLoading,
   } = useFetch({
-    url: `/api/purchase/history/${limitItems}/${
-      limitItems * currentPage - limitItems
-    }/${fromDate}/${toDate}/${customer_id}`,
+    url: `/api/purchase/history/${limit}/${page}/${fromDate}/${toDate}/${customer_id}`,
   });
 
-  const onPressnext = () => {
-    if (data?.data.length >= limitItems) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-  const onPressPrev = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
   const onChangeFrom = (value) => {
     setFromDate(value);
   };
@@ -45,6 +35,21 @@ function PurchasesHistory({ customer_id }) {
     setFromDate(null);
     setToDate(null);
   };
+
+  // Number of buttons to show in the pagination
+  const buttonsToShow = 5;
+  // Calculate the range of buttons to display
+  const startRange = Math.max(1, page - Math.floor(buttonsToShow / 2));
+  const endRange = Math.min(
+    data?.data?.totalPages,
+    startRange + buttonsToShow - 1
+  );
+
+  const pages = [];
+  for (let i = startRange; i <= endRange; i++) {
+    pages.push(i);
+  }
+
   console.log("[data-purchases]", data);
   return (
     <div className="return-gallon-history-wrapper">
@@ -79,7 +84,7 @@ function PurchasesHistory({ customer_id }) {
           </div>
         </div>
       </div>
-      {data?.data?.map((purchase, i) => (
+      {data?.data?.docs?.map((purchase, i) => (
         <div key={i} className="purchases-history">
           <div className="purchases-history--info">
             <p className="purchases-history--info__date">
@@ -102,40 +107,12 @@ function PurchasesHistory({ customer_id }) {
 
       {/* the  */}
       <div className="transactions-wrapper--pagination-buttons">
-        {currentPage > 1 ? (
-          <div
-            onClick={() => onPressPrev()}
-            className="transactions-wrapper--pagination-buttons__back"
-          >
-            <p>
-              <Icon icon="ic:sharp-navigate-before" />
-            </p>
-            <p>
-              <Icon icon="ic:sharp-navigate-before" />
-            </p>
-            <p>Prev</p>
-          </div>
-        ) : null}
-        {data?.data.length ? (
-          <p className="transactions-wrapper--pagination-buttons__current-page">
-            {currentPage}
-          </p>
-        ) : null}
-
-        {data?.data.length >= limitItems ? (
-          <div
-            onClick={() => onPressnext()}
-            className="transactions-wrapper--pagination-buttons__next"
-          >
-            <p>Next</p>
-            <p>
-              <Icon icon="ic:sharp-navigate-next" />
-            </p>
-            <p>
-              <Icon icon="ic:sharp-navigate-next" />
-            </p>{" "}
-          </div>
-        ) : null}
+        <TablePaginationButtons
+          pages={pages}
+          setPage={setPage}
+          currentPage={page}
+          totalPages={data?.data?.totalPages}
+        />
       </div>
     </div>
   );

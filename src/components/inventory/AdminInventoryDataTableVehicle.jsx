@@ -73,7 +73,7 @@ function AdminInventoryDataTableVehicle({ data }) {
         <Tbody className="chakra-table-container--table__tbody">
           {currentItems?.map((item) => (
             <Tr className="tbody-tr" key={item._id}>
-              <Td className="tbody-tr--td">
+              <Td className="tbody-tr--td" width="70px">
                 <img
                   className="tbody-tr--image"
                   src={item.vehicle_image}

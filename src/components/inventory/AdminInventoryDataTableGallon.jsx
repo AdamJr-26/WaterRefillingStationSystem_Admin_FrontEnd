@@ -353,7 +353,7 @@ function AdminInventoryGallon({ data }) {
               key={item._id}
               onClick={() => handleModal(item)}
             >
-              <Td className="tbody-tr--td">
+              <Td className="tbody-tr--td" width="70px">
                 <img
                   className="tbody-tr--image"
                   src={item.gallon_image}

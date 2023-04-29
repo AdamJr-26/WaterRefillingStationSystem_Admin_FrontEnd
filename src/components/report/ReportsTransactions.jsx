@@ -83,7 +83,39 @@ function ReportsTransactions({ date }) {
     }
     getDebtPaymentsData();
   }, [debtPaymentsTablePage, date]);
-  console.log("debtPaymentsDataTable", debtPaymentsDataTable);
+
+ // expenses datatable
+ const [expensesTablePage, setExpensesTablePage] = useState(1);
+ const [isLoadingdebtExpensesTable, setIsLoadingdebtExpensesTable] =
+   useState(false);
+ const [expensesDataTable, setExpensesDataTable] = useState({
+   pages: 1,
+   page: 1,
+   data: [],
+ });
+ useEffect(() => {
+   async function getExpensesData() {
+    setIsLoadingdebtExpensesTable(true);
+     const { data, error } = await apiGet(
+       `/api/expenses/${limit}/${expensesTablePage}/${date}`
+     );
+
+     if (data && !error) {
+        setIsLoadingdebtExpensesTable(false);
+        setExpensesTablePage(data.data.page);
+        setExpensesDataTable((prev) => {
+         return {
+           ...prev,
+           data: data.data.docs,
+           pages: data.data.totalPages,
+         };
+       });
+     }
+   }
+   getExpensesData();
+ }, [debtPaymentsTablePage, date]);
+  
+  console.log("debtPaymentsDataTable", setExpensesDataTable);
   return (
     <div className="admin-report-transactions">
       <Accordion defaultIndex={[0]} allowMultiple>
@@ -155,7 +187,7 @@ function ReportsTransactions({ date }) {
                     />
                   </TabPanel>
                   <TabPanel>
-                    {isLoadingdebtPaymentsTable ? (
+                    {isLoadingdebtExpensesTable ? (
                       <Stack
                         justifyContent="center"
                         alignItems="center"
@@ -169,9 +201,9 @@ function ReportsTransactions({ date }) {
                       </Stack>
                     ) : null}
                     <TransactionTableExpenses
-                      data={debtPaymentsDataTable}
-                      currentPage={debtPaymentsTablePage}
-                      setPage={setDebtPaymentsTablePage}
+                      data={expensesDataTable}
+                      currentPage={expensesTablePage}
+                      setPage={setExpensesTablePage}
                     />
                   </TabPanel>
                 </TabPanels>
