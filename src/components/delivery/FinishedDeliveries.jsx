@@ -32,26 +32,20 @@ import {
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { format } from "date-fns";
-import { Doughnut, Pie } from "react-chartjs-2";
 import TablePaginationButtons from "../general/TablePaginationButtons";
+import DeliveryProgressModal from "./modal/DeliveryProgressModal";
 
-function AdminEmployeesDataTableDeliveryPersonels({
-  data,
-  currentPage,
-  setPage,
-}) {
+function FinishedDeliveries({ data, currentPage, setPage }) {
   let heading = [
     "IMAGE",
-    "FULL NAME",
-    "NICKNAME",
-    "PHONE NUMBER",
-    "EMAIL",
+    "DELIVERY PERSONNEL",
+    "MOBILE NUMBER",
+    "DATE",
+    "VEHICLE ID",
     "STATUS",
     "ACTIONS",
   ];
-
-  // Number of buttons to show in the pagination
-  const buttonsToShow = 5;
+  const buttonsToShow = 5; // Number of buttons to show in the pagination
 
   // Calculate the range of buttons to display
   const startRange = Math.max(1, currentPage - Math.floor(buttonsToShow / 2));
@@ -62,10 +56,11 @@ function AdminEmployeesDataTableDeliveryPersonels({
     console.log("endRange--------", endRange);
     pages.push(i);
   }
+
   return (
     <TableContainer>
       <Table variant="simple">
-        {/* <TableCaption>Tracks gallons accurately</TableCaption> */}
+        <TableCaption>List of all ongoing deliveries.</TableCaption>
         <Thead backgroundColor="gray.100">
           <Tr>
             {heading.map((headerName, i) => (
@@ -74,37 +69,43 @@ function AdminEmployeesDataTableDeliveryPersonels({
           </Tr>
         </Thead>
         <Tbody>
-          {data?.data?.map((item, i) => (
+          {data?.data.map((item, i) => (
             <Tr key={i}>
               <Td fontSize="14px" width="50px">
-                <img width="50px" src={item.display_photo} alt="" />
+                <img width="70px" src={item.personnel.display_photo} alt="" />
               </Td>
-              <Td>{item.fullname}</Td>
-              <Td>{item.nickname}</Td>
-              <Td>{item.contact_number}</Td>
-              <Td>{item.gmail}</Td>
-              <Td>
-                {item.isAvailalbe ? (
-                  <Tag variant="solid" colorScheme="green">
-                    Available
-                  </Tag>
-                ) : (
-                  <Tag variant="solid" colorScheme="orange">
-                    Busy
-                  </Tag>
+              <Td fontSize="14px">{item.personnel.fullname}</Td>
+              <Td fontSize="14px">{item.personnel.contact_number}</Td>
+              <Td fontSize="14px" width="200px">
+                {format(
+                  new Date(item.date_of_creation.utc_date),
+                  "MMMM d, yyyy"
                 )}
               </Td>
-              <Td>
+              <Td fontSize="14px">{item.vehicle.vehicle_id}</Td>
+              <Td fontSize="14px">
+                <Tag variant="solid" colorScheme="green">
+                  Finished
+                </Tag>
+              </Td>
+              <Td fontSize="14px">
                 <Menu>
                   <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
                     Actions
                   </MenuButton>
                   <MenuList>
-                    <MenuItem>Remove</MenuItem>
-                    <MenuItem>Update</MenuItem>
+                    <MenuItem onClick={() => progressModalClosure.onOpen()}>
+                      Show progress
+                    </MenuItem>
                   </MenuList>
                 </Menu>
               </Td>
+              {/* <DeliveryProgressModal
+                isOpen={progressModalClosure.isOpen}
+                onOpen={progressModalClosure.onOpen}
+                onClose={progressModalClosure.onClose}
+                deliveryId={item._id}
+              /> */}
             </Tr>
           ))}
         </Tbody>
@@ -122,5 +123,4 @@ function AdminEmployeesDataTableDeliveryPersonels({
     </TableContainer>
   );
 }
-
-export default AdminEmployeesDataTableDeliveryPersonels;
+export default FinishedDeliveries;

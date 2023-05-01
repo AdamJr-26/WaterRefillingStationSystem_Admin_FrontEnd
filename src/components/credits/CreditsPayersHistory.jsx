@@ -1,22 +1,15 @@
 import React, { useState, useEffect } from "react";
 import useFetch from "../../hooks/api/useFetch";
-import { Icon } from "@iconify/react";
 import transformDate from "../../utils/date.toString";
-import {
-  Skeleton,
-  SkeletonCircle,
-  SkeletonText,
-  Stack,
-} from "@chakra-ui/react";
 import ListSkeletonLoading from "../general/ListSkeletonLoading";
+import TablePaginationButtons from "../general/TablePaginationButtons";
 
 function CreditsPayersHistory() {
   // set initial value of current page, total_pages, and limit per page.
   // if current page value is greater then limit then add anohter page to fetch else do not create.
   //
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pages, setPages] = useState();
-  const [limitItems, setLimitItems] = useState(5);
+  const [limit, setLimit] = useState(5);
+  const [page, setPage] = useState(1);
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
 
@@ -25,23 +18,11 @@ function CreditsPayersHistory() {
     error,
     mutate: mutatePagination,
     isValidating,
+    isLoading,
   } = useFetch({
-    url: `/api/credits/history/pagination/${limitItems}/${
-      limitItems * currentPage - limitItems
-    }/${fromDate}/${toDate}`,
+    url: `/api/credits/history/pagination/${limit}/${page}/${fromDate}/${toDate}`,
   });
 
-  console.log("date", data);
-  const onPressnext = () => {
-    if (data?.data.length >= limitItems) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-  const onPressPrev = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
   const onChangeFrom = (value) => {
     setFromDate(value);
   };
@@ -62,13 +43,27 @@ function CreditsPayersHistory() {
     const to_date_unix = Math.floor(new Date(toDate).valueOf() / 1000);
     console.log("to_date_unix", to_date_unix);
     if (to_date_unix > from_date_unix) {
-      setCurrentPage(1);
+      setPage(1);
       mutatePagination();
       console.log("mutating.......");
     } else {
     }
   }, [fromDate, toDate]);
 
+  // Number of buttons to show in the pagination
+  const buttonsToShow = 5;
+  // Calculate the range of buttons to display
+  const startRange = Math.max(1, page - Math.floor(buttonsToShow / 2));
+  const endRange = Math.min(
+    data?.data?.totalPages,
+    startRange + buttonsToShow - 1
+  );
+
+  const pages = [];
+  for (let i = startRange; i <= endRange; i++) {
+    pages.push(i);
+  }
+  console.log("data-------:>>>>>>>>>", data);
   return (
     <div className="transactions-wrapper">
       <div className="transactions-wrapper--header">
@@ -102,10 +97,10 @@ function CreditsPayersHistory() {
           </p>
         </div>
       ) : null}
-      {isValidating ? (
-        <ListSkeletonLoading num_lines={limitItems} />
+      {isLoading ? (
+        <ListSkeletonLoading num_lines={limit} />
       ) : (
-        data?.data.map((credit, index) => (
+        data?.data?.docs?.map((credit, index) => (
           <div className="transactions-wrapper--item" key={index}>
             <div className="transactions-wrapper--item__image-wrapper">
               <img src={credit?.customer[0]?.display_photo} alt="" srcSet="" />
@@ -143,41 +138,17 @@ function CreditsPayersHistory() {
           </div>
         ))
       )}
-      {data?.data.length >= limitItems ? (
-        <div className="transactions-wrapper--pagination-buttons">
-          {currentPage > 1 ? (
-            <div
-              onClick={() => onPressPrev()}
-              className="transactions-wrapper--pagination-buttons__back"
-            >
-              <p>
-                <Icon icon="ic:sharp-navigate-before" />
-              </p>
-              <p>
-                <Icon icon="ic:sharp-navigate-before" />
-              </p>
-              <p>Prev</p>
-            </div>
-          ) : null}
-          <p className="transactions-wrapper--pagination-buttons__current-page">
-            {currentPage}
-          </p>
-          {data?.data.length >= limitItems ? (
-            <div
-              onClick={() => onPressnext()}
-              className="transactions-wrapper--pagination-buttons__next"
-            >
-              <p>Next</p>
-              <p>
-                <Icon icon="ic:sharp-navigate-next" />
-              </p>
-              <p>
-                <Icon icon="ic:sharp-navigate-next" />
-              </p>{" "}
-            </div>
-          ) : null}
-        </div>
-      ) : null}
+
+      <div className="transactions-wrapper--pagination-buttons">
+        {data?.data?.docs?.length && !isLoading ? (
+          <TablePaginationButtons
+            pages={pages}
+            setPage={setPage}
+            currentPage={page}
+            totalPages={data?.data?.totalPages}
+          />
+        ) : null}
+      </div>
     </div>
   );
 }

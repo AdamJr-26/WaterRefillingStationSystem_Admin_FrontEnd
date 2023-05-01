@@ -4,7 +4,7 @@
 .admin-delivery {
     display: flex;
     flex-direction: column;
-    background-color: white;
+    // background-color: white;
     padding: 15px;
     gap: 10px;
     width: 100%;
@@ -16,7 +16,8 @@
         // box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         // padding: 10px;
         // border-radius: 15px;
-        border-bottom: 3px solid colors.$gray-100;
+        // border-bottom: 3px solid colors.$gray-100;
+        
         padding: 10px 0px;
 
         &--header {
@@ -49,17 +50,23 @@
 
 .delivery-request-wrapper {
     background-color: white;
-    padding: 10px;
+    padding: 15px 10px;
     border-radius: 15px;
     max-width: 100vw;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-
+    border: 1px solid colors.$gray-200;
+    // box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    
     &--header {
         &__title {
             font-weight: 500;
             color: colors.$gray-800;
-            font-size: 20px;
+            font-size: 24px;
+        }
 
+        &__description {
+            font-size: 14px;
+            color: colors.$gray-400;
+            font-weight: 500;
         }
     }
 

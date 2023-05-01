@@ -30,7 +30,6 @@ function TransactionTablePurchases({
     pages.push(i);
   }
   let heading = [
-    "ID",
     "DATE",
     "CUSTOMER",
     "PAID ORDERS",
@@ -57,7 +56,6 @@ function TransactionTablePurchases({
         <Tbody>
           {data.data.map((item, i) => (
             <Tr key={i}>
-              <Td fontSize="14px">{item._id}</Td>
               <Td fontSize="14px">
                 {format(new Date(item.date.utc_date), "MMMM d, yyyy")}
               </Td>

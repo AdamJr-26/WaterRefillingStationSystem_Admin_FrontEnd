@@ -34,22 +34,8 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 import { format } from "date-fns";
 import { Doughnut, Pie } from "react-chartjs-2";
 import TablePaginationButtons from "../general/TablePaginationButtons";
-
-function AdminEmployeesDataTableDeliveryPersonels({
-  data,
-  currentPage,
-  setPage,
-}) {
-  let heading = [
-    "IMAGE",
-    "FULL NAME",
-    "NICKNAME",
-    "PHONE NUMBER",
-    "EMAIL",
-    "STATUS",
-    "ACTIONS",
-  ];
-
+let heading = ["IMAGE", "VEHICLE ID / PLATE NO.", "NAME", "STATUS", "ACTIONS"];
+function VehicleInventoryTable({ data, currentPage, setPage }) {
   // Number of buttons to show in the pagination
   const buttonsToShow = 5;
 
@@ -74,17 +60,15 @@ function AdminEmployeesDataTableDeliveryPersonels({
           </Tr>
         </Thead>
         <Tbody>
-          {data?.data?.map((item, i) => (
+          {data?.data.map((item, i) => (
             <Tr key={i}>
               <Td fontSize="14px" width="50px">
-                <img width="50px" src={item.display_photo} alt="" />
+                <img width="50px" src={item.vehicle_image} alt="" />
               </Td>
-              <Td>{item.fullname}</Td>
-              <Td>{item.nickname}</Td>
-              <Td>{item.contact_number}</Td>
-              <Td>{item.gmail}</Td>
+              <Td>{item.vehicle_id}</Td>
+              <Td>{item.vehicle_name}</Td>
               <Td>
-                {item.isAvailalbe ? (
+                {item.available ? (
                   <Tag variant="solid" colorScheme="green">
                     Available
                   </Tag>
@@ -94,7 +78,7 @@ function AdminEmployeesDataTableDeliveryPersonels({
                   </Tag>
                 )}
               </Td>
-              <Td>
+              <Td fontSize="14px">
                 <Menu>
                   <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
                     Actions
@@ -123,4 +107,4 @@ function AdminEmployeesDataTableDeliveryPersonels({
   );
 }
 
-export default AdminEmployeesDataTableDeliveryPersonels;
+export default VehicleInventoryTable;

@@ -46,15 +46,13 @@ function AdminTopbar() {
   // ======= logut --------------
 
   // change display photo
-  function handleChangePhoto() {
-    
-  }
+  function handleChangePhoto() {}
   return (
     <div className="topbar">
       <div className="topbar--menu-btn">
-        <button onClick={() => dispatch(updateSidebarStatus())}>
+        {/* <button onClick={() => dispatch(updateSidebarStatus())}>
           <Icon icon="dashicons:menu" />
-        </button>
+        </button> */}
         <p className="route"></p>
       </div>
       <div className="topbar--right-options">
@@ -63,14 +61,18 @@ function AdminTopbar() {
           ref={btnRef}
           onClick={onOpen}
         >
+          <img src={user.display_photo} alt="admin" srcSet="" />
           <div>
-            <p className="name">{user?.firstname?.toUpperCase()}</p>
             <p className="wrs-name">{user?.wrs_name}</p>
           </div>
-          <img src={user.display_photo} alt="admin" srcSet="" />
         </div>
       </div>
-      <Profile onClose={onClose} isOpen={isOpen} user={user} handleChangePhoto={handleChangePhoto} />
+      <Profile
+        onClose={onClose}
+        isOpen={isOpen}
+        user={user}
+        handleChangePhoto={handleChangePhoto}
+      />
     </div>
   );
 }

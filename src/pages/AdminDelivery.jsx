@@ -9,23 +9,27 @@ import DeliveryRequest from "../components/delivery/DeliveryRequest";
 import AdminDeliveryDataTable from "../components/delivery/AdminDeliveryDataTable";
 import { Icon } from "@iconify/react";
 import FinishedDeliveryWrapper from "../components/delivery/component.wrapper/FinishedDeliveryWrapper";
+import DeliveryTableWrapper from "../components/delivery/DeliveryTableWrapper";
 
 function AppDelivery() {
-  const {
-    data: ongoing_deliveries,
-    error: deliveries_error,
-    mutate: mutateOngoingDeliveries,
-    isValidating: isValidatingOD,
-  } = useFetch({
-    url: "/api/deliveries/ongoing",
-  });
+  // const {
+  //   data: ongoing_deliveries,
+  //   error: deliveries_error,
+  //   mutate: mutateOngoingDeliveries,
+  //   isValidating: isValidatingOD,
+  // } = useFetch({
+  //   url: "/api/deliveries/ongoing",
+  // });
   return (
     <div className="admin-delivery">
       <div className="delivery-request-wrapper">
         <div className="delivery-request-wrapper--header">
           <div>
             <p className="delivery-request-wrapper--header__title">
-              Request Delivery
+              Delivery request(s)
+            </p>
+            <p className="delivery-request-wrapper--header__description">
+              Deliveries need your approval.
             </p>
           </div>
         </div>
@@ -37,22 +41,20 @@ function AppDelivery() {
       <div className="delivery-data-table">
         <div className="delivery-data-table--header">
           <div>
-            <p className="delivery-data-table--header__title">
-              Ongoing Deliveries
-            </p>
+            <p className="delivery-data-table--header__title">Deliveries</p>
             <p className="delivery-data-table--header__description">
-              Tracks your ongoing deliveries
+              Tracks the ongoing and finished deliveries
             </p>
           </div>
         </div>
-        <AdminDeliveryDataTable
+        <DeliveryTableWrapper />
+        {/* <AdminDeliveryDataTable
           data={ongoing_deliveries}
           error={deliveries_error}
           isValidating={isValidatingOD}
-        />
+        /> */}
       </div>
-      <FinishedDeliveryWrapper /> 
-
+      {/* <FinishedDeliveryWrapper /> */}
     </div>
   );
 }

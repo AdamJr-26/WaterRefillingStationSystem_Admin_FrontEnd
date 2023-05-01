@@ -5,7 +5,7 @@ import CustomerDiscountCards from "../components/customer/discount/CustomerDisco
 import { Icon } from "@iconify/react";
 import AdminCustomerAddDiscount from "../components/customer/discount/AdminCustomerAddDiscount";
 import useFetch from "../hooks/api/useFetch";
-import CustomerStatusTableWrapper from "../components/customer/component.wrapper/CustomerStatusTableWrapper";
+import CustomerStatusTableWrapper from "../components/customer/wrapper/CustomerStatusTableWrapper";
 import ListSkeletonLoading from "../components/general/ListSkeletonLoading";
 function AdminCustomers() {
   const [customerToview, setCustomerToview] = useState("");

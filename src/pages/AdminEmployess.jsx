@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AdminEmployeesDataTableDeliveryPersonnels from "../components/employees/AdminEmployeesDataTableDeliveryPersonels";
 import { Icon } from "@iconify/react";
-import { useDisclosure } from "@chakra-ui/react";
+import { useDisclosure ,Stack, Spinner} from "@chakra-ui/react";
 import AdminEmployeesNewPersonnelModal from "../components/employees/AdminEmployeesNewPersonnelModal";
 import usePersonnels from "../hooks/api/usePersonnels";
 import SalesAchievementCard from "../components/employees/SalesAchievementCard";
@@ -9,11 +9,40 @@ import { eachMonthOfInterval, startOfYear, endOfYear } from "date-fns";
 import transformDate from "../utils/date.toString";
 import useFetch from "../hooks/api/useFetch";
 import NoData from "../components/general/NoData";
+import { apiGet } from "../services/api/axios.methods";
 function AdminEmployess() {
   const newPersonelClosure = useDisclosure();
-  const { personnels, personelsError } = usePersonnels({
-    url: "/api/delivery-personels",
+  let limit = 5;
+  const [personnelPage, setPersonnelPage] = useState(1);
+  const [isLoadingPersonnel, setIsLoadingPersonnel] = useState(false);
+  const [personnelDataTable, setPersonnelDataTable] = useState({
+    pages: 1,
+    page: 1,
+    data: [],
   });
+  useEffect(() => {
+    async function getOngoingDeliveries() {
+      setIsLoadingPersonnel(true);
+      const { data, error } = await apiGet(
+        `/api/delivery-personnels/${limit}/${personnelPage}`
+      );
+      console.log("delivery personnels ->>>>>", data);
+      if (data && !error) {
+        setIsLoadingPersonnel(false);
+        setPersonnelPage(data.data.page);
+        setPersonnelDataTable((prev) => {
+          return {
+            ...prev,
+            data: data.data.docs,
+            pages: data.data.totalPages,
+          };
+        });
+      } else {
+        setIsLoadingPersonnel(false);
+      }
+    }
+    getOngoingDeliveries();
+  }, [personnelPage]);
 
   // get days of the month
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -101,7 +130,24 @@ function AdminEmployess() {
             </div>
           </div>
         </div>
-        <AdminEmployeesDataTableDeliveryPersonnels data={personnels?.data} />
+        {isLoadingPersonnel ? (
+          <Stack
+            justifyContent="center"
+            alignItems="center"
+            minHeight="150px"
+            position="absolute"
+            left="50%"
+            top="50%"
+            transform="translate(-50%, -50%)"
+          >
+            <Spinner size="xl" color="blue.200" thickness="5px" />
+          </Stack>
+        ) : null}
+        <AdminEmployeesDataTableDeliveryPersonnels
+          data={personnelDataTable}
+          currentPage={personnelPage}
+          setPage={setPersonnelPage}
+        />
       </div>
     </div>
   );

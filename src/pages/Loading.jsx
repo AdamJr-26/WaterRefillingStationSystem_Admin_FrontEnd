@@ -2,8 +2,12 @@ import React from "react";
 import loading from "../assets/images/svg/loading.svg";
 function Loading() {
   return (
-    <div>
-      <img src={loading} alt="" />
+    <div className="loading-screen-container">
+      <div class="loading-screen-container--drop"></div>
+      <div class="loading-screen-container--drop"></div>
+      <div class="loading-screen-container--drop"></div>
+      <div class="loading-screen-container--drop"></div>
+      <div class="loading-screen-container--drop"></div>
     </div>
   );
 }

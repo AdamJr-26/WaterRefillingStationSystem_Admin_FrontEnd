@@ -1,32 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Stack, Spinner } from "@chakra-ui/react";
 import AdminCustomerDataTable from "../AdminCustomerDataTable";
 import useFetch from "../../../hooks/api/useFetch";
 import { Icon } from "@iconify/react";
-import AdminSearchBox from "../../../components/AdminSearchbox";
+import AdminSearchBox from "../../AdminSearchbox";
 import ListSkeletonLoading from "../../general/ListSkeletonLoading";
+import CustomerTable from "../CustomerTable";
+import { apiGet } from "../../../services/api/axios.methods";
 
 function CustomerStatusTableWrapper() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [limitItems, setLimitItems] = useState(5);
+  let limit = 5;
+  const [customerPage, setCustomerPage] = useState(1);
+  const [isLoadingCustomer, setIsLoadingCustomer] = useState(false);
+  const [customerDataTable, setCustomerDataTable] = useState({
+    pages: 1,
+    page: 1,
+    data: [],
+  });
   const [searchText, setSearchText] = useState("");
   const [sortby, setSortby] = useState("firstname");
   const [existsOnly, setExistsOnly] = useState("firstname");
-  const onPressPrev = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
+
+  useEffect(() => {
+    async function fetchFunction() {
+      setIsLoadingCustomer(true);
+      const { data, error } = await apiGet(
+        `/api/customers/status/borrowed/credits/lastdelivery/${limit}/${customerPage}/${
+          searchText ? searchText : null
+        }/${sortby}/${existsOnly}`
+      );
+      console.log("customer data -->>>>>>>>>", data);
+      if (data && !error) {
+        setIsLoadingCustomer(false);
+        setCustomerPage(data.data.page);
+        setCustomerDataTable((prev) => {
+          return {
+            ...prev,
+            data: data.data.docs,
+            pages: data.data.totalPages,
+          };
+        });
+      } else {
+        setIsLoadingCustomer(false);
+      }
     }
-  };
-  const onPressnext = () => {
-    if (customersStatus?.data?.data?.length >= limitItems) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-  const customersStatus = useFetch({
-    url: `/api/customers/status/borrowed/credits/lastdelivery/${limitItems}/${
-      limitItems * currentPage - limitItems
-    }/${searchText ? searchText : null}/${sortby}/${existsOnly}`,
-  });
-  console.log("customersStatus", customersStatus);
+    fetchFunction();
+  }, [customerPage, searchText, sortby, existsOnly]);
 
   const handleSortOption = (e) => {
     setSortby(e.target.value);
@@ -34,6 +53,7 @@ function CustomerStatusTableWrapper() {
   const handleSelectOnly = (e) => {
     setExistsOnly(e.target.value);
   };
+
   return (
     <div className="table-customers">
       <div className="table-customers--header">
@@ -90,54 +110,24 @@ function CustomerStatusTableWrapper() {
           </div>
         </div>
       </div>
-      {!customersStatus.isValidating ? (
-        <AdminCustomerDataTable
-          data={customersStatus?.data}
-          error={customersStatus?.error}
-          isValidating={customersStatus.isValidating}
-          setSortby={setSortby}
-        />
-      ) : (
-        <ListSkeletonLoading num_lines={5} />
-      )}
-      {customersStatus.data?.data?.length >= limitItems ? (
-        <div className="transactions-wrapper--pagination-buttons">
-          {currentPage > 1 ? (
-            <div
-              onClick={() => onPressPrev()}
-              className="transactions-wrapper--pagination-buttons__back"
-            >
-              <p>
-                <Icon icon="ic:sharp-navigate-before" />
-              </p>
-              <p>
-                <Icon icon="ic:sharp-navigate-before" />
-              </p>
-              <p>PREVIOUS</p>
-            </div>
-          ) : null}
-          {customersStatus.data?.data?.length ? (
-            <p className="transactions-wrapper--pagination-buttons__current-page">
-              {currentPage}
-            </p>
-          ) : null}
-
-          {customersStatus.data?.data?.length >= limitItems ? (
-            <div
-              onClick={() => onPressnext()}
-              className="transactions-wrapper--pagination-buttons__next"
-            >
-              <p>NEXT</p>
-              <p>
-                <Icon icon="ic:sharp-navigate-next" />
-              </p>
-              <p>
-                <Icon icon="ic:sharp-navigate-next" />
-              </p>{" "}
-            </div>
-          ) : null}
-        </div>
+      {isLoadingCustomer ? (
+        <Stack
+          justifyContent="center"
+          alignItems="center"
+          minHeight="150px"
+          position="absolute"
+          left="50%"
+          top="50%"
+          transform="translate(-50%, -50%)"
+        >
+          <Spinner size="xl" color="blue.200" thickness="5px" />
+        </Stack>
       ) : null}
+      <CustomerTable
+        data={customerDataTable}
+        currentPage={customerPage}
+        setPage={setCustomerPage}
+      />
     </div>
   );
 }

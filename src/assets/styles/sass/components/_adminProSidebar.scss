@@ -1,0 +1,136 @@
+@use '../colors';
+@use '../breakpoints';
+
+.admin-pro-sidebar {
+    max-height: 100vh;
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow-y: none;
+    background-color: white;
+    z-index: 900;
+    opacity: 1;
+
+    &--collapse {
+        font-size: 16px;
+        position: absolute;
+        right: -10px;
+        top: 50%;
+        z-index: 10;
+        background-color: #2389DA;
+        color: white;
+        border-radius: 100%;
+        height: 30px;
+        width: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        transform: translateY(-50%);
+        opacity: 80%;
+    }
+}
+
+.admin-pro-sidebar-toggle-button {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    z-index: 1;
+    height: 40px;
+    width: 40px;
+    background-color: colors.$blue-900;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 0px 10px 10px 0px;
+    opacity: 50%;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.admin-pro-sidebar-menu-item-label {
+    font-weight: 500;
+    color: #2D3748;
+    font-size: 14px;
+
+}
+
+.admin-pro-sidebar-menu-item {
+    margin-bottom: 5px;
+    padding: 5px 0px;
+}
+
+.admin-pro-sidebar-menu-item.active {
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: colors.$blue-50;
+        z-index: -1;
+        // animation: name duration timing-function delay iteration-count direction fill-mode;
+        animation: background-slide-in-from-left 800ms ease-in-out forwards;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 7px;
+        height: 100%;
+        background-color: colors.$blue-900;
+        z-index: 20;
+        animation: background-slide-in-from-right 400ms ease-in-out forwards;
+    }
+}
+
+.admin-pro-sidebar-wrsms-logo-wrapper {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid colors.$gray-100;
+    margin-bottom: 5px;
+
+    img {
+        height: 70px;
+        width: auto;
+        margin-left: 0px;
+    }
+
+    span {
+        white-space: nowrap;
+        transition: all ease-in-out 200ms;
+        font-weight: 500;
+    }
+}
+
+@keyframes background-slide-in-from-left {
+    from {
+        left: -100%;
+        opacity: 0;
+    }
+
+    to {
+        left: 0%;
+        opacity: 1;
+    }
+}
+
+@keyframes background-slide-in-from-right {
+    from {
+        right: -100%;
+        opacity: 0;
+    }
+
+    to {
+        right: 0%;
+        opacity: 1;
+    }
+}

@@ -14,14 +14,14 @@ import PayCreditsModal from "../general/modal/PayCreditsModal";
 
 import NoData from "../general/NoData";
 import ListSkeletonLoading from "../general/ListSkeletonLoading";
+import TablePaginationButtons from "../general/TablePaginationButtons";
 
 function AdminCreditsLastransactions() {
   // set initial value of current page, total_pages, and limit per page.
   // if current page value is greater then limit then add anohter page to fetch else do not create.
   //
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pages, setPages] = useState();
-  const [limitItems, setLimitItems] = useState(5);
+  const [limit, setLimit] = useState(5);
+  const [page, setPage] = useState(1);
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
 
@@ -30,23 +30,11 @@ function AdminCreditsLastransactions() {
     error,
     mutate: mutatePagination,
     isValidating,
+    isLoading,
   } = useFetch({
-    url: `/api/credits/pagination/${limitItems}/${
-      limitItems * currentPage - limitItems
-    }/${fromDate}/${toDate}`,
+    url: `/api/credits/pagination/${limit}/${page}/${fromDate}/${toDate}`,
   });
 
-  console.log("date", data);
-  const onPressnext = () => {
-    if (data?.data.length >= limitItems) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-  const onPressPrev = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
   const onChangeFrom = (value) => {
     setFromDate(value);
   };
@@ -67,7 +55,7 @@ function AdminCreditsLastransactions() {
     const to_date_unix = Math.floor(new Date(toDate).valueOf() / 1000);
     console.log("to_date_unix", to_date_unix);
     if (to_date_unix > from_date_unix) {
-      setCurrentPage(1);
+      setPage(1);
       mutatePagination();
     } else {
     }
@@ -76,6 +64,21 @@ function AdminCreditsLastransactions() {
   // modal
   const [selectedCredit, setSelectedCredit] = useState(null);
   const paycreditsClosure = useDisclosure();
+
+  // Number of buttons to show in the pagination
+  const buttonsToShow = 5;
+  // Calculate the range of buttons to display
+  const startRange = Math.max(1, page - Math.floor(buttonsToShow / 2));
+  const endRange = Math.min(
+    data?.data?.totalPages,
+    startRange + buttonsToShow - 1
+  );
+
+  const pages = [];
+  for (let i = startRange; i <= endRange; i++) {
+    pages.push(i);
+  }
+
   return (
     <div className="transactions-wrapper">
       {/* modal */}
@@ -118,11 +121,11 @@ function AdminCreditsLastransactions() {
           </p>
         </div>
       ) : null}
-      {!isValidating ? (
-        !data?.data?.length ? (
+      {!isLoading ? (
+        !data?.data?.docs?.length ? (
           <NoData min_height={500} />
         ) : (
-          data?.data.map((credit, index) => (
+          data?.data?.docs?.map((credit, index) => (
             <div
               onClick={() => {
                 setSelectedCredit(credit);
@@ -174,44 +177,17 @@ function AdminCreditsLastransactions() {
       ) : (
         <ListSkeletonLoading num_lines={5} />
       )}
-      {data?.data.length >= limitItems ? (
-        <div className="transactions-wrapper--pagination-buttons">
-          {currentPage > 1 ? (
-            <div
-              onClick={() => onPressPrev()}
-              className="transactions-wrapper--pagination-buttons__back"
-            >
-              <p>
-                <Icon icon="ic:sharp-navigate-before" />
-              </p>
-              <p>
-                <Icon icon="ic:sharp-navigate-before" />
-              </p>
-              <p>Prev</p>
-            </div>
-          ) : null}
-          {data?.data.length ? (
-            <p className="transactions-wrapper--pagination-buttons__current-page">
-              {currentPage}
-            </p>
-          ) : null}
 
-          {data?.data.length >= limitItems ? (
-            <div
-              onClick={() => onPressnext()}
-              className="transactions-wrapper--pagination-buttons__next"
-            >
-              <p>Next</p>
-              <p>
-                <Icon icon="ic:sharp-navigate-next" />
-              </p>
-              <p>
-                <Icon icon="ic:sharp-navigate-next" />
-              </p>{" "}
-            </div>
-          ) : null}
-        </div>
-      ) : null}
+      <div className="transactions-wrapper--pagination-buttons">
+        {data?.data?.docs?.length && !isLoading ? (
+          <TablePaginationButtons
+            pages={pages}
+            setPage={setPage}
+            currentPage={page}
+            totalPages={data?.data?.totalPages}
+          />
+        ) : null}
+      </div>
     </div>
   );
 }

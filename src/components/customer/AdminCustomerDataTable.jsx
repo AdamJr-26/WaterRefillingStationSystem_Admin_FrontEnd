@@ -97,6 +97,7 @@ function AdminCustomerDataTable({ data, error, isValidating, setSortby }) {
                   <Td>{customer.firstname + " " + customer.lastname}</Td>
                   <Td>{customer.mobile_number || "N/A"}</Td>
                   <Td>{customer.customer_type || "N/A"}</Td>
+                  
                   {customer?.schedules[0] ? (
                     <Td>
                       <p
@@ -159,26 +160,6 @@ function AdminCustomerDataTable({ data, error, isValidating, setSortby }) {
                       <p>No Delivery</p>
                     </Td>
                   )}
-                  {/* <Td>
-                    <Menu>
-                      <MenuButton
-                        as={IconButton}
-                        aria-label="Options"
-                        icon={
-                          <Icon
-                            icon="carbon:overflow-menu-vertical"
-                            size={32}
-                          />
-                        }
-                        variant="outline"
-                      />
-                      <MenuList>
-                        <MenuItem icon={<DeleteIcon />}>
-                          Delete customer
-                        </MenuItem>
-                      </MenuList>
-                    </Menu>
-                  </Td> */}
                 </Tr>
               ))}
             </Tbody>

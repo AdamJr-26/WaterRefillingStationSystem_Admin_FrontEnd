@@ -48,6 +48,8 @@ function ReportsTransactions({ date }) {
             pages: data.data.totalPages,
           };
         });
+      } else {
+        setIsLoadingPurchaseTable(false);
       }
     }
     getPurchaseData();
@@ -79,42 +81,46 @@ function ReportsTransactions({ date }) {
             pages: data.data.totalPages,
           };
         });
+      } else {
+        setIsLoadingdebtPaymentsTable(false);
       }
     }
     getDebtPaymentsData();
   }, [debtPaymentsTablePage, date]);
 
- // expenses datatable
- const [expensesTablePage, setExpensesTablePage] = useState(1);
- const [isLoadingdebtExpensesTable, setIsLoadingdebtExpensesTable] =
-   useState(false);
- const [expensesDataTable, setExpensesDataTable] = useState({
-   pages: 1,
-   page: 1,
-   data: [],
- });
- useEffect(() => {
-   async function getExpensesData() {
-    setIsLoadingdebtExpensesTable(true);
-     const { data, error } = await apiGet(
-       `/api/expenses/${limit}/${expensesTablePage}/${date}`
-     );
+  // expenses datatable
+  const [expensesTablePage, setExpensesTablePage] = useState(1);
+  const [isLoadingdebtExpensesTable, setIsLoadingdebtExpensesTable] =
+    useState(false);
+  const [expensesDataTable, setExpensesDataTable] = useState({
+    pages: 1,
+    page: 1,
+    data: [],
+  });
+  useEffect(() => {
+    async function getExpensesData() {
+      setIsLoadingdebtExpensesTable(true);
+      const { data, error } = await apiGet(
+        `/api/expenses/${limit}/${expensesTablePage}/${date}`
+      );
 
-     if (data && !error) {
+      if (data && !error) {
         setIsLoadingdebtExpensesTable(false);
         setExpensesTablePage(data.data.page);
         setExpensesDataTable((prev) => {
-         return {
-           ...prev,
-           data: data.data.docs,
-           pages: data.data.totalPages,
-         };
-       });
-     }
-   }
-   getExpensesData();
- }, [debtPaymentsTablePage, date]);
-  
+          return {
+            ...prev,
+            data: data.data.docs,
+            pages: data.data.totalPages,
+          };
+        });
+      } else {
+        setIsLoadingdebtExpensesTable(false);
+      }
+    }
+    getExpensesData();
+  }, [debtPaymentsTablePage, date]);
+
   console.log("debtPaymentsDataTable", setExpensesDataTable);
   return (
     <div className="admin-report-transactions">

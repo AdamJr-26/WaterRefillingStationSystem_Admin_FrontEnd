@@ -25,7 +25,7 @@ function TransactionTableExpenses({ data, currentPage, setPage }) {
     console.log("endRange--------", endRange);
     pages.push(i);
   }
-  let heading = ["ID", "DATE", "TITLE", "AMOUNT", "DESCRIPTION"];
+  let heading = ["DATE", "TITLE", "AMOUNT", "DESCRIPTION"];
 
   return (
     <TableContainer>
@@ -44,7 +44,7 @@ function TransactionTableExpenses({ data, currentPage, setPage }) {
         <Tbody>
           {data.data.map((item, i) => (
             <Tr key={i}>
-              <Td fontSize="14px">{item._id}</Td>
+             
               <Td fontSize="14px">
                 {format(new Date(item.date.utc_date), "MMMM d, yyyy")}
               </Td>
