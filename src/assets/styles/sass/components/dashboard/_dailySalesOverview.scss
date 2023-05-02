@@ -1,0 +1,21 @@
+@use '../../colors';
+@use '../../breakpoints';
+
+.dashboard-overview {
+    display: flex;
+    flex-flow: row wrap;
+
+    &--stat {
+        width: 100%;
+
+    }
+}
+
+
+@media only screen and (min-width:breakpoints.$sm) {
+    .dashboard-overview {
+        &--stat {
+            // width: 50%;
+        }
+    }
+}

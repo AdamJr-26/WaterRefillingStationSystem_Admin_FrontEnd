@@ -47,13 +47,13 @@ function AdminTopbar() {
 
   // change display photo
   function handleChangePhoto() {}
+  const pathname = window.location.pathname.split("/")[2];
+  const capitalizedText = pathname.charAt(0).toUpperCase() + pathname.slice(1);
+
   return (
     <div className="topbar">
       <div className="topbar--menu-btn">
-        {/* <button onClick={() => dispatch(updateSidebarStatus())}>
-          <Icon icon="dashicons:menu" />
-        </button> */}
-        <p className="route"></p>
+        <p className="topbar--menu-btn__route">{capitalizedText}</p>
       </div>
       <div className="topbar--right-options">
         <div

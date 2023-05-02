@@ -141,17 +141,37 @@ function ReportsTransactions({ date }) {
             <div className="admin-report-transactions-sales">
               <Tabs variant="enclosed">
                 <TabList>
-                  <Tab>Purchases</Tab>
-                  <Tab>Debt Payments</Tab>
-                  <Tab>Expenses</Tab>
+                  <Tab
+                    sx={{
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
+                  >
+                    Purchases
+                  </Tab>
+                  <Tab
+                    sx={{
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
+                  >
+                    Debt Payments
+                  </Tab>
+                  <Tab
+                    sx={{
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
+                  >
+                    Expenses
+                  </Tab>
                 </TabList>
                 <TabPanels>
                   <TabPanel position="relative">
-                    {/* <div className="admin-report-transactions-sales--options">
-                      <button className="admin-report-transactions-sales--options__export-button">
-                        <Icon icon="material-symbols:export-notes" /> Export
-                      </button>
-                    </div> */}
+                   
                     {isLoadingPurchaseTable ? (
                       <Stack
                         justifyContent="center"

@@ -2,7 +2,15 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import useFetch from "../../hooks/api/useFetch";
 import { format } from "date-fns";
-
+import {
+  Stat,
+  StatLabel,
+  StatNumber,
+  StatHelpText,
+  StatArrow,
+  StatGroup,
+} from "@chakra-ui/react";
+// this component not been used and also the css.
 function DashboardTodaysOverView() {
   const date = format(new Date(), "yyyy-MM-dd");
   const { data, error, mutate, isLoading, isValidating } = useFetch({
@@ -28,10 +36,10 @@ function DashboardTodaysOverView() {
           <p>Today's Cash Received</p>
           <p>₱ {cash_received || 0}</p>
         </div>
-        {/* <div className="dashboard-todays-overview--profit-wrapper__buttons">
+        <div className="dashboard-todays-overview--profit-wrapper__buttons">
           <button>button 1</button>
           <button>button 1</button>
-        </div> */}
+        </div>
       </div>
       <div className="dashboard-todays-overview--sales-expenses">
         <div className="dashboard-todays-overview--sales-expenses__sales">

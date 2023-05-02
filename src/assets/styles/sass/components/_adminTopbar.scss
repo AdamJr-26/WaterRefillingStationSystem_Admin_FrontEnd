@@ -35,6 +35,13 @@
             }
         }
 
+        &__route {
+            font-weight: 600;
+            color: colors.$gray-600;
+            font-size: 19px;
+            
+        }
+
     }
 
     &--right-options {
@@ -60,11 +67,12 @@
                     font-weight: 500;
                     color: colors.$gray-800;
                 }
-                .wrs-name{
+
+                .wrs-name {
                     font-size: 0.8rem;
                     font-weight: 500;
                     color: colors.$gray-800;
-                    
+
                 }
 
             }

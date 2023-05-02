@@ -6,19 +6,29 @@ import ScrollContainer from "react-indiana-drag-scroll";
 import { Bar, Line, Pie } from "react-chartjs-2";
 import DashboardTodaysOverView from "../components/dashboard/DashboardTodaysOverView";
 import DashboardEngagementCustomers from "../components/dashboard/DashboardEngagementCustomers";
-
+import DailySalesOverview from "../components/dashboard/DailySalesOverview";
+import { format, sub } from "date-fns";
 function AdminDashboard() {
+  const date = format(new Date(), "yyyy-MM-dd");
+  const yesterday = format(sub(new Date(), { days: 1 }), "yyyy-MM-dd");
+  const formattedDateToday = format(new Date(), "MMM-dd-yyyy");
+  const formattedDateYesterday = format(
+    sub(new Date(), { days: 1 }),
+    "MMM-dd-yyyy"
+  );
   return (
     <div className="admin-dashboard">
-      {/* <div className="admin-dashboard--wrs-info-component">
-        <WRSInfo />
-      </div> */}
+      <p className="admin-dashboard--title">Daily Sales</p>
+      <p className="admin-dashboard--description">
+        The sales and expenses statuses were compared between today and
+        yesterday ({formattedDateYesterday + " - " + formattedDateToday}).
+      </p>
       <div className="admin-dashboard--overview">
-        <p className="admin-dashboard--overview__title">Overview</p>
-        <DashboardTodaysOverView />
+        {/* <DashboardTodaysOverView /> */}
+        <DailySalesOverview />
       </div>
       <div className="admin-dashboard--engagements">
-        <h1>In development</h1>
+        <p className="admin-dashboard--title">Controls</p>
         {/* <p className="admin-dashboard--overview__title">Engagements</p>
         <DashboardEngagementCustomers /> */}
       </div>
