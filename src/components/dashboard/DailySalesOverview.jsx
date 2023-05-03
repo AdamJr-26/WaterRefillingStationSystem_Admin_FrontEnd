@@ -34,6 +34,7 @@ function DailySalesOverview() {
 
     fetch();
   }, []);
+  console.log("dailyReport", dailyReport);
   return (
     <div className="dashboard-overview">
       <div className="dashboard-overview--stat">
@@ -69,7 +70,7 @@ function DailySalesOverview() {
                 }
               />
               {dailyReport?.expensesPercentage +
-                +dailyReport?.expensesPercentage ===
+                dailyReport?.expensesPercentage ===
               "N/A"
                 ? ""
                 : "%"}
