@@ -51,7 +51,10 @@ function DailySalesOverview() {
               <StatArrow
                 type={dailyReport?.salesToday <= 0 ? "decrease" : "increase"}
               />
-              {dailyReport?.salesPercentage}%
+              {dailyReport?.salesPercentage + dailyReport?.salesPercentage ===
+              "N/A"
+                ? ""
+                : "%"}
             </StatHelpText>
           </Stat>
 
@@ -65,7 +68,11 @@ function DailySalesOverview() {
                   dailyReport?.expensesPercentage < 0 ? "increase" : "decrease"
                 }
               />
-              {dailyReport?.expensesPercentage}%
+              {dailyReport?.expensesPercentage +
+                +dailyReport?.expensesPercentage ===
+              "N/A"
+                ? ""
+                : "%"}
             </StatHelpText>
           </Stat>
         </StatGroup>
