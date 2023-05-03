@@ -34,7 +34,6 @@ function DailySalesOverview() {
 
     fetch();
   }, []);
-  console.log("dailyReport", dailyReport);
   return (
     <div className="dashboard-overview">
       <div className="dashboard-overview--stat">
@@ -49,13 +48,18 @@ function DailySalesOverview() {
 
             <StatNumber>₱ {dailyReport?.salesToday}</StatNumber>
             <StatHelpText>
-              <StatArrow
-                type={dailyReport?.salesToday <= 0 ? "decrease" : "increase"}
-              />
-              {dailyReport?.salesPercentage + dailyReport?.salesPercentage ===
-              "N/A"
-                ? ""
-                : "%"}
+              {dailyReport?.salesPercentage == "N/A" ? (
+                ""
+              ) : (
+                <>
+                  <StatArrow
+                    type={
+                      dailyReport?.salesToday <= 0 ? "decrease" : "increase"
+                    }
+                  />
+                  {dailyReport?.salesPercentage}%
+                </>
+              )}
             </StatHelpText>
           </Stat>
 
@@ -64,16 +68,18 @@ function DailySalesOverview() {
 
             <StatNumber>₱ {dailyReport?.expenseToday}</StatNumber>
             <StatHelpText>
-              <StatArrow
-                type={
-                  dailyReport?.expensesPercentage < 0 ? "increase" : "decrease"
-                }
-              />
-              {dailyReport?.expensesPercentage +
-                dailyReport?.expensesPercentage ===
-              "N/A"
-                ? ""
-                : "%"}
+              {dailyReport?.expensesPercentage == "N/A" ? (
+                ""
+              ) : (
+                <>
+                  <StatArrow
+                    type={
+                      dailyReport?.expensesPercentage <= 0 ? "increase" : "decrease"
+                    }
+                  />
+                  {dailyReport?.expensesPercentage}%
+                </>
+              )}
             </StatHelpText>
           </Stat>
         </StatGroup>
