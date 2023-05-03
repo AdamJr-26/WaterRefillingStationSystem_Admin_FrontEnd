@@ -49,7 +49,7 @@ function DailySalesOverview() {
             <StatNumber>₱ {dailyReport?.salesToday}</StatNumber>
             <StatHelpText>
               {dailyReport?.salesPercentage == "N/A" ? (
-                ""
+                dailyReport?.salesPercentage
               ) : (
                 <>
                   <StatArrow
@@ -62,19 +62,20 @@ function DailySalesOverview() {
               )}
             </StatHelpText>
           </Stat>
-
           <Stat>
             <StatLabel>Expenses</StatLabel>
 
             <StatNumber>₱ {dailyReport?.expenseToday}</StatNumber>
             <StatHelpText>
               {dailyReport?.expensesPercentage == "N/A" ? (
-                ""
+                dailyReport?.expensesPercentage
               ) : (
                 <>
                   <StatArrow
                     type={
-                      dailyReport?.expensesPercentage <= 0 ? "increase" : "decrease"
+                      dailyReport?.expensesPercentage <= 0
+                        ? "increase"
+                        : "decrease"
                     }
                   />
                   {dailyReport?.expensesPercentage}%
