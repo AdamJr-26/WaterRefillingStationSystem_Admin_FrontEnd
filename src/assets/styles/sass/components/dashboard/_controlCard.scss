@@ -1,0 +1,75 @@
+@use '../../colors';
+@use '../../breakpoints';
+
+.controls-wrapper {
+    flex-flow: row wrap;
+    display: flex;
+    gap: 10px;
+    width: fit-content;
+
+}
+
+
+.control-card {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    min-width: 200px;
+    margin: 0;
+    padding: 15px;
+    flex: 1 1 0;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden;
+    border: 1px solid colors.$gray-200;
+    border-radius: 15px;
+    position: relative;
+
+    &--skeleton {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: colors.$gray-100;
+    }
+
+    &--header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        &__icon {
+            font-size: 24px;
+            color: colors.$blue-900;
+        }
+
+        &__indicator {
+            font-size: 16px;
+            font-weight: bold;
+        }
+    }
+
+    &--body {
+        display: flex;
+        flex-direction: column;
+
+
+        &__title {
+            font-size: 24px;
+            font-weight: bold;
+            color: colors.$gray-700;
+        }
+
+        &__description {
+            font-size: 14px;
+
+        }
+    }
+}
+
+@media only screen and (min-width:breakpoints.$sm) {
+    .control-card {
+        flex: 1 1 1;
+    }
+}

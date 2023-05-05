@@ -43,11 +43,11 @@ function AdminEmployeesDataTableDeliveryPersonels({
   let heading = [
     "IMAGE",
     "FULL NAME",
-    "NICKNAME",
-    "PHONE NUMBER",
-    "EMAIL",
     "STATUS",
-    "ACTIONS",
+    "NICKNAME",
+    "EMAIL",
+
+    // "ACTIONS",
   ];
 
   // Number of buttons to show in the pagination
@@ -80,11 +80,8 @@ function AdminEmployeesDataTableDeliveryPersonels({
                 <img width="50px" src={item.display_photo} alt="" />
               </Td>
               <Td>{item.fullname}</Td>
-              <Td>{item.nickname}</Td>
-              <Td>{item.contact_number}</Td>
-              <Td>{item.gmail}</Td>
               <Td>
-                {item.isAvailalbe ? (
+                {item.isAvailable ? (
                   <Tag variant="solid" colorScheme="green">
                     Available
                   </Tag>
@@ -94,7 +91,10 @@ function AdminEmployeesDataTableDeliveryPersonels({
                   </Tag>
                 )}
               </Td>
-              <Td>
+              <Td>{item.nickname}</Td>
+              <Td>{item.gmail}</Td>
+
+              {/* <Td>
                 <Menu>
                   <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
                     Actions
@@ -104,7 +104,7 @@ function AdminEmployeesDataTableDeliveryPersonels({
                     <MenuItem>Update</MenuItem>
                   </MenuList>
                 </Menu>
-              </Td>
+              </Td> */}
             </Tr>
           ))}
         </Tbody>

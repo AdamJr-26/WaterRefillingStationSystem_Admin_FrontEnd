@@ -8,6 +8,7 @@ import DashboardTodaysOverView from "../components/dashboard/DashboardTodaysOver
 import DashboardEngagementCustomers from "../components/dashboard/DashboardEngagementCustomers";
 import DailySalesOverview from "../components/dashboard/DailySalesOverview";
 import { format, sub } from "date-fns";
+import ControlsWrapper from "../components/dashboard/ControlsWrapper";
 function AdminDashboard() {
   const date = format(new Date(), "yyyy-MM-dd");
   const yesterday = format(sub(new Date(), { days: 1 }), "yyyy-MM-dd");
@@ -29,8 +30,12 @@ function AdminDashboard() {
       </div>
       <div className="admin-dashboard--engagements">
         <p className="admin-dashboard--title">Controls</p>
-        {/* <p className="admin-dashboard--overview__title">Engagements</p>
-        <DashboardEngagementCustomers /> */}
+        <p className="admin-dashboard--description">
+          While you are away, you still maintain some control over your
+          business.
+        </p>
+
+        <ControlsWrapper />
       </div>
       {/* <div className="admin-dashboard--responses">
         <p className="admin-dashboard--overview__title">Responses</p>

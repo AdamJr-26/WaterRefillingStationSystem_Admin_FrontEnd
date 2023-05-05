@@ -6,11 +6,16 @@
     display: flex;
     flex-flow: row wrap;
     gap: 10px;
+
     &--card {
-        // display: flex;
+        flex: 1 1 0;
+
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
         // flex-flow: row wrap;
-        height: 200px;
-        width: 250px;
+
+        max-width: 250px;
         border-radius: 15px;
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
         padding: 15px;
@@ -19,11 +24,11 @@
         border: 1px solid rgba(231, 231, 231, 0.5);
 
         &__discount-type {
-            p:nth-child(1) {
-                font-size: 13px;
-            }
+            // p:nth-child(1) {
+            //     font-size: 13px;
+            // }
 
-            p:nth-child(2) {
+            p:nth-child(1) {
                 font-size: 24px;
                 font-weight: 600;
 
@@ -35,8 +40,8 @@
                 font-size: 13px;
             }
 
-            p:nth-child(2) {
-                font-size: 16px;
+            p:nth-child(1) {
+                font-size: 14px;
                 font-weight: 500;
             }
         }

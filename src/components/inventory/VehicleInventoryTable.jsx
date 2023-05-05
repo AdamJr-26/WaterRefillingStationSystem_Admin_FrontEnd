@@ -29,12 +29,13 @@ import {
   MenuDivider,
   Button,
   useDisclosure,
+  Stack,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { format } from "date-fns";
 import { Doughnut, Pie } from "react-chartjs-2";
 import TablePaginationButtons from "../general/TablePaginationButtons";
-let heading = ["IMAGE", "VEHICLE ID / PLATE NO.", "NAME", "STATUS", "ACTIONS"];
+let heading = ["IMAGE", "VEHICLE ID / PLATE NO.", "NAME", "STATUS"];
 function VehicleInventoryTable({ data, currentPage, setPage }) {
   // Number of buttons to show in the pagination
   const buttonsToShow = 5;
@@ -68,7 +69,7 @@ function VehicleInventoryTable({ data, currentPage, setPage }) {
               <Td>{item.vehicle_id}</Td>
               <Td>{item.vehicle_name}</Td>
               <Td>
-                {item.available ? (
+                {item.isAvailable ? (
                   <Tag variant="solid" colorScheme="green">
                     Available
                   </Tag>
@@ -78,7 +79,7 @@ function VehicleInventoryTable({ data, currentPage, setPage }) {
                   </Tag>
                 )}
               </Td>
-              <Td fontSize="14px">
+              {/* <Td fontSize="14px">
                 <Menu>
                   <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
                     Actions
@@ -88,7 +89,7 @@ function VehicleInventoryTable({ data, currentPage, setPage }) {
                     <MenuItem>Update</MenuItem>
                   </MenuList>
                 </Menu>
-              </Td>
+              </Td> */}
             </Tr>
           ))}
         </Tbody>

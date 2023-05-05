@@ -237,22 +237,6 @@ function ReportsTransactions({ date }) {
             </div>
           </AccordionPanel>
         </AccordionItem>
-        {/* <AccordionItem className="admin-report-transactions--items">
-          <h2 className="admin-report-transactions--accordion-item-button">
-            <AccordionButton _hover="none">
-              <Box as="span" flex="1" textAlign="left">
-                Debt Payments
-              </Box>
-              <AccordionIcon />
-            </AccordionButton>
-          </h2>
-          <AccordionPanel pb={4}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </AccordionPanel>
-        </AccordionItem> */}
       </Accordion>
     </div>
   );

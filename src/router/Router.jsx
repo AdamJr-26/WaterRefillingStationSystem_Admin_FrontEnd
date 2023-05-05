@@ -29,6 +29,7 @@ import SetNewPassword from "../pages/reset.password/SetNewPassword";
 import CreditsPayersHistory from "../components/credits/CreditsPayersHistory";
 import { ProtectRoutes } from "../hooks/protectRoutes";
 import WelcomePage from "../components/home/WelcomePage";
+import AdminSchedules from "../pages/AdminSchedules";
 function Router() {
   return (
     <BrowserRouter>
@@ -66,6 +67,7 @@ function Router() {
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="delivery" element={<AdminDelivery />} />
           <Route path="employees" element={<AdminEmployess />} />
+          <Route path="schedules" element={<AdminSchedules />} />
           <Route path="inventory" element={<AdminInventory />} />
           <Route path="reports" element={<AdminReports />} />
           <Route path="shop" element={<AdminShop />} />

@@ -29,6 +29,7 @@ import {
   MenuDivider,
   Button,
   useDisclosure,
+  Stack,
 } from "@chakra-ui/react";
 import transformDate from "../../utils/date.toString";
 import { ChevronDownIcon } from "@chakra-ui/icons";
@@ -36,7 +37,7 @@ import { format } from "date-fns";
 import { Doughnut, Pie } from "react-chartjs-2";
 import TablePaginationButtons from "../general/TablePaginationButtons";
 import CustomerPersonalInfo from "./modal/CustomerPersonalInfo";
-
+import { Icon } from "@iconify/react";
 function CustomerTable({ data, currentPage, setPage }) {
   let heading = [
     "IMAGE",
@@ -47,7 +48,7 @@ function CustomerTable({ data, currentPage, setPage }) {
     "CREDIT",
     "BORROWED",
     "LAST DELIVERY",
-    "ACTIONS",
+    "ACTION",
   ];
   // Number of buttons to show in the pagination
   const buttonsToShow = 5;
@@ -151,7 +152,18 @@ function CustomerTable({ data, currentPage, setPage }) {
                 </Td>
               )}
               <Td fontSize="14px">
-                <Menu>
+                <Stack direction="row" spacing={4}>
+                  <Button
+                    onClick={() => showCustomerDetails(customer)}
+                    leftIcon={<Icon icon="material-symbols:more-rounded" />}
+                    colorScheme="blue"
+                    // backgroundColor="#2389DA"
+                    variant="outline"
+                  >
+                    More
+                  </Button>
+                </Stack>
+                {/* <Menu>
                   <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
                     Actions
                   </MenuButton>
@@ -160,7 +172,7 @@ function CustomerTable({ data, currentPage, setPage }) {
                       Show Details
                     </MenuItem>
                   </MenuList>
-                </Menu>
+                </Menu> */}
               </Td>
             </Tr>
           ))}

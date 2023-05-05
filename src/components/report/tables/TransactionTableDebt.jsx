@@ -26,7 +26,7 @@ function TransactionTableDebt({ data, currentPage, setPage }) {
     pages.push(i);
   }
   let heading = ["DATE", "CUSTOMER", "GALLON", "QUANTITY", "PAYMENT"];
-
+  console.log("data----------->", data);
   return (
     <TableContainer>
       <Table variant="simple">
@@ -44,12 +44,11 @@ function TransactionTableDebt({ data, currentPage, setPage }) {
         <Tbody>
           {data.data.map((item, i) => (
             <Tr key={i}>
-             
               <Td fontSize="14px">
                 {format(new Date(item.date.utc_date), "MMMM d, yyyy")}
               </Td>
               <Td fontSize="14px">{item.customer.fullname}</Td>
-              <Td fontSize="14px">{item.gallon.name}</Td>
+              <Td fontSize="14px">{item?.gallon?.name}</Td>
               <Td fontSize="14px">{item.quantity}</Td>
               <Td fontSize="14px">₱ {item.payment}</Td>
             </Tr>

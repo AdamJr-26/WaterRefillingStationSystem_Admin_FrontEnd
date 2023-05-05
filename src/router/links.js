@@ -3,7 +3,7 @@ export const links = [
     name: "Dashboard",
     path: "dashboard",
     isRequireAuth: true,
-    icon: "clarity:home-solid",
+    icon: "mdi:view-dashboard-edit",
   },
   {
     pages: [
@@ -48,6 +48,13 @@ export const links = [
         isRequiresAuthentication: true,
         component: "",
         icon: "clarity:employee-group-solid",
+      },
+      {
+        name: "Schedules",
+        path: "schedules",
+        isRequiresAuthentication: true,
+        component: "",
+        icon: "grommet-icons:schedules",
       },
       // "bi:shop"
       {

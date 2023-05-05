@@ -30,13 +30,14 @@ import {
   Button,
   useDisclosure,
   useToast,
+  Stack,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { format } from "date-fns";
 import { Doughnut, Pie } from "react-chartjs-2";
 import TablePaginationButtons from "../general/TablePaginationButtons";
 import UpdateGallonModal from "./Modal/UpdateGallonModal";
-
+import { Icon } from "@iconify/react";
 function GallonInventoryTable({ data, currentPage, setPage }) {
   let heading = [
     "IMAGE",
@@ -146,16 +147,17 @@ function GallonInventoryTable({ data, currentPage, setPage }) {
               <Td>{item?.total - (item.borrowed[0]?.total_borrowed || 0)}</Td>
               <Td>{item.total}</Td>
               <Td fontSize="14px">
-                <Menu>
-                  <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-                    Actions
-                  </MenuButton>
-                  <MenuList>
-                    <MenuItem onClick={() => updateGallonModalToggler(item)}>
-                      Update
-                    </MenuItem>
-                  </MenuList>
-                </Menu>
+                <Stack direction="row" spacing={4}>
+                  <Button
+                    onClick={() => updateGallonModalToggler(item)}
+                    leftIcon={<Icon icon="material-symbols:edit-document" />}
+                    colorScheme="blue"
+                    // backgroundColor="#2389DA"
+                    variant="outline"
+                  >
+                    Update
+                  </Button>
+                </Stack>
               </Td>
             </Tr>
           ))}
