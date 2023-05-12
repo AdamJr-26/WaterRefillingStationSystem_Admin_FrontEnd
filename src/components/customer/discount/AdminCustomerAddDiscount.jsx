@@ -15,11 +15,16 @@ import {
   Tab,
   TabPanel,
   useToast,
+  Select,
+  Stack,
+  Text,
 } from "@chakra-ui/react";
 import TextInput from "../../general/TextInput";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import { createDiscount } from "../../../services/api/discount/create.discount";
+import DateTime from "../../general/DateTime";
+import SelectDate from "../../general/SelectDate";
 
 function AdminCustomerAddDiscount() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -46,16 +51,20 @@ function AdminCustomerAddDiscount() {
             <Tabs>
               <TabList>
                 <Tab>Get free</Tab>
-                <Tab>Customer type</Tab>
               </TabList>
 
               <TabPanels>
                 <TabPanel>
                   <Formik
-                    initialValues={{ buy: "", get: "" }}
+                    initialValues={{
+                      buy: "",
+                      get: "",
+                      validityPeriod: "",
+                    }}
                     validationSchema={Yup.object().shape({
                       buy: Yup.number().required("Buy is required"),
                       get: Yup.number().required("Get is required"),
+                      validityPeriod: Yup.date(),
                     })}
                     onSubmit={async (values, { resetForm }) => {
                       const { data, error } = await createDiscount({
@@ -86,7 +95,7 @@ function AdminCustomerAddDiscount() {
                     <Form>
                       <div className="customer-create-discount">
                         <p className="customer-create-discount--discription">
-                          Promo by the total of customer's order or purchase.
+                          Get free by the total of customer's order or purchase.
                         </p>
                         <div className="customer-create-discount--form">
                           <TextInput
@@ -101,6 +110,24 @@ function AdminCustomerAddDiscount() {
                             type="number"
                             placeholder="0"
                           />
+                          <TextInput
+                            label="Validity period"
+                            name="validityPeriod"
+                            type="date"
+                          />
+                          <TextInput
+                            label="Type"
+                            name="isAccumulated"
+                            type="text"
+                            placeholder="non-accumulated"
+                            disabled={true}
+                          />
+
+                          {/* <Stack>
+                            <Text>Accumulated</Text>
+                            <Select placeholder="large size" size="lg" />
+                          </Stack> */}
+
                           <Button
                             marginTop={4}
                             type="submit"
@@ -114,19 +141,14 @@ function AdminCustomerAddDiscount() {
                     </Form>
                   </Formik>
                 </TabPanel>
-                <TabPanel>
-                  <div>
-                    <p>Coming soon!</p>
-                  </div>
-                </TabPanel>
               </TabPanels>
             </Tabs>
           </ModalBody>
 
           <ModalFooter>
-            <Button mr={3} onClick={onClose}>
+            {/* <Button mr={3} onClick={onClose}>
               Close
-            </Button>
+            </Button> */}
           </ModalFooter>
         </ModalContent>
       </Modal>

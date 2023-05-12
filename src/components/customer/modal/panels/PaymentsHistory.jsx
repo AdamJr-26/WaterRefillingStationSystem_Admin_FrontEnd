@@ -66,7 +66,7 @@ function PaymentsHistory({ customer_id }) {
             </div>
           ) : null}
         </div>
-        <div className="return-gallon-history-header--query-dates">
+        {/* <div className="return-gallon-history-header--query-dates">
           <div>
             <p>From: </p>
             <input
@@ -83,7 +83,7 @@ function PaymentsHistory({ customer_id }) {
               onChange={(e) => onChangeTo(e.target.value)}
             />
           </div>
-        </div>
+        </div> */}
       </div>
       {!isLoading ? (
         data?.data?.docs?.map((payment, i) => (
@@ -106,7 +106,7 @@ function PaymentsHistory({ customer_id }) {
             </div>
             <div className="return-gallon-history--amounts">
               <div className="return-gallon-history--amounts__item">
-                <p>Count</p>
+                <p>Quantity</p>
                 <p>{payment.gallon_count}</p>
               </div>
               <div className="return-gallon-history--amounts__item">

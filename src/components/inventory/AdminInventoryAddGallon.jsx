@@ -32,12 +32,14 @@ function AdminInventoryAddGallon() {
           name: "",
           liter: "",
           price: "",
+          containerPrice: "",
           total: "",
         }}
         validationSchema={Yup.object().shape({
           name: Yup.string().max(20, "Name must not exceed 20 letters").required("Gallon Name is Required"),
           liter: Yup.number().max(10000, "Liter must not exceed 10000 ").required("Liter is Required"),
           price: Yup.number().max(10000, "Price must not exceed 10000 ").required("Price is Required"),
+          containerPrice: Yup.number().max(10000, "Container price must not exceed 10000 "),
           total: Yup.number().max(10000, "Total must not exceed 10000 ").required("Total is Required"),
         })}
         onSubmit={async (values) => {
@@ -157,9 +159,15 @@ function AdminInventoryAddGallon() {
               placeholder="0"
             />
             <TextInput
-              label="Price"
+              label="Refill price"
               type="number"
               name="price"
+              placeholder="0"
+            />
+             <TextInput
+              label="Container price"
+              type="number"
+              name="containerPrice"
               placeholder="0"
             />
             <TextInput

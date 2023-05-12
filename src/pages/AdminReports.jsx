@@ -64,11 +64,11 @@ function AdminReports() {
             </option>
           </select>
         </div>
-        <div className="admin-reports-header--action-buttons">
+        {/* <div className="admin-reports-header--action-buttons">
           <button className="admin-reports-header--action-buttons__export-button">
             <Icon icon="material-symbols:export-notes" /> Export
           </button>
-        </div>
+        </div> */}
       </div>
 
       <div className="admin-reports--transactions">

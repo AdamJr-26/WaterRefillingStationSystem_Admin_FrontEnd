@@ -13,7 +13,7 @@ import {
 import { format } from "date-fns";
 import TablePaginationButtons from "../../general/TablePaginationButtons";
 
-function TransactionTableDebt({ data, currentPage, setPage }) {
+function TransactionTableDebt({ data, currentPage, setPage, limit }) {
   const buttonsToShow = 5; // Number of buttons to show in the pagination
 
   // Calculate the range of buttons to display

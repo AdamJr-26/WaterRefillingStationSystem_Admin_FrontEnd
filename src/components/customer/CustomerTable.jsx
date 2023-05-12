@@ -45,8 +45,6 @@ function CustomerTable({ data, currentPage, setPage }) {
     "MOBILE",
     "TYPE",
     "SCHEDULES",
-    "CREDIT",
-    "BORROWED",
     "LAST DELIVERY",
     "ACTION",
   ];
@@ -110,7 +108,7 @@ function CustomerTable({ data, currentPage, setPage }) {
                   <p>No Schedule</p>
                 </Td>
               )}
-              <Td>
+              {/* <Td>
                 <p
                   style={{
                     // fontWeight: 600,
@@ -120,8 +118,8 @@ function CustomerTable({ data, currentPage, setPage }) {
                 >
                   ₱ {customer.credit[0]?.total_credit_amount || 0}
                 </p>
-              </Td>
-              <Td>
+              </Td> */}
+              {/* <Td>
                 <p
                   style={{
                     // fontWeight: 600,
@@ -131,7 +129,7 @@ function CustomerTable({ data, currentPage, setPage }) {
                 >
                   {customer.borrow[0]?.total_borrowed_gallon || 0}
                 </p>
-              </Td>
+              </Td> */}
               {customer?.last_delivery[0] ? (
                 <Td>
                   <p

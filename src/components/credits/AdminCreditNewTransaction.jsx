@@ -22,7 +22,7 @@ function AdminCreditNewTransaction() {
         <span className="admin-credit-new-transaction--customer-info__name">Juan Dela Cruz</span>
         <div className="admin-credit-new-transaction--customer-info__credit">
             <span className="total-to-pay-title">Total to pay</span>
-            <span className="total-to-pay-amount">P 360</span>
+            <span className="total-to-pay-amount">₱ 360</span>
         </div>
       </div>
       <AdminTextinput label="Amount" />

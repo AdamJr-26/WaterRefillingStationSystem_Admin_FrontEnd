@@ -146,12 +146,12 @@ function AdminCreditsLastransactions() {
                   {credit?.customer_info[0]?.firstname || ""}{" "}
                   {credit?.customer_info[0]?.lastname || ""}
                 </span>
-                <span className="address">
+                {/* <span className="address">
                   {credit?.customer_info[0]?.address?.street}{" "}
                   {credit?.customer_info[0]?.address?.barangay}{" "}
                   {credit?.customer_info[0]?.address?.municipal_city}{" "}
                   {credit?.customer_info[0]?.address?.province}
-                </span>
+                </span> */}
                 <div className="regular-date-wrapper">
                   <span className="role">
                     {credit?.customer_info[0]?.customer_type}
@@ -163,12 +163,16 @@ function AdminCreditsLastransactions() {
               </div>
               <div className="transactions-wrapper--item__amount-buttons">
                 <div>
-                  <p>Count</p>
+                  <p>Gallon</p>
+                  <p style={{fontSize: "16px"}}>{credit?.gallonInfo[0]?.name}</p>
+                </div>
+                <div>
+                  <p>Quantity</p>
                   <p>{credit?.total}</p>
                 </div>
                 <div>
-                  <p>Price</p>
-                  <p>{credit?.price}</p>
+                  <p>Total price</p>
+                  <p>₱ {credit?.total * credit?.price}</p>
                 </div>
               </div>
             </div>

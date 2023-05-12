@@ -14,20 +14,28 @@ import useFetch from "../../../hooks/api/useFetch";
 import ListSkeletonLoading from "../../general/ListSkeletonLoading";
 import AdminAlertDialog from "../../general/AdminAlertDialog";
 import { apiDelete } from "../../../services/api/axios.methods";
+import { format } from "date-fns";
 
 function CustomerDiscountCard() {
   const toast = useToast();
 
-  const { data, error, isValidating, isLoading, mutate } = useFetch({
+  const {
+    data: discounts,
+    error,
+    isValidating,
+    isLoading,
+    mutate,
+  } = useFetch({
     url: "/api/discounts/get-free",
   });
-
+  console.log("discount", discounts);
   const deleteDialog = useDisclosure();
 
   async function handleDelete({ item }) {
     const { data, error } = await apiDelete({
       url: `/api/discount/${item?._id}`,
     });
+
     deleteDialog.onClose();
     if (data && !error) {
       mutate();
@@ -56,7 +64,7 @@ function CustomerDiscountCard() {
       {isLoading ? (
         <ListSkeletonLoading num_lines={5} />
       ) : (
-        data?.data?.map((discount, i) => (
+        discounts?.data?.map((discount, i) => (
           <div key={i} className="discounts-wrapper--card">
             <div className="discounts-wrapper--card__discount-type">
               {/* <p>Discount type</p> */}
@@ -68,7 +76,28 @@ function CustomerDiscountCard() {
               {/* <p>Description</p> */}
               <p>
                 For every {discount?.get_free.buy} gallons purchased, customer
-                will receive {discount?.get_free.get} free gallon(s).
+                will receive {discount?.get_free.get} free gallon(s). Promo runs
+                from{" "}
+                <span style={{ fontWeight: "bold" }}>
+                  {format(
+                    new Date(discount.date_created.utc_date),
+                    "MMM-dd-yy"
+                  )}{" "}
+                  until{" "}
+                  {format(
+                    new Date(discount.get_free.validityPeriod),
+                    "MMM-dd-yy"
+                  )}
+                  .
+                </span>
+              </p>
+              <p style={{ fontWeight: "normal" }}>
+                Type:{" "}
+                <span style={{ fontWeight: "bold" }}>
+                  {discount.get_free.isAccumulated
+                    ? "Accumulated"
+                    : "Non-accumulated"}
+                </span>
               </p>
             </div>
             <div className="discounts-wrapper--card__buttons">

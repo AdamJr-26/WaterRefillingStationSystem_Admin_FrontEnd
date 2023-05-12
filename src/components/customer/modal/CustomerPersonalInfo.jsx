@@ -79,18 +79,18 @@ function CustomerPersonalInfo({ isOpen, onOpen, onClose, selectedCustomer }) {
                     <Tabs>
                       <TabList>
                         <Tab>Returns </Tab>
-                        <Tab>Purchases</Tab>
+                        {/* <Tab>Purchases</Tab> */}
                         <Tab>Debt payments</Tab>
                       </TabList>
                       <TabPanels>
                         <TabPanel>
                           <ReturnsHistory customer_id={selectedCustomer?._id} />
                         </TabPanel>
-                        <TabPanel>
+                        {/* <TabPanel>
                           <PurchasesHistory
                             customer_id={selectedCustomer?._id}
                           />
-                        </TabPanel>
+                        </TabPanel> */}
                         <TabPanel>
                           <PaymentsHistory
                             customer_id={selectedCustomer?._id}

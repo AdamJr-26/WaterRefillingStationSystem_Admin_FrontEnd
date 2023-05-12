@@ -127,11 +127,11 @@ function CreditsPayersHistory() {
             </div>
             <div className="transactions-wrapper--item__amount-buttons">
               <div>
-                <p>Count</p>
+                <p>Quantity</p>
                 <p>{credit?.gallon_count}</p>
               </div>
               <div>
-                <p>Paid</p>
+                <p>Total payment</p>
                 <p>₱ {credit?.amount_paid}</p>
               </div>
             </div>

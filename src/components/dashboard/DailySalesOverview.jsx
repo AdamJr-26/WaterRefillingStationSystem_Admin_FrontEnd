@@ -46,7 +46,7 @@ function DailySalesOverview() {
           <Stat>
             <StatLabel>Sales</StatLabel>
 
-            <StatNumber>₱ {dailyReport?.salesToday}</StatNumber>
+            <StatNumber>₱ {dailyReport?.totalSalesToday}</StatNumber>
             <StatHelpText>
               {dailyReport?.salesPercentage == "N/A" ? (
                 dailyReport?.salesPercentage

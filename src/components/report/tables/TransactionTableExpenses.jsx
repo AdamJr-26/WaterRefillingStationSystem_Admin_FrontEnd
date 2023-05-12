@@ -13,7 +13,7 @@ import {
 import { format } from "date-fns";
 import TablePaginationButtons from "../../general/TablePaginationButtons";
 
-function TransactionTableExpenses({ data, currentPage, setPage }) {
+function TransactionTableExpenses({ data, currentPage, setPage, limit }) {
   const buttonsToShow = 5; // Number of buttons to show in the pagination
 
   // Calculate the range of buttons to display
@@ -55,7 +55,7 @@ function TransactionTableExpenses({ data, currentPage, setPage }) {
           ))}
         </Tbody>
         <Tfoot>
-          {data.data.length ? (
+          {data.data.length  ? (
             <TablePaginationButtons
               pages={pages}
               setPage={setPage}

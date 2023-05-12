@@ -58,10 +58,7 @@ function Router() {
         <Route path="/admin" element={<ProtectRoutes />}>
           <Route path="credits" element={<AdminCredits />}>
             <Route index element={<AdminCreditsTransactions />} />
-            <Route
-              path="history"
-              element={<CreditsPayersHistory />}
-            />
+            <Route path="history" element={<CreditsPayersHistory />} />
           </Route>
           <Route path="customers" element={<AdminCustomers />} />
           <Route path="dashboard" element={<AdminDashboard />} />

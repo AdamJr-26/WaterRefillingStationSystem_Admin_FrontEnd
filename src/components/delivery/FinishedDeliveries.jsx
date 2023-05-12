@@ -29,11 +29,13 @@ import {
   MenuDivider,
   Button,
   useDisclosure,
+  Stack,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { format } from "date-fns";
 import TablePaginationButtons from "../general/TablePaginationButtons";
 import DeliveryProgressModal from "./modal/DeliveryProgressModal";
+import { Icon } from "@iconify/react";
 
 function FinishedDeliveries({ data, currentPage, setPage }) {
   let heading = [
@@ -57,6 +59,13 @@ function FinishedDeliveries({ data, currentPage, setPage }) {
     pages.push(i);
   }
 
+  const [delivery, setDelivery] = useState();
+  const progressModalClosure = useDisclosure();
+
+  const showDeliveryDetail = (item) => {
+    setDelivery(item);
+    progressModalClosure.onOpen();
+  };
   return (
     <TableContainer>
       <Table variant="simple">
@@ -89,16 +98,17 @@ function FinishedDeliveries({ data, currentPage, setPage }) {
                 </Tag>
               </Td>
               <Td fontSize="14px">
-                <Menu>
-                  <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-                    Actions
-                  </MenuButton>
-                  <MenuList>
-                    <MenuItem onClick={() => progressModalClosure.onOpen()}>
-                      Show progress
-                    </MenuItem>
-                  </MenuList>
-                </Menu>
+                <Stack direction="row" spacing={4}>
+                  <Button
+                    onClick={() => showDeliveryDetail(item)}
+                    leftIcon={<Icon icon="material-symbols:more-rounded" />}
+                    colorScheme="blue"
+                    // backgroundColor="#2389DA"
+                    variant="outline"
+                  >
+                    More
+                  </Button>
+                </Stack>
               </Td>
               {/* <DeliveryProgressModal
                 isOpen={progressModalClosure.isOpen}
@@ -120,6 +130,12 @@ function FinishedDeliveries({ data, currentPage, setPage }) {
           ) : null}
         </Tfoot>
       </Table>
+      <DeliveryProgressModal
+        isOpen={progressModalClosure.isOpen}
+        onOpen={progressModalClosure.onOpen}
+        onClose={progressModalClosure.onClose}
+        deliveryId={delivery?._id}
+      />
     </TableContainer>
   );
 }

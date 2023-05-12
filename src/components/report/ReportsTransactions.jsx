@@ -19,6 +19,7 @@ import TransactionTablePurchases from "./tables/TransactionTablePurchases";
 import { apiGet } from "../../services/api/axios.methods";
 import TransactionTableDebt from "./tables/TransactionTableDebt";
 import TransactionTableExpenses from "./tables/TransactionTableExpenses";
+import SoldContainers from "./tables/SoldContainers";
 
 function ReportsTransactions({ date }) {
   // purchases datatable
@@ -29,6 +30,7 @@ function ReportsTransactions({ date }) {
     pages: 1,
     page: 1,
     data: [],
+    hasNextPage: false,
     isLoading: true,
   });
   useEffect(() => {
@@ -38,6 +40,7 @@ function ReportsTransactions({ date }) {
         `/api/purchases/${limit}/${purchaseTablePage}/${date}`
       );
 
+      console.log("-------------", data);
       if (data && !error) {
         setIsLoadingPurchaseTable(false);
         setPurchaseTablePage(data.data.page);
@@ -46,6 +49,7 @@ function ReportsTransactions({ date }) {
             ...prev,
             data: data.data.docs,
             pages: data.data.totalPages,
+            hasNextPage: data.data.hasNextPage,
           };
         });
       } else {
@@ -63,6 +67,7 @@ function ReportsTransactions({ date }) {
     pages: 1,
     page: 1,
     data: [],
+    hasNextPage: false,
   });
   useEffect(() => {
     async function getDebtPaymentsData() {
@@ -79,6 +84,7 @@ function ReportsTransactions({ date }) {
             ...prev,
             data: data.data.docs,
             pages: data.data.totalPages,
+            hasNextPage: data.data.hasNextPage,
           };
         });
       } else {
@@ -96,6 +102,7 @@ function ReportsTransactions({ date }) {
     pages: 1,
     page: 1,
     data: [],
+    hasNextPage: false,
   });
   useEffect(() => {
     async function getExpensesData() {
@@ -112,6 +119,7 @@ function ReportsTransactions({ date }) {
             ...prev,
             data: data.data.docs,
             pages: data.data.totalPages,
+            hasNextPage: data.data.hasNextPage,
           };
         });
       } else {
@@ -121,6 +129,42 @@ function ReportsTransactions({ date }) {
     getExpensesData();
   }, [debtPaymentsTablePage, date]);
 
+  // sold containers datatable
+  const [soldContainersTablePage, setSoldContainersTablePage] = useState(1);
+  const [
+    isLoadingSoldContainersTablePage,
+    setIsLoadingSoldContainersTablePage,
+  ] = useState(false);
+  const [soldContainersDataTable, setSoldContainersDataTable] = useState({
+    pages: 1,
+    page: 1,
+    data: [],
+    hasNextPage: false,
+  });
+  useEffect(() => {
+    async function getSoldContainers() {
+      setIsLoadingSoldContainersTablePage(true);
+      const { data, error } = await apiGet(
+        `/api/sold-containers/${limit}/${soldContainersTablePage}/${date}`
+      );
+  
+      if (data && !error) {
+        setIsLoadingSoldContainersTablePage(false);
+        setSoldContainersTablePage(data.data.page);
+        setSoldContainersDataTable((prev) => {
+          return {
+            ...prev,
+            data: data.data.docs,
+            pages: data.data.totalPages,
+            hasNextPage: data.data.hasNextPage,
+          };
+        });
+      } else {
+        setIsLoadingSoldContainersTablePage(false);
+      }
+    }
+    getSoldContainers();
+  }, [soldContainersTablePage, date]);
   console.log("debtPaymentsDataTable", setExpensesDataTable);
   return (
     <div className="admin-report-transactions">
@@ -168,10 +212,18 @@ function ReportsTransactions({ date }) {
                   >
                     Expenses
                   </Tab>
+                  <Tab
+                    sx={{
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
+                  >
+                    Sold Containers
+                  </Tab>
                 </TabList>
                 <TabPanels>
                   <TabPanel position="relative">
-                   
                     {isLoadingPurchaseTable ? (
                       <Stack
                         justifyContent="center"
@@ -190,6 +242,7 @@ function ReportsTransactions({ date }) {
                       data={purchasesDataTable}
                       currentPage={purchaseTablePage}
                       setPurchaseTablePage={setPurchaseTablePage}
+                      limit={limit}
                     />
                   </TabPanel>
                   <TabPanel position="relative">
@@ -210,6 +263,7 @@ function ReportsTransactions({ date }) {
                       data={debtPaymentsDataTable}
                       currentPage={debtPaymentsTablePage}
                       setPage={setDebtPaymentsTablePage}
+                      limit={limit}
                     />
                   </TabPanel>
                   <TabPanel>
@@ -230,6 +284,27 @@ function ReportsTransactions({ date }) {
                       data={expensesDataTable}
                       currentPage={expensesTablePage}
                       setPage={setExpensesTablePage}
+                      limit={limit}
+                    />
+                  </TabPanel>
+                  <TabPanel>
+                    {isLoadingSoldContainersTablePage ? (
+                      <Stack
+                        justifyContent="center"
+                        alignItems="center"
+                        minHeight="150px"
+                        position="absolute"
+                        left="50%"
+                        top="50%"
+                        transform="translate(-50%, -50%)"
+                      >
+                        <Spinner size="xl" color="blue.200" thickness="5px" />
+                      </Stack>
+                    ) : null}
+                    <SoldContainers
+                      data={soldContainersDataTable}
+                      currentPage={soldContainersTablePage}
+                      setPage={setSoldContainersTablePage}
                     />
                   </TabPanel>
                 </TabPanels>

@@ -9,17 +9,11 @@ import {
   Td,
   TableCaption,
   TableContainer,
-  Tag,
 } from "@chakra-ui/react";
 import { format } from "date-fns";
 import TablePaginationButtons from "../../general/TablePaginationButtons";
 
-function TransactionTablePurchases({
-  data,
-  currentPage,
-  setPurchaseTablePage,
-  limit,
-}) {
+function SoldContainers({ data, currentPage, setPage }) {
   const buttonsToShow = 5; // Number of buttons to show in the pagination
 
   // Calculate the range of buttons to display
@@ -33,20 +27,18 @@ function TransactionTablePurchases({
   }
   let heading = [
     "DATE",
-    "TYPE",
     "CUSTOMER",
-    "PAID ORDERS",
-    "CREDITED ORDERS",
-    "FREE",
-    "PRICE",
-    "PAYMENT",
+    "GALLON",
+    "QUANTITY",
+    "UNIT PRICE",
+    "ORDER TOTAL",
   ];
-
+  console.log("data----------->", data);
   return (
     <TableContainer>
       <Table variant="simple">
         <TableCaption>
-          This is just a list of purchases that have been made up to the
+          This is just a list of sold containers that have been made up to the
           selected date,
         </TableCaption>
         <Thead backgroundColor="gray.100">
@@ -62,20 +54,11 @@ function TransactionTablePurchases({
               <Td fontSize="14px">
                 {format(new Date(item.date.utc_date), "MMMM d, yyyy")}
               </Td>
-              <Td fontSize="14px">
-                <Tag
-                  variant="outline"
-                  colorScheme={item.type === "delivered" ? "green" : "orange"}
-                >
-                  {item.type}
-                </Tag>
-              </Td>
               <Td fontSize="14px">{item.customer.fullname}</Td>
-              <Td fontSize="14px">{item.paid_orders}</Td>
-              <Td fontSize="14px">{item.credited_orders}</Td>
-              <Td fontSize="14px">{item.free}</Td>
-              <Td fontSize="14px">₱ {item.price}</Td>
-              <Td fontSize="14px">₱ {item.payment}</Td>
+              <Td fontSize="14px">{item?.gallon?.name}</Td>
+              <Td fontSize="14px">{item.quantity}</Td>
+              <Td fontSize="14px">₱ {item.unitPrice}</Td>
+              <Td fontSize="14px">₱ {item.orderTotal}</Td>
             </Tr>
           ))}
         </Tbody>
@@ -83,7 +66,7 @@ function TransactionTablePurchases({
           {data.data.length ? (
             <TablePaginationButtons
               pages={pages}
-              setPage={setPurchaseTablePage}
+              setPage={setPage}
               currentPage={currentPage}
               totalPages={data.pages}
             />
@@ -94,4 +77,4 @@ function TransactionTablePurchases({
   );
 }
 
-export default TransactionTablePurchases;
+export default SoldContainers;

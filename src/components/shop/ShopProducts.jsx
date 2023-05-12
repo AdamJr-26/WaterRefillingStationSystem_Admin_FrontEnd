@@ -3,7 +3,6 @@ import { Icon } from "@iconify/react";
 import { apiGet } from "../../services/api/axios.methods";
 
 function ShopProducts() {
-  
   const [products, setProducts] = useState([]);
   useEffect(() => {
     async function getProducts() {
@@ -32,7 +31,7 @@ function ShopProducts() {
             </div>
             <div className="shop-products-card-description">
               <p className="shop-products-card-description--name">
-              {product.gallon[0].name}
+                {product.gallon[0].name}
               </p>
               <p className="shop-products-card-description--volume">
                 {product.gallon[0].liter} Liter(s)
@@ -43,7 +42,7 @@ function ShopProducts() {
             </div>
             <div className="shop-products-wrapper--card-wrapper--card__buttons-wrapper">
               <button>
-                <Icon icon="majesticons:edit-pen-2-line" />
+                <Icon icon="material-symbols:delete-sharp" />
               </button>
             </div>
           </div>

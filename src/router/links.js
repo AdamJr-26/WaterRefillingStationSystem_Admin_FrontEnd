@@ -8,11 +8,11 @@ export const links = [
   {
     pages: [
       {
-        name: "Credits",
-        path: "credits",
+        name: "Inventory",
+        path: "inventory",
         isRequiresAuthentication: true,
         component: "",
-        icon: "mdi:credit-card",
+        icon: "material-symbols:inventory-2",
       },
       {
         name: "Delivery",
@@ -22,11 +22,11 @@ export const links = [
         icon: "mdi:truck",
       },
       {
-        name: "Inventory",
-        path: "inventory",
+        name: "Credits",
+        path: "credits",
         isRequiresAuthentication: true,
         component: "",
-        icon: "material-symbols:inventory-2",
+        icon: "mdi:credit-card",
       },
       {
         name: "Customers",
@@ -34,13 +34,6 @@ export const links = [
         isRequiresAuthentication: true,
         component: "",
         icon: "mdi:people-group",
-      },
-      {
-        name: "Reports",
-        path: "reports",
-        isRequiresAuthentication: true,
-        component: "",
-        icon: "material-symbols:insert-chart-rounded",
       },
       {
         name: "Employees",
@@ -56,6 +49,14 @@ export const links = [
         component: "",
         icon: "grommet-icons:schedules",
       },
+      {
+        name: "Reports",
+        path: "reports",
+        isRequiresAuthentication: true,
+        component: "",
+        icon: "material-symbols:insert-chart-rounded",
+      },
+
       // "bi:shop"
       {
         name: "Shop",
