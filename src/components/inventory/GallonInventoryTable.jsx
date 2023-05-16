@@ -47,6 +47,7 @@ function GallonInventoryTable({ data, currentPage, setPage }) {
     "BORROWED",
     "AVAILABLE",
     "QUANTIY",
+    "CONTAINER PRICE",
     "ACTIONS",
   ];
 
@@ -146,6 +147,7 @@ function GallonInventoryTable({ data, currentPage, setPage }) {
               <Td>{item.borrowed[0]?.total_borrowed || 0}</Td>
               <Td>{item?.total - (item.borrowed[0]?.total_borrowed || 0)}</Td>
               <Td>{item.total}</Td>
+              <Td>₱ {item.containerPrice}</Td>
               <Td fontSize="14px">
                 <Stack direction="row" spacing={4}>
                   <Button

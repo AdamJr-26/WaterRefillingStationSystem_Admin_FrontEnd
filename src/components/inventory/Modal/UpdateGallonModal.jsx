@@ -29,11 +29,10 @@ import useSWR, { useSWRConfig } from "swr";
 // API
 import { updateGallon } from "../../../services/api/inventory/inventory.post";
 
-function UpdateGallonModal({ isOpen, onOpen, onClose, showItem , toast}) {
+function UpdateGallonModal({ isOpen, onOpen, onClose, showItem, toast }) {
   const id = showItem?.id;
   const admin = showItem?.admin;
 
-  
   // fetch
   if (id && admin && isOpen) {
     const { gallon, gallonError } = useGallon({
@@ -43,6 +42,7 @@ function UpdateGallonModal({ isOpen, onOpen, onClose, showItem , toast}) {
     const [isUpdatingPrice, setIsUpdatingPrice] = useState(false);
     const [isUpdatingAdd, setIsUpdatingAdd] = useState(false);
     const [isUpdatingReduce, setIsUpdatingReduce] = useState(false);
+    const [isUpdatingConPrice, setIsUpdatingConPrice] = useState(false)
 
     // update
     // delete
@@ -107,6 +107,26 @@ function UpdateGallonModal({ isOpen, onOpen, onClose, showItem , toast}) {
         setIsUpdatingReduce(false);
       },
     };
+    const updateContainerPrice = {
+      initialValues: {
+        containerPrice: "",
+      },
+      validationSchema: Yup.object().shape({
+        containerPrice: Yup.number()
+          .max(1000, "Container price must not exceed 1000.")
+          .required("Container price is required."),
+      }),
+      onSubmit: async (values, { resetForm }) => {
+        setIsUpdatingConPrice(true);
+        const { updatedGallon, error } = await updateGallon({
+          url: `/api/gallon/container-price/${data?._id}/${data?.admin}`,
+          payload: values,
+        });
+        resetForm({ values: "" });
+        responseHandler(updatedGallon, error);
+        setIsUpdatingConPrice(false);
+      },
+    };
     const responseHandler = (data, error) => {
       console.log("dataaaa", data);
       if (data && !error) {
@@ -153,7 +173,7 @@ function UpdateGallonModal({ isOpen, onOpen, onClose, showItem , toast}) {
                 </div>
                 <div className="update-inventory-gallon-modal--gallon-info__total">
                   <div className="gallon-price-tag">
-                    <p>Price</p>
+                    <p>Refill Price</p>
                     <p>₱ {data?.price}</p>
                   </div>
                   <div className="grallon-total-tag">
@@ -172,14 +192,34 @@ function UpdateGallonModal({ isOpen, onOpen, onClose, showItem , toast}) {
                 <Formik {...updatePrice}>
                   <Form className="update-inventory-gallon-modal--update__update-gallon-inputs">
                     <TextInput
-                      label="Change Price"
+                      label="Refill Price"
                       name="price"
                       placeholder="0"
                       type="number"
                     />
                     <Button
                       isLoading={isUpdatingPrice}
-                      loadingText="Updating..."
+                      loadingText=""
+                      type="submit"
+                      marginLeft="5px"
+                      colorScheme="blue"
+                      mr={3}
+                    >
+                      Update
+                    </Button>
+                  </Form>
+                </Formik>
+                <Formik {...updateContainerPrice}>
+                  <Form className="update-inventory-gallon-modal--update__update-gallon-inputs">
+                    <TextInput
+                      label="Container Price"
+                      name="containerPrice"
+                      placeholder="0"
+                      type="number"
+                    />
+                    <Button
+                      isLoading={isUpdatingConPrice}
+                      loadingText=""
                       type="submit"
                       marginLeft="5px"
                       colorScheme="blue"
@@ -193,14 +233,14 @@ function UpdateGallonModal({ isOpen, onOpen, onClose, showItem , toast}) {
                 <Formik {...addCount}>
                   <Form className="update-inventory-gallon-modal--update__update-gallon-inputs">
                     <TextInput
-                      label="Add Count"
+                      label="Add Quantity"
                       name="add_count"
                       placeholder="0"
                       type="number"
                     />
                     <Button
                       isLoading={isUpdatingAdd}
-                      loadingText="Updating..."
+                      loadingText=""
                       type="submit"
                       marginLeft="5px"
                       colorScheme="blue"
@@ -214,14 +254,14 @@ function UpdateGallonModal({ isOpen, onOpen, onClose, showItem , toast}) {
                 <Formik {...reduceCount}>
                   <Form className="update-inventory-gallon-modal--update__update-gallon-inputs">
                     <TextInput
-                      label="Reduce Count"
+                      label="Reduce Quantity"
                       name="reduce_count"
                       placeholder="0"
                       type="number"
                     />
                     <Button
                       isLoading={isUpdatingReduce}
-                      loadingText="Updating..."
+                      loadingText=""
                       type="submit"
                       marginLeft="5px"
                       colorScheme="blue"

@@ -69,12 +69,15 @@
                 gap: 15px;
 
                 button {
-                    padding: 15px;
+                    padding: 5px 10px;
                     border-radius: 5px;
                     border: 1px solid rgb(226, 223, 223);
                     cursor: pointer;
                     transition: all ease-in-out 150ms;
-
+                    display: flex;
+                    gap: 2px;
+                    justify-content: center;
+                    align-items: center;
                     &:hover {
                         background-color: colors.$blue-900;
                         color: white;

@@ -1,19 +1,49 @@
 import React, { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
-import { apiGet } from "../../services/api/axios.methods";
+import { apiDelete, apiGet } from "../../services/api/axios.methods";
+import { Box, useToast } from "@chakra-ui/react";
 
 function ShopProducts() {
+  const toast = useToast();
   const [products, setProducts] = useState([]);
-  useEffect(() => {
-    async function getProducts() {
-      const { data, error } = await apiGet("/api/products");
-      if (data && !error) {
-        console.log("data.data", data.data);
-        setProducts(data.data);
-      }
+  async function getProducts() {
+    const { data, error } = await apiGet("/api/products");
+    if (data && !error) {
+      console.log("data.data", data.data);
+      setProducts(data.data);
     }
+  }
+  useEffect(() => {
     getProducts();
   }, []);
+  async function removeProductFromShop({ id }) {
+    console.log("idd", id);
+    const { data, error } = await apiDelete({
+      url: `/api/product/${id}`,
+    });
+
+    if (data && !error) {
+      getProducts();
+      toast({
+        position: "bottom-left",
+        render: () => (
+          <Box color="white" p={3} bg="green" borderRadius="10">
+            Removed a product
+          </Box>
+        ),
+      });
+    } else {
+      getProducts();
+      toast({
+        position: "bottom-left",
+        render: () => (
+          <Box color="white" p={3} bg="red" borderRadius="10">
+            Remove a product failed.
+          </Box>
+        ),
+      });
+    }
+  }
   return (
     <div className="shop-products-wrapper">
       <div className="shop-products-wrapper--header">
@@ -37,12 +67,15 @@ function ShopProducts() {
                 {product.gallon[0].liter} Liter(s)
               </p>
               <p className="shop-products-card-description--price">
-                P {product.price}
+                ₱ {product.price}
               </p>
             </div>
             <div className="shop-products-wrapper--card-wrapper--card__buttons-wrapper">
-              <button>
+              <button
+                onClick={() => removeProductFromShop({ id: product._id })}
+              >
                 <Icon icon="material-symbols:delete-sharp" />
+                remove
               </button>
             </div>
           </div>
