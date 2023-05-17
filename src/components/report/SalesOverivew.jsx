@@ -15,6 +15,11 @@ function SalesOverivew({ selectedDate, data }) {
     var index = purchase._id - 1;
     salesData[index] = purchase.sales;
   });
+  // add orderTotal from sold containers
+  data?.data[0]?.soldContainers?.map((soldContainer) => {
+    var index = soldContainer._id - 1;
+    salesData[index] += soldContainer.orderTotal;
+  });
   // EXPENSES
   const expenseData = Array(days.length).fill(0);
   data?.data[0]?.expenses?.map((expense) => {
@@ -27,10 +32,17 @@ function SalesOverivew({ selectedDate, data }) {
     var index = purchase._id - 1;
     paidProductsData[index] += purchase.paid_orders_amount;
   });
+  // add amount_Paid from credits.
   data?.data[0]?.paid_credits?.map((paid_credit) => {
     var index = paid_credit._id - 1;
     paidProductsData[index] += paid_credit.amount_paid;
   });
+  // add orderTotal from sold containers
+  data?.data[0]?.soldContainers?.map((soldContainer) => {
+    var index = soldContainer._id - 1;
+    paidProductsData[index] += soldContainer.orderTotal;
+  });
+
   // data?.data[0]?.expenses?.map((expense) => {
   //   var index = expense._id - 1;
   //   paidProductsData[index] -= expense.amount;
@@ -116,7 +128,6 @@ function SalesOverivew({ selectedDate, data }) {
             <div className="sales--amount">
               {/* paid invoices and debt payment */}
               <p>₱ {data?.data[0].total_sales}</p>
-             
             </div>
           </div>
           <p className="month">{transformDate(startMonth).monthName}</p>
