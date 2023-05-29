@@ -161,8 +161,14 @@ function PendingSchedules({
                     <p className="schedules-lists-table-panel--date">
                       {format(new Date(sched.date.utc_date), "MMM-dd-yy")}
                     </p>
+                    <div style={{ display: "flex", flexDirection: "col", gap: "2px" }}>
+                      <p style={{ fontSize: "14px", fontWeight: "bold" }}>
+                        Payment method:
+                      </p>
+                      <p style={{ fontWeight: "bold", color: "red" }}>{sched?.isToCredit ? "Credit" : "Cash"}</p>
+                    </div>
                   </div>
-                  <Table size="sm">
+                  <Table size="sm">   
                     <Thead>
                       <Tr>
                         {heading.map((head, i) => (

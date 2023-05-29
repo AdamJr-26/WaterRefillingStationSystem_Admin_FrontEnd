@@ -8,13 +8,14 @@ function ControlsWrapper() {
   const toast = useToast();
   const [isAutoAcceptDelivery, setIsAutoAcceptDelivery] = useState();
   const [isAutoAcceptSchedule, setIsAutoAcceptSchedule] = useState();
+  const [creditLimit, setCreditLimit] = useState(0);
 
   const [isLoading, setIsLoading] = useState(false);
 
   async function updateControls({ fieldName, value }) {
     console.log("update--controls");
     if (!isLoading) {
-        setIsLoading(true)
+      setIsLoading(true);
       const { data, error } = await apiPut({
         url: `api/controls`,
         payload: {
@@ -25,6 +26,7 @@ function ControlsWrapper() {
       if (data && !error) {
         setIsAutoAcceptDelivery(data?.data?.autoAcceptDelivery);
         setIsAutoAcceptSchedule(data?.data?.autoAcceptSchedules);
+        setCreditLimit(data?.data?.creditLimit);
         toast({
           position: "bottom-left",
           render: () => (
@@ -43,10 +45,9 @@ function ControlsWrapper() {
           ),
         });
       }
-      setIsLoading(false)
+      setIsLoading(false);
     }
   }
-
   async function fetchControls() {
     if (isLoading) return;
     setIsLoading(true);
@@ -55,6 +56,7 @@ function ControlsWrapper() {
     if (data && !error) {
       setIsAutoAcceptDelivery(data?.data?.autoAcceptDelivery);
       setIsAutoAcceptSchedule(data?.data?.autoAcceptSchedules);
+      setCreditLimit(data?.data?.creditLimit);
     }
   }
   useEffect(() => {

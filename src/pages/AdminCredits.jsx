@@ -25,31 +25,33 @@ function AppCredits() {
   });
 
   return (
-    <div className="admin-credits">
-      <AccountReceivable data={receivable} />
-      <div className="admin-credits--transactions-wrapper">
-        <div className="admin-credits--transactions-wrapper__links">
-          <NavLink
-            to=""
-            className={({ isActive }) =>
-              isActive && isNotActive() ? "active" : ""
-            }
-          >
-            Credits
-          </NavLink>
-          <NavLink
-            to="history"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
-            History
-          </NavLink>
+    <div>
+      <div className="admin-credits">
+        <AccountReceivable data={receivable} />
+        <div className="admin-credits--transactions-wrapper">
+          <div className="admin-credits--transactions-wrapper__links">
+            <NavLink
+              to=""
+              className={({ isActive }) =>
+                isActive && isNotActive() ? "active" : ""
+              }
+            >
+              Credits
+            </NavLink>
+            <NavLink
+              to="history"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              History
+            </NavLink>
+          </div>
+          <div className="admin-credits--transactions-wrapper__outlet">
+            <Outlet context={{ mutateReceivable }} />
+          </div>
         </div>
-        <div className="admin-credits--transactions-wrapper__outlet">
-          <Outlet context={{ mutateReceivable }} />
-        </div>
+        {/* pop ups / modal */}
+        {newTransactionPopupState && <AdminCreditNewTransaction />}
       </div>
-      {/* pop ups / modal */}
-      {newTransactionPopupState && <AdminCreditNewTransaction />}
     </div>
   );
 }

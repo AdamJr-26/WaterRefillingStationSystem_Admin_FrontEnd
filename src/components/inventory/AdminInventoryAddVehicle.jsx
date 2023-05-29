@@ -32,10 +32,19 @@ function AdminInventoryAddVehicle() {
         initialValues={{
           vehicle_name: "",
           vehicle_id: "",
+          loadLimit: "",
         }}
         validationSchema={Yup.object().shape({
-          vehicle_name: Yup.string().max(20, "Vehicle name must not exceed 20 letters").required("Vehicle Name is Required"),
-          vehicle_id: Yup.string().max(20, "Vehicle ID must not exceed 20 letters").required("Vehicle ID is Required"),
+          vehicle_name: Yup.string()
+            .max(20, "Vehicle name must not exceed 20 letters")
+            .required("Vehicle Name is Required"),
+          vehicle_id: Yup.string()
+            .max(20, "Vehicle ID must not exceed 20 letters")
+            .required("Vehicle ID is Required"),
+          loadLimit: Yup.number().max(
+            10000,
+            "Load limit by KG must not exceed 1000"
+          ),
         })}
         onSubmit={async (values) => {
           if (vehicle_image) {
@@ -58,7 +67,7 @@ function AdminInventoryAddVehicle() {
               });
             } else {
               setSubmitting(false);
-              console.log("res.errorres.error",res)
+              console.log("res.errorres.error", res);
               const { fullError, message } =
                 res.error?.response?.data?.errors?.add_vehicle_admin;
               toast({
@@ -148,6 +157,12 @@ function AdminInventoryAddVehicle() {
               label="Vehicle ID"
               name="vehicle_id"
               placeholder="Vehicle ID"
+            />
+            <TextInput
+              label="Load limit (KG)"
+              type="number"
+              name="loadLimit"
+              placeholder="0"
             />
           </div>
           <div className="admin-inventory-add-vehicle--buttons">

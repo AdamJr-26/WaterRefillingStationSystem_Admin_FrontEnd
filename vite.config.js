@@ -18,6 +18,9 @@ if (process.env.NODE_ENV === "development") {
   server = prod_server;
 }
 export default defineConfig({
-  server: server,
+  server: {
+    host: process.env.DEV_HOST,
+    port: process.env.DEV_PORT,
+  },
   plugins: [react()],
 });

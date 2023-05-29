@@ -34,13 +34,26 @@ function AdminInventoryAddGallon() {
           price: "",
           containerPrice: "",
           total: "",
+          
         }}
         validationSchema={Yup.object().shape({
-          name: Yup.string().max(20, "Name must not exceed 20 letters").required("Gallon Name is Required"),
-          liter: Yup.number().max(10000, "Liter must not exceed 10000 ").required("Liter is Required"),
-          price: Yup.number().max(10000, "Price must not exceed 10000 ").required("Price is Required"),
-          containerPrice: Yup.number().max(10000, "Container price must not exceed 10000 "),
-          total: Yup.number().max(10000, "Total must not exceed 10000 ").required("Total is Required"),
+          name: Yup.string()
+            .max(20, "Name must not exceed 20 letters")
+            .required("Gallon Name is Required"),
+          liter: Yup.number()
+            .max(10000, "Liter must not exceed 10000 ")
+            .required("Liter is Required"),
+          price: Yup.number()
+            .max(10000, "Price must not exceed 10000 ")
+            .required("Price is Required"),
+          containerPrice: Yup.number().max(
+            10000,
+            "Container price must not exceed 10000 "
+          ),
+          total: Yup.number()
+            .max(10000, "Total must not exceed 10000 ")
+            .required("Total is Required"),
+          
         })}
         onSubmit={async (values) => {
           if (gallon_image) {
@@ -75,7 +88,7 @@ function AdminInventoryAddGallon() {
               });
               console.log(res.error);
             }
-          }else{
+          } else {
             toast({
               title: "No Image selected",
               description: "Please choose an image.",
@@ -147,11 +160,7 @@ function AdminInventoryAddGallon() {
           <span className="gallon-description">Description</span>
 
           <div className="admin-inventory-add-gallon--inputs">
-            <TextInput
-              label="Name"
-              name="name"
-              placeholder="Gallon Name"
-            />
+            <TextInput label="Name" name="name" placeholder="Gallon Name" />
             <TextInput
               label="Liter(s)"
               name="liter"
@@ -164,7 +173,7 @@ function AdminInventoryAddGallon() {
               name="price"
               placeholder="0"
             />
-             <TextInput
+            <TextInput
               label="Container price"
               type="number"
               name="containerPrice"
@@ -176,6 +185,8 @@ function AdminInventoryAddGallon() {
               name="total"
               placeholder="0"
             />
+            {/* loadLimit */}
+        
           </div>
           <div className="admin-inventory-add-gallon--buttons">
             <button ref={resetRef} type="reset" className="reset">

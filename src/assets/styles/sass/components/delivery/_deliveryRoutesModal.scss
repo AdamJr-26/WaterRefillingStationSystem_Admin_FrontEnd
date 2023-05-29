@@ -1,0 +1,62 @@
+@use '../../colors';
+@use '../../breakpoints';
+
+.delivery-routes-details-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 5px;
+    border: 1px solid colors.$gray-200;
+    border-radius: 15px;
+    
+    &--customer {
+        padding: 10px 5px;
+        border: 1px solid colors.$gray-200;
+        border-radius: 15px;
+        display: flex;
+       align-items: center;
+        &__name {
+            p:nth-child(1) {
+                font-weight: bold;
+            }
+
+            p:nth-child(2) {
+                font-size: 12px;
+
+            }
+        }
+    }
+
+    &--address {
+        padding: 10px 5px;
+        border: 1px solid colors.$gray-200;
+        border-radius: 15px;
+
+        p:nth-child(1) {
+            font-size: 12px;
+            
+        }
+
+        p:nth-child(2) {
+            font-weight: semibold;
+
+        }
+    }
+
+    &--orders-wrapper {
+        padding: 10px 5px;
+        border: 1px solid colors.$gray-200;
+        border-radius: 15px;
+        &__title{
+            font-size: 12px;
+        }
+        &__gallons{
+            font-weight: bold;
+            margin: 5px 0px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+        }
+    }
+}

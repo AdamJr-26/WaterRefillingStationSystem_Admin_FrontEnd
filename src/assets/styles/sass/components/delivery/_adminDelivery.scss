@@ -17,7 +17,7 @@
         // padding: 10px;
         // border-radius: 15px;
         // border-bottom: 3px solid colors.$gray-100;
-        
+
         padding: 10px 0px;
 
         &--header {
@@ -55,7 +55,7 @@
     max-width: 100vw;
     border: 1px solid colors.$gray-200;
     // box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    
+
     &--header {
         &__title {
             font-weight: 500;
@@ -191,7 +191,7 @@
                 display: flex;
                 // flex-flow: row wrap;
                 justify-content: space-between;
-                align-items: center;
+                align-items: flex-end;
 
                 &--vehicle-id {
                     p:nth-child(1) {
@@ -211,17 +211,41 @@
                     gap: 10px;
 
                     button {
-                        padding: 10px 15px;
+                        padding: 7px 15px;
                         border-radius: 30px;
                     }
 
                     button:nth-child(1) {
-                        color: red;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 5px;
+                        color: colors.$blue-900;
+                        transition: all ease-in 200ms;
+
+
+                        &:hover {
+                            background-color: colors.$blue-50;
+
+
+                        }
                     }
 
                     button:nth-child(2) {
-                        background-color: colors.$blue-900;
-                        color: white;
+                        color: red;
+                    }
+
+                    button:nth-child(3) {
+                        color: colors.$blue-900;
+                        transition: all ease-in 200ms;
+
+                        &:hover {
+                            background-color: colors.$blue-900;
+                            ;
+                            color: white;
+
+                        }
                     }
                 }
             }

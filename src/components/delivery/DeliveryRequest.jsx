@@ -4,7 +4,9 @@ import { DeliveryAccept } from "../../services/api/delivery/delivery.accept";
 import useSWR, { useSWRConfig } from "swr";
 import { useToast, Button } from "@chakra-ui/react";
 import NoData from "../general/NoData";
-
+import { Icon } from "@iconify/react";
+import DeliveryRoutesModal from "./modal/DeliveryRoutesModal";
+import { useDisclosure } from "@chakra-ui/react";
 function DeliveryRequest() {
   const { data, error } = useFetch({ url: "/api/deliveries/pending" });
   const deliveries = data?.data;
@@ -46,8 +48,12 @@ function DeliveryRequest() {
         });
       }
     };
+    
+
     return (
       <div className="delivery-request-wrapper--cards">
+        {/* modal */}
+
         {deliveries.length ? (
           deliveries?.map((delivery) => (
             <div
@@ -93,7 +99,9 @@ function DeliveryRequest() {
                   <p>{delivery?.vehicle?.vehicle_id}</p>
                 </div>
                 <div className="delivery-card-buttons--button">
+                  <DeliveryRoutesModal delivery={delivery?._id} />
                   <button>Reject</button>
+
                   <Button
                     isLoading={isLoadingAccept}
                     loadingText=""
@@ -101,6 +109,7 @@ function DeliveryRequest() {
                   >
                     Accept
                   </Button>
+
                   {/* <button >Accept</button> */}
                 </div>
               </div>

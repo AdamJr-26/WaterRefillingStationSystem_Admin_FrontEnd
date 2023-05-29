@@ -61,7 +61,7 @@ function AdminEmployess() {
   console.log("datadatadatadata", data);
   return (
     <div className="admin-employees-page">
-      <div className="admin-employees-page-sales-achievement">
+      {/* <div className="admin-employees-page-sales-achievement">
         <div className="admin-employees-page-sales-achievement--header">
           <p>Sales Achievement</p>
           <select
@@ -101,7 +101,7 @@ function AdminEmployess() {
             <NoData />
           )}
         </div>
-      </div>
+      </div> */}
       <div className="admin-employee-personel-table">
         <div className="personel-search-new-wrapper">
           <div className="personel-search-new-wrapper--header">

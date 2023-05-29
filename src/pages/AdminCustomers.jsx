@@ -7,6 +7,8 @@ import AdminCustomerAddDiscount from "../components/customer/discount/AdminCusto
 import useFetch from "../hooks/api/useFetch";
 import CustomerStatusTableWrapper from "../components/customer/wrapper/CustomerStatusTableWrapper";
 import ListSkeletonLoading from "../components/general/ListSkeletonLoading";
+import CreateCreditLImit from "../components/customer/discount/CreateCreditLImit";
+import CreditLimitCards from "../components/customer/credit-limits/CreditLimitCards";
 function AdminCustomers() {
   const [customerToview, setCustomerToview] = useState("");
   useEffect(() => {
@@ -28,7 +30,6 @@ function AdminCustomers() {
     <div className="admin-customers">
       <CustomerStatusTableWrapper />
       <div className="admin-customers-discounts">
-
         <div className="table-customers--header">
           <div className="table-customers--header__title-description">
             <p className="title">Promo</p>
@@ -44,6 +45,20 @@ function AdminCustomers() {
           </div>
         </div>
         <CustomerDiscountCards />
+      </div>
+      <div className="admin-customers-discounts">
+        <div className="table-customers--header">
+          <div className="table-customers--header__title-description">
+            <p className="title">Credit limits</p>
+            <p className="description">Set credit limit for customers.</p>
+          </div>
+          <div className="table-customers--header__menu">
+            <div className="add-discount">
+              <CreateCreditLImit />
+            </div>
+          </div>
+        </div>
+        <CreditLimitCards />
       </div>
     </div>
   );

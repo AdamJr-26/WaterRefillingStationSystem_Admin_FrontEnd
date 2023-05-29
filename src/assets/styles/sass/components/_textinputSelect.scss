@@ -1,18 +1,21 @@
 @use '../colors';
 
-.textinput-select-wrapper{
+.textinput-select-wrapper {
     display: flex;
     flex-direction: column;
     gap: 3px;
     width: 100%;
-    &--label{
+
+    &--label {
         text-align: start;
-        font-size: 14px;
-        font-weight: 500;
+        font-size: 16px;
+        font-weight: bold;
         color: colors.$gray-700;
-        padding: 0px 10px ;
+        // padding: 0px 10px ;
+        margin-top: 5px;
     }
-    &__select{
+
+    &__select {
         border: none;
         // border: none;
         height: 100%;
@@ -22,15 +25,15 @@
         font-weight: 500;
         background-color: colors.$gray-50;
         outline: 1px solid colors.$gray-300;
-    
+
         &:focus {
             border: 2px solid rgba(colors.$blue-900, $alpha: 0.7);
         }
-        &__options{
+
+        &__options {
             font-size: 1rem;
             padding: 10px;
         }
-    
+
     }
 }
-

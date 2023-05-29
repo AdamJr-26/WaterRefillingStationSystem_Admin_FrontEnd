@@ -54,7 +54,7 @@ function DailySalesOverview() {
                 <>
                   <StatArrow
                     type={
-                      dailyReport?.salesToday <= 0 ? "decrease" : "increase"
+                      dailyReport?.salesToday < dailyReport?.salesYesterday ? "decrease" : "increase"
                     }
                   />
                   {dailyReport?.salesPercentage}%
