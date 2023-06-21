@@ -28,7 +28,7 @@ function HomeRegisterStepOne() {
         type="text"
         placeholder="Province"
       />
-      <TextInput label="City" name="city" type="text" placeholder="city" />
+      <TextInput label="City/Municipality" name="city" type="text" placeholder="city" />
       <TextInput
         label="Barangay"
         name="barangay"

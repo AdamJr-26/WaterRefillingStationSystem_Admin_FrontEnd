@@ -67,7 +67,7 @@ function Router() {
           <Route path="schedules" element={<AdminSchedules />} />
           <Route path="inventory" element={<AdminInventory />} />
           <Route path="reports" element={<AdminReports />} />
-          <Route path="shop" element={<AdminShop />} />
+          {/* <Route path="shop" element={<AdminShop />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>

@@ -58,13 +58,13 @@ export const links = [
       },
 
       // "bi:shop"
-      {
-        name: "Shop",
-        path: "shop",
-        isRequiresAuthentication: true,
-        component: "",
-        icon: "mdi:shop-alert",
-      },
+      // {
+      //   name: "Shop",
+      //   path: "shop",
+      //   isRequiresAuthentication: true,
+      //   component: "",
+      //   icon: "mdi:shop-alert",
+      // },
     ],
   },
 ];
